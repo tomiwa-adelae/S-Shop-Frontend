@@ -1,0 +1,200 @@
+@import 'config';
+@import 'utilities';
+@import 'homepage';
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Montserrat', sans-serif;
+}
+
+body {
+   font-size: 15px;
+   width: 100%;
+   height: 100%;
+   background-color: $white-color;
+   color: $primary-color;
+   line-height: 1.6;
+   position: relative;
+}
+
+// Header styles
+header {
+   background-color: $primary-color;
+   color: $white-color;
+   padding: 0.5rem 0;
+   position: sticky;
+   top: 0;
+   z-index: 3;
+
+   .wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 95%;
+      margin: 0 auto;
+      gap: 0 1rem;
+
+      .logo {
+         flex: 1;
+
+         h3 {
+            cursor: pointer;
+            @include easeOut();
+
+            &:hover {
+               color: $secondary-color;
+            }
+         }
+      }
+
+      form {
+         flex: 3;
+         background-color: crimson;
+         position: relative;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+         div {
+            width: 100%;
+            .search {
+               position: absolute;
+               color: $grey-color;
+               top: 50%;
+               left: 1.5%;
+               transform: translate(-1.5%, -50%);
+               font-size: 1.2rem;
+               font-weight: lighter;
+            }
+
+            input {
+               padding-left: 2.5rem;
+            }
+
+            .btn {
+               position: absolute;
+               top: 50%;
+               right: 0;
+               transform: translate(0%, -50%);
+            }
+         }
+      }
+
+      nav {
+         flex: 1;
+         display: flex;
+         align-items: center;
+         justify-content: space-around;
+
+         span {
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            padding: 0.5rem;
+            @include easeOut();
+
+            .user-icon,
+            .cart-icon {
+               margin-right: 0.5rem;
+            }
+
+            &:hover {
+               color: $secondary-color;
+            }
+         }
+      }
+   }
+}
+
+// Footer
+footer {
+   background-color: darken($primary-color, 10%);
+   color: $white-color;
+
+   .footer-details {
+      background-color: $primary-color;
+
+      .wrapper {
+         display: flex;
+
+         align-items: flex-start;
+         justify-content: flex-start;
+         flex-wrap: wrap;
+         gap: 1rem;
+
+         .box {
+            flex-grow: 1;
+            width: 300px;
+            padding: 0.5rem 1rem;
+
+            .head {
+               h5 {
+                  text-transform: uppercase;
+               }
+            }
+
+            .footer-links {
+               display: flex;
+               align-items: flex-start;
+               justify-content: flex-start;
+               flex-direction: column;
+               padding: 1rem 0;
+
+               a {
+                  margin: 0.3rem 0;
+                  font-weight: bold;
+                  @include easeOut();
+
+                  &:hover {
+                     color: $secondary-color;
+                  }
+               }
+            }
+         }
+
+         .footer-social {
+            .footer-links {
+               flex-direction: row;
+               gap: 1rem;
+
+               .icon {
+                  font-size: 1.5rem;
+                  cursor: pointer;
+                  @include easeOut();
+
+                  &:hover {
+                     color: $secondary-color;
+                  }
+               }
+            }
+         }
+
+         .footer-payments {
+            .footer-links {
+               flex-direction: row;
+               gap: 1rem;
+
+               .icon {
+                  font-size: 1.5rem;
+
+                  cursor: pointer;
+                  @include easeOut();
+
+                  &:hover {
+                     color: $secondary-color;
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   .footer-copyright {
+      // text-align: center;
+   }
+}

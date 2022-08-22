@@ -1,0 +1,122 @@
+img {
+   width: 100%;
+}
+
+a {
+   color: $white-color;
+   text-decoration: none;
+}
+
+.container {
+   width: 85%;
+   margin: auto;
+}
+
+.section {
+   padding: 2rem 0;
+}
+
+@mixin easeOut {
+   transition: all ease 0.5s;
+}
+
+// Font Sizes
+h1 {
+   font-size: 4.5rem;
+}
+
+h2 {
+   font-size: 3.5rem;
+}
+
+h3 {
+   font-size: 2.5rem;
+}
+
+h4 {
+   font-size: 1.5rem;
+}
+
+h5 {
+   font-size: 1rem;
+}
+
+h6 {
+   font-size: 0.8rem;
+}
+
+// Buttons
+.btn {
+   padding: 0.8rem 1rem;
+   font-size: 0.8rem;
+   border: none;
+   outline: none;
+   text-transform: uppercase;
+   cursor: pointer;
+   text-align: center;
+   font-weight: bolder;
+   @include easeOut();
+
+   &-primary {
+      background-color: $primary-color;
+      color: $white-color;
+
+      &:hover {
+         background-color: $black-color;
+      }
+   }
+
+   &-white {
+      background-color: $white-color;
+      color: $primary-color;
+
+      &:hover {
+         background-color: darken($white-color, 10%);
+      }
+   }
+
+   &-secondary {
+      background-color: $secondary-color;
+      color: $white-color;
+
+      &:hover {
+         background-color: darken($secondary-color, 10%);
+      }
+   }
+
+   &-grey {
+      background-color: $grey-color;
+      color: $white-color;
+
+      &:hover {
+         background-color: darken($grey-color, 10%);
+      }
+   }
+}
+
+// Form
+form {
+   div {
+      input {
+         padding: 0.8rem 1rem;
+         font-size: 0.8rem;
+         border: none;
+         outline: none;
+         width: 100%;
+         font-weight: bold;
+      }
+   }
+}
+
+// Text colors
+.text-primary {
+   color: $primary-color;
+}
+
+.text-secondary {
+   color: $secondary-color;
+}
+
+.text-grey {
+   color: $grey-color;
+}
