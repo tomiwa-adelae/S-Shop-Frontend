@@ -5,7 +5,7 @@ import VariationShoeBox from '../VariationShoeBox';
 
 const ProductShowcase = ({ product }) => {
    return (
-      <div className="product-carousel section">
+      <div className="product-showcase section">
          <div className="container">
             {product && (
                <div className="wrapper">
@@ -38,13 +38,13 @@ const ProductShowcase = ({ product }) => {
 
                      {/* Variation box */}
                      {/* For clothe */}
-                     {product?.category === 'clothes' && <VariationClotheBox />}
+                     {product?.category === 'clothes' && (
+                        <VariationClotheBox product={product} />
+                     )}
                      {/* For Shoes */}
-                     {product?.category === 'shoes' && <VariationShoeBox />}
-
-                     <div>
-                        <button className="btn btn-primary">Add to cart</button>
-                     </div>
+                     {product?.category === 'shoes' && (
+                        <VariationShoeBox product={product} />
+                     )}
                   </div>
                   <div className="box img">
                      <img src={product?.image} alt={product?.name} />

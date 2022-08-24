@@ -1,6 +1,6 @@
 .product-page {
    position: relative;
-   .product-carousel {
+   .product-showcase {
       background-color: $white-color;
       color: $primary-color;
 
@@ -79,15 +79,13 @@
       align-items: center;
       justify-content: flex-start;
       flex-wrap: wrap;
-      .box {
-         cursor: pointer;
-         border: 1px solid $secondary-color;
-         text-transform: uppercase;
-         @include easeOut();
 
-         &:hover {
-            background-color: $secondary-color;
-            color: $white-color;
+      div {
+         width: 100%;
+         select {
+            border: 2px solid $secondary-color;
+            color: $primary-color;
+            text-transform: uppercase;
          }
       }
    }
