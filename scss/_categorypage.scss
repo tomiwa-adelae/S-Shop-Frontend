@@ -1,4 +1,4 @@
-.homepage {
+.category-page {
    // Home Carousel
    .product-carousel {
       height: 60vh;
@@ -86,89 +86,8 @@
       }
    }
 
-   // Home Catgories section
-   .home-categories-section {
-      @include easeOut();
-      position: relative;
+   .category-intro {
       background-color: $primary-color;
-      color: $white-color;
-
-      .boxes {
-         display: flex;
-         align-items: flex-start;
-         justify-content: flex-start;
-         flex-wrap: wrap;
-         gap: 1rem;
-
-         .box {
-            flex-grow: 1;
-            width: 200px;
-            position: relative;
-            border: 2px solid $white-color;
-            cursor: pointer;
-            @include easeOut();
-
-            .img {
-               width: 100%;
-               height: 150px;
-
-               img {
-                  width: 100%;
-                  height: 100%;
-                  object-fit: cover;
-               }
-            }
-
-            .details {
-               position: absolute;
-               top: 50%;
-               left: 50%;
-               transform: translate(-50%, -50%);
-               z-index: 2;
-
-               h5 {
-                  text-transform: uppercase;
-                  @include easeOut();
-               }
-            }
-
-            &::before {
-               content: '';
-               width: 100%;
-               height: 100%;
-               position: absolute;
-               background-color: rgba($black-color, 0.5);
-               left: 0;
-               top: 0;
-               @include easeOut();
-            }
-
-            &:hover {
-               transform: scale(1.01);
-               border: 2px solid $secondary-color;
-
-               &::before {
-                  background-color: rgba($black-color, 0.9);
-               }
-
-               h5 {
-                  color: $secondary-color;
-               }
-            }
-         }
-      }
-   }
-
-   .home-popular-products,
-   .home-latest-products,
-   .home-most-ordered-products {
-      position: relative;
-      background-color: $white-color;
-      color: $primary-color;
-   }
-
-   .home-latest-products {
-      background-color: $grey-color;
       color: $white-color;
    }
 }

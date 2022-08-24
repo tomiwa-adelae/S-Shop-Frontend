@@ -1,34 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { WhiteSpinner } from '../Spinner';
-
-import { getLatestProducts } from '../../store/actions/productActions';
 import Link from 'next/link';
+import { SuccessMessageBox } from '../MessageBox';
 
-const HomeLatestProducts = () => {
-   const dispatch = useDispatch();
-
-   const latestProductsState = useSelector((state) => state.getLatestProducts);
-   const { loading, latestProducts } = latestProductsState;
-
-   useEffect(() => {
-      dispatch(getLatestProducts());
-   }, [dispatch]);
-
+const ProductMoreProductFromBrand = ({ brandProducts, product }) => {
    return (
-      <div className="home-latest-products section">
+      <div className="product-more-products-from-brand section">
          <div className="container">
             <div className="head py-1">
-               <h4>Latest products</h4>
+               <h4>More products from {product?.brand}</h4>
                <button className="btn btn-primary">See all</button>
             </div>
-            {loading && <WhiteSpinner />}
             <div className="products-boxes">
-               {latestProducts?.map((product) => (
+               {brandProducts.length === 0 && (
+                  <SuccessMessageBox
+                     msg={`${product?.brand} has no other products`}
+                  />
+               )}
+               {brandProducts?.map((product) => (
                   <Link
                      key={product._id}
                      href="/product/[id]"
-                     as={`/product/${product._id}`}
+                     as={`/product/6304cef551918e7d2e8d7995`}
                   >
                      <div className="box">
                         <div className="img">
@@ -51,4 +42,4 @@ const HomeLatestProducts = () => {
    );
 };
 
-export default HomeLatestProducts;
+export default ProductMoreProductFromBrand;

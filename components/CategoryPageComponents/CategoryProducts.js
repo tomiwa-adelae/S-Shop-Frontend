@@ -1,30 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { WhiteSpinner } from '../Spinner';
-
-import { getLatestProducts } from '../../store/actions/productActions';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React from 'react';
 
-const HomeLatestProducts = () => {
-   const dispatch = useDispatch();
-
-   const latestProductsState = useSelector((state) => state.getLatestProducts);
-   const { loading, latestProducts } = latestProductsState;
-
-   useEffect(() => {
-      dispatch(getLatestProducts());
-   }, [dispatch]);
-
+const CategoryProducts = ({ products }) => {
+   const router = useRouter();
    return (
-      <div className="home-latest-products section">
+      <div className="category-products section">
          <div className="container">
             <div className="head py-1">
-               <h4>Latest products</h4>
+               <h4>All {router.query.category}</h4>
                <button className="btn btn-primary">See all</button>
             </div>
-            {loading && <WhiteSpinner />}
             <div className="products-boxes">
-               {latestProducts?.map((product) => (
+               {products?.map((product) => (
                   <Link
                      key={product._id}
                      href="/product/[id]"
@@ -51,4 +39,4 @@ const HomeLatestProducts = () => {
    );
 };
 
-export default HomeLatestProducts;
+export default CategoryProducts;

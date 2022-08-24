@@ -1,30 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { WhiteSpinner } from '../Spinner';
-
-import { getLatestProducts } from '../../store/actions/productActions';
 import Link from 'next/link';
+import { SuccessMessageBox } from '../MessageBox';
 
-const HomeLatestProducts = () => {
-   const dispatch = useDispatch();
-
-   const latestProductsState = useSelector((state) => state.getLatestProducts);
-   const { loading, latestProducts } = latestProductsState;
-
-   useEffect(() => {
-      dispatch(getLatestProducts());
-   }, [dispatch]);
-
+const SimilarProducts = ({ product, similarProducts }) => {
    return (
-      <div className="home-latest-products section">
+      <div className="similar-products section">
          <div className="container">
             <div className="head py-1">
-               <h4>Latest products</h4>
+               <h4>Similar products</h4>
                <button className="btn btn-primary">See all</button>
             </div>
-            {loading && <WhiteSpinner />}
+
             <div className="products-boxes">
-               {latestProducts?.map((product) => (
+               {similarProducts.length === 0 && (
+                  <SuccessMessageBox
+                     msg={`There are no other products in ${product?.category} category`}
+                  />
+               )}
+               {similarProducts?.map((product) => (
                   <Link
                      key={product._id}
                      href="/product/[id]"
@@ -51,4 +43,4 @@ const HomeLatestProducts = () => {
    );
 };
 
-export default HomeLatestProducts;
+export default SimilarProducts;

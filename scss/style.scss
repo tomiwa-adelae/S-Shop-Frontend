@@ -1,6 +1,8 @@
 @import 'config';
 @import 'utilities';
 @import 'homepage';
+@import 'productpage';
+@import 'categorypage';
 
 * {
    margin: 0;
@@ -51,7 +53,6 @@ header {
 
       form {
          flex: 3;
-         background-color: crimson;
          position: relative;
          display: flex;
          align-items: center;
@@ -95,7 +96,7 @@ header {
             align-items: center;
             justify-content: center;
             text-transform: uppercase;
-            padding: 0.5rem;
+            // padding: 0.5rem;
             @include easeOut();
 
             .user-icon,
@@ -130,7 +131,6 @@ footer {
          .box {
             flex-grow: 1;
             width: 300px;
-            padding: 0.5rem 1rem;
 
             .head {
                h5 {
@@ -143,10 +143,11 @@ footer {
                align-items: flex-start;
                justify-content: flex-start;
                flex-direction: column;
-               padding: 1rem 0;
+               // padding: 1rem 0;
 
-               a {
-                  margin: 0.3rem 0;
+               strong {
+                  cursor: pointer;
+
                   font-weight: bold;
                   @include easeOut();
 
@@ -154,6 +155,7 @@ footer {
                      color: $secondary-color;
                   }
                }
+               // margin: 0.3rem 0;
             }
          }
 

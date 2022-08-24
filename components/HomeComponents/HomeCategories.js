@@ -1,41 +1,49 @@
+import Link from 'next/link';
 import { useState } from 'react';
 
 const HomeCategories = () => {
-   const [images] = useState([
+   const [categories] = useState([
       {
-         src: 'https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Dashboard/Fuji_Dash_PC_1x._SY304_CB431800965_.jpg',
-         alt: 'Clothes',
+         name: 'clothes',
+         image: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/86/690064/1.jpg?7852',
       },
       {
-         src: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/88/195798/1.jpg?9124',
-         alt: 'Cars',
+         name: 'shoes',
+         image: 'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/09/205144/1.jpg?0768',
       },
       {
-         src: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/86/690064/1.jpg?7852',
-         alt: 'Shoes',
+         name: 'electronics',
+         image: 'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/32/794608/1.jpg?4584',
       },
       {
-         src: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/45/999895/1.jpg?3932',
-         alt: 'Bags',
+         name: 'bags',
+         image: 'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/88/187259/1.jpg?4497',
       },
       {
-         src: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/03/630338/1.jpg?9822',
-         alt: 'Clothes',
+         name: 'all',
+         image: 'https://thumbs.dreamstime.com/b/simple-vector-red-scratch-rubber-stamp-sample-transparent-effect-background-155834864.jpg',
       },
    ]);
+
    return (
       <div className="home-categories-section section">
          <div className="container">
             <div className="boxes">
-               {images?.map((image) => (
-                  <div className="box">
-                     <div className="img">
-                        <img src={image.src} alt={image.alt} />
+               {categories?.map((category, index) => (
+                  <Link
+                     key={index}
+                     href="/category/[category]"
+                     as={`/category/${category.name}`}
+                  >
+                     <div className="box">
+                        <div className="img">
+                           <img src={category.image} alt={category.name} />
+                        </div>
+                        <div className="details">
+                           <h5>{category.name}</h5>
+                        </div>
                      </div>
-                     <div className="details">
-                        <h5>{image.alt}</h5>
-                     </div>
-                  </div>
+                  </Link>
                ))}
             </div>
          </div>

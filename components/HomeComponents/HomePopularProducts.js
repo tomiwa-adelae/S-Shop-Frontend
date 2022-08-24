@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getProducts } from '../../store/actions/productActions';
 
 const HomePopularProducts = () => {
+   const dispatch = useDispatch();
+
    const [images] = useState([
       {
          src: 'https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Dashboard/Fuji_Dash_PC_1x._SY304_CB431800965_.jpg',
@@ -44,27 +48,31 @@ const HomePopularProducts = () => {
       },
    ]);
 
+   useEffect(() => {
+      dispatch(getProducts());
+   }, [dispatch]);
+
    return (
       <div className="home-popular-products section">
          <div className="container">
-            <div className="head">
+            <div className="head py-1">
                <h4>Explore popular products</h4>
                <button className="btn btn-primary">See all</button>
             </div>
-            <div className="boxes">
+            <div className="products-boxes">
                {images?.map((image) => (
                   <div className="box">
                      <div className="img">
                         <img src={image.src} alt="" />
                      </div>
-                     <div className="details">
+                     <div className="details p-1">
                         <h5>
                            {' '}
                            {image.alt.length >= 15
                               ? `${image.alt.substring(0, 16)}...`
                               : image.alt}
                         </h5>
-                        <h5>#5,000</h5>
+                        <h5 className="py-0">#{product?.price}</h5>
                      </div>
                   </div>
                ))}
