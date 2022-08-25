@@ -7,7 +7,7 @@ const VariationClotheBox = ({ product }) => {
    const [variationValue, setVariationValue] = useState('');
 
    const addToCart = () => {
-      router.push(`/cart/?id=${product._id}&size=${variationValue}`);
+      router.push(`/cart/?id=${product._id}&size=${variationValue}&qty=1`);
    };
 
    return (

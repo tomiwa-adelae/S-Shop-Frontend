@@ -2,8 +2,15 @@ import Link from 'next/link';
 import Rating from '../Rating';
 import VariationClotheBox from '../VariationClotheBox';
 import VariationShoeBox from '../VariationShoeBox';
+import { useRouter } from 'next/router';
 
 const ProductShowcase = ({ product }) => {
+   const router = useRouter();
+
+   const addToCart = () => {
+      router.push(`/cart/?id=${product._id}&qty=1`);
+   };
+
    return (
       <div className="product-showcase section">
          <div className="container">
@@ -44,6 +51,39 @@ const ProductShowcase = ({ product }) => {
                      {/* For Shoes */}
                      {product?.category === 'shoes' && (
                         <VariationShoeBox product={product} />
+                     )}
+
+                     {product?.category === 'bags' && (
+                        <div>
+                           <button
+                              onClick={addToCart}
+                              className="btn btn-primary"
+                           >
+                              Add to cart
+                           </button>
+                        </div>
+                     )}
+
+                     {product?.category === 'electronics' && (
+                        <div>
+                           <button
+                              onClick={addToCart}
+                              className="btn btn-primary"
+                           >
+                              Add to cart
+                           </button>
+                        </div>
+                     )}
+
+                     {product?.category === 'all' && (
+                        <div>
+                           <button
+                              onClick={addToCart}
+                              className="btn btn-primary"
+                           >
+                              Add to cart
+                           </button>
+                        </div>
                      )}
                   </div>
                   <div className="box img">

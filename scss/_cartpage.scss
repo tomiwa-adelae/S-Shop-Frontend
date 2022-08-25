@@ -1,2 +1,120 @@
 .cart-page {
+   .product-carousel {
+      .container {
+         .empty-cart {
+            color: $white-color;
+
+            a {
+               @include easeOut();
+            }
+
+            a {
+               &:hover {
+                  color: $secondary-color;
+               }
+            }
+         }
+      }
+   }
+
+   .cart-intro {
+      background-color: $primary-color;
+      color: $white-color;
+
+      .message {
+         background-color: $secondary-color;
+         color: $white-color;
+      }
+   }
+
+   .cart-items {
+      .content {
+         display: flex;
+         align-items: flex-start;
+         justify-content: flex-start;
+         gap: 1rem;
+         flex-wrap: wrap;
+
+         .wrapper {
+            flex-grow: 1;
+
+            .item {
+               background-color: $primary-color;
+               color: $white-color;
+               display: flex;
+               align-items: flex-start;
+               justify-content: flex-start;
+               // flex-wrap: wrap;
+
+               .img {
+                  // flex-grow: 1;
+                  width: 150px;
+                  height: 100px;
+
+                  img {
+                     width: 100%;
+                     height: 100%;
+                     object-fit: cover;
+                  }
+               }
+
+               .details {
+                  // flex-grow: 1;
+                  width: 100%;
+                  height: 100%;
+                  display: flex;
+                  align-items: flex-start;
+                  justify-content: space-between;
+                  flex-wrap: wrap;
+
+                  .col-one {
+                     flex-grow: 1;
+                     .name {
+                        h5 {
+                           cursor: pointer;
+                           @include easeOut();
+
+                           &:hover {
+                              color: $secondary-color;
+                           }
+                        }
+
+                        h6 {
+                           text-transform: uppercase;
+                        }
+                     }
+                  }
+                  .col-two {
+                     display: flex;
+                     align-items: flex-start;
+                     justify-content: space-around;
+                     flex-direction: column;
+                     height: 100%;
+
+                     .qty-btns {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        width: 100%;
+                        margin-top: 0.5rem;
+                     }
+                  }
+               }
+            }
+         }
+
+         .checkout-section {
+            background-color: $grey-color;
+            color: $white-color;
+            width: 300px;
+            flex-grow: 1;
+
+            .checkout-btn {
+               button {
+                  width: 100%;
+               }
+            }
+         }
+      }
+   }
 }

@@ -3,7 +3,7 @@ import React from 'react';
 const PrimarySpinner = () => {
    return (
       <div className="spinner-wrapper">
-         <div className="spinner"></div>
+         <div className="spinner-primary"></div>
       </div>
    );
 };
@@ -16,4 +16,12 @@ const WhiteSpinner = () => {
    );
 };
 
-export { PrimarySpinner, WhiteSpinner };
+const SmallWhiteSpinner = () => {
+   return (
+      <div className="spinner-wrapper">
+         <div className="spinner-white-small"></div>
+      </div>
+   );
+};
+
+export { PrimarySpinner, WhiteSpinner, SmallWhiteSpinner };

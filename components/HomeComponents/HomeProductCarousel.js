@@ -1,9 +1,5 @@
 import Link from 'next/link';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'react-slick';
-import { getMostRatedProducts } from '../../store/actions/productActions';
-import { WhiteSpinner } from '../Spinner';
 
 function SampleNextArrow(props) {
    const { onClick } = props;
@@ -33,21 +29,21 @@ var settings = {
    prevArrow: <SamplePrevArrow />,
 };
 
-const HomeProductCarousel = () => {
-   const dispatch = useDispatch();
+const HomeProductCarousel = ({ mostRatedProducts }) => {
+   // const dispatch = useDispatch();
 
-   const getMostRatedProductsState = useSelector(
-      (state) => state.getMostRatedProducts
-   );
-   const { loading, mostRatedProducts } = getMostRatedProductsState;
+   // const getMostRatedProductsState = useSelector(
+   //    (state) => state.getMostRatedProducts
+   // );
+   // const { loading, mostRatedProducts } = getMostRatedProductsState;
 
-   useEffect(() => {
-      dispatch(getMostRatedProducts());
-   }, [dispatch]);
+   // useEffect(() => {
+   //    dispatch(getMostRatedProducts());
+   // }, [dispatch]);
 
    return (
       <div className="product-carousel">
-         {loading && <WhiteSpinner />}
+         {/* {loading && <WhiteSpinner />} */}
          <Slider {...settings}>
             {mostRatedProducts?.map((product) => (
                <Link

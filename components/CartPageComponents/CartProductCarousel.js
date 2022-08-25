@@ -2,8 +2,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'react-slick';
-import { getMostRatedProducts } from '../../store/actions/productActions';
-import { WhiteSpinner } from '../Spinner';
+import { addToCart } from '../../store/actions/cartActions';
 
 function SampleNextArrow(props) {
    const { onClick } = props;
@@ -33,46 +32,49 @@ var settings = {
    prevArrow: <SamplePrevArrow />,
 };
 
-const CartProductCarousel = () => {
+const CartProductCarousel = ({ id, size, qty }) => {
    const dispatch = useDispatch();
 
-   const getMostRatedProductsState = useSelector(
-      (state) => state.getMostRatedProducts
-   );
-   const { loading, mostRatedProducts } = getMostRatedProductsState;
+   const cartState = useSelector((state) => state.cart);
+   const { cartItems } = cartState;
 
    useEffect(() => {
-      dispatch(getMostRatedProducts());
+      if (id) {
+         dispatch(addToCart(id, size, Number(qty)));
+      }
    }, [dispatch]);
 
    return (
-      <div className="product-carousel">
-         {loading && <WhiteSpinner />}
-         <Slider {...settings}>
-            {mostRatedProducts?.map((product) => (
-               <Link
-                  key={product._id}
-                  href="/product/[id]"
-                  as={`/product/${product._id}`}
-               >
-                  <div className="box">
-                     <div className="content">
-                        <div className="title">
-                           <h4>
-                              {product.name.length >= 30
-                                 ? `${product.name.substring(0, 31)}...`
-                                 : product.name}
-                           </h4>
+      <>
+         {cartItems.length !== 0 && (
+            <div className="product-carousel">
+               <Slider {...settings}>
+                  {cartItems?.map((product) => (
+                     <Link
+                        key={product.id}
+                        href="/product/[id]"
+                        as={`/product/${product.id}`}
+                     >
+                        <div className="box">
+                           <div className="content">
+                              <div className="title">
+                                 <h4>
+                                    {product.name.length >= 30
+                                       ? `${product.name.substring(0, 31)}...`
+                                       : product.name}
+                                 </h4>
+                              </div>
+                              <div className="img">
+                                 <img src={product.image} alt={product.name} />
+                              </div>
+                           </div>
                         </div>
-                        <div className="img">
-                           <img src={product.image} alt={product.name} />
-                        </div>
-                     </div>
-                  </div>
-               </Link>
-            ))}
-         </Slider>
-      </div>
+                     </Link>
+                  ))}
+               </Slider>
+            </div>
+         )}
+      </>
    );
 };
 

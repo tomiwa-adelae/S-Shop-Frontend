@@ -1,20 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { WhiteSpinner } from '../Spinner';
-
-import { getLatestProducts } from '../../store/actions/productActions';
 import Link from 'next/link';
 
-const HomeLatestProducts = () => {
-   const dispatch = useDispatch();
-
-   const latestProductsState = useSelector((state) => state.getLatestProducts);
-   const { loading, latestProducts } = latestProductsState;
-
-   useEffect(() => {
-      dispatch(getLatestProducts());
-   }, [dispatch]);
-
+const HomeLatestProducts = ({ latestProducts }) => {
    return (
       <div className="home-latest-products section">
          <div className="container">
@@ -22,7 +8,6 @@ const HomeLatestProducts = () => {
                <h4>Latest products</h4>
                <button className="btn btn-primary">See all</button>
             </div>
-            {loading && <WhiteSpinner />}
             <div className="products-boxes">
                {latestProducts?.map((product) => (
                   <Link
