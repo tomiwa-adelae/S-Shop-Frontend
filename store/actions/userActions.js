@@ -31,3 +31,19 @@ export const loginUser = (user) => async (dispatch) => {
       dispatch({ type: LOGIN_USER_FAIL });
    }
 };
+
+export const tokenConfig = (getState) => {
+   const token = getState().login.token;
+
+   const config = {
+      headers: {
+         'Content-type': 'application/json',
+      },
+   };
+
+   if (token) {
+      config.headers['x-auth-token'] = token;
+   }
+
+   return config;
+};

@@ -1,6 +1,4 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-// import { useEffect } from 'react';
 import Slider from 'react-slick';
 
 function SampleNextArrow(props) {
@@ -32,17 +30,6 @@ var settings = {
 };
 
 const OrderDetailsCarousel = ({ orderItems }) => {
-   const router = useRouter();
-
-   //    const createOrderState = useSelector((state) => state.createOrder);
-   //    const { order, orderItems } = createOrderState;
-
-   //    useEffect(() => {
-   //       if (!order) {
-   //          router.push('/confirmorder');
-   //       }
-   //    }, [router]);
-
    return (
       <>
          <div className="product-carousel">

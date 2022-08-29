@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createOrder } from '../../store/actions/orderActions';
 import { useRouter } from 'next/router';
 import { SmallWhiteSpinner } from '../Spinner';
+import { ErrorMessageBox } from '../MessageBox';
 
 const ConfirmOrderCheckOut = () => {
    const dispatch = useDispatch();
@@ -10,6 +11,9 @@ const ConfirmOrderCheckOut = () => {
 
    const cartState = useSelector((state) => state.cart);
    const { cartItems } = cartState;
+
+   const errorState = useSelector((state) => state.error);
+   const { msg } = errorState;
 
    const createOrderState = useSelector((state) => state.createOrder);
    const { success, loading, order } = createOrderState;
@@ -20,6 +24,7 @@ const ConfirmOrderCheckOut = () => {
       }
    }, [success, router]);
    const placeorderHandler = () => {
+      // dispatch({ type: CLEAR_ERRORS });
       dispatch(createOrder());
    };
 
@@ -35,6 +40,7 @@ const ConfirmOrderCheckOut = () => {
             </h4>
          </div>
          <div className="checkout-btn my-1">
+            {msg && <ErrorMessageBox msg={msg} />}
             <button
                disabled={cartItems.length === 0}
                onClick={placeorderHandler}

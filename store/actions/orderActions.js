@@ -4,13 +4,33 @@ import {
    CREATE_ORDER_REQUEST,
    CREATE_ORDER_RESET,
    CREATE_ORDER_SUCCESS,
+   ORDER_DETAILS_FAIL,
+   ORDER_DETAILS_REQUEST,
+   ORDER_DETAILS_SUCCESS,
 } from '../constants/orderConstants';
 import { returnErrors } from './errorActions';
 import { server } from '../../config/server';
 import { CLEAR_CART_ITEMS } from '../constants/cartConstants';
+import { CLEAR_ERRORS } from '../constants/errorConstants';
+import { tokenConfig } from './userActions';
+
+// Get order details
+export const getOrderDetails = (id) => async (dispatch, getState) => {
+   try {
+      dispatch({ type: ORDER_DETAILS_REQUEST });
+
+      const { data } = await axios.get(`${server}/api/orders/${id}`);
+
+      dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
+   } catch (err) {
+      dispatch(returnErrors(err.response.data.msg));
+      dispatch({ type: ORDER_DETAILS_FAIL });
+   }
+};
 
 export const createOrder = () => async (dispatch, getState) => {
    try {
+      dispatch({ type: CLEAR_ERRORS });
       dispatch({ type: CREATE_ORDER_RESET });
       dispatch({ type: CREATE_ORDER_REQUEST });
 
@@ -31,16 +51,10 @@ export const createOrder = () => async (dispatch, getState) => {
          totalPrice,
       };
 
-      const config = {
-         headers: {
-            'Content-type': 'application/json',
-         },
-      };
-
       const { data } = await axios.post(
          `${server}/api/orders`,
          orderDetails,
-         config
+         tokenConfig(getState)
       );
 
       dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
