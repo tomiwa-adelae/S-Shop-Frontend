@@ -1,11 +1,12 @@
 import Link from 'next/link';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { SuccessMessageBox } from '../MessageBox';
 import { useRouter } from 'next/router';
 
 const ConfirmOrderDetails = () => {
    const router = useRouter();
+
    // const userShippingDetailsState = useSelector(
    //    (state) => state.userShippingDetails
    // );
@@ -22,6 +23,11 @@ const ConfirmOrderDetails = () => {
 
    const userState = useSelector((state) => state.login);
    const { user } = userState;
+
+   const [firstName, setFirstName] = useState(user && user.firstName);
+   const [lastName, setLastName] = useState(user && user.lastName);
+   const [email, setEmail] = useState(user && user.email);
+   const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
 
    useEffect(() => {
       if (!user) {
@@ -50,16 +56,16 @@ const ConfirmOrderDetails = () => {
                </div>
                <div className="details">
                   <div className="my-0 p-0 item">
-                     <h6>First name : {user?.firstName}</h6>
+                     <h6>First name : {firstName}</h6>
                   </div>
                   <div className="my-0 p-0 item">
-                     <h6>Last name : {user?.lastName}</h6>
+                     <h6>Last name : {lastName}</h6>
                   </div>
                   <div className="my-0 p-0 item">
-                     <h6>Email : {user?.email}</h6>
+                     <h6>Email : {email}</h6>
                   </div>
                   <div className="my-0 p-0 item">
-                     <h6>Phone number : {user?.phoneNumber}</h6>
+                     <h6>Phone number : {phoneNumber}</h6>
                   </div>
                </div>
             </div>

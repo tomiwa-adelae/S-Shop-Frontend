@@ -1,5 +1,6 @@
 import {
    ADD_TO_CART,
+   CLEAR_CART_ITEMS,
    REMOVE_FROM_CART,
    SAVE_CART_FAIL,
    SAVE_CART_REQUEST,
@@ -31,26 +32,17 @@ export const cartReducer = (
                success: true,
             };
          }
+
       case REMOVE_FROM_CART:
          return {
             ...state,
             cartItems: state.cartItems.filter((x) => x.id !== action.payload),
          };
-      //    case CART_SAVE_SHIPPING_ADDRESS:
-      //       return {
-      //          ...state,
-      //          shippingAddress: action.payload,
-      //       };
-      //    case CART_SAVE_PAYMENT_METHOD:
-      //       return {
-      //          ...state,
-      //          paymentMethod: action.payload,
-      //       };
-      //    case CART_CLEAR_ITEMS:
-      //       return {
-      //          ...state,
-      //          cartItems: [],
-      //       };
+      case CLEAR_CART_ITEMS:
+         return {
+            ...state,
+            cartItems: [],
+         };
       default:
          return state;
    }

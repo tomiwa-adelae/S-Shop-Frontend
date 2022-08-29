@@ -27,7 +27,11 @@ const Item = ({ item }) => {
             <div className="col-one">
                <div className="name">
                   <Link href="/product/[id]" as={`/product/${item.id}`}>
-                     <h5 className="my-0">{item.name}</h5>
+                     <h5 className="my-0">
+                        {item.name.length >= 50
+                           ? `${item.name.substring(0, 51)}...`
+                           : item.name}
+                     </h5>
                   </Link>
                   <h6>
                      Brand: {item.brand}

@@ -18,6 +18,7 @@ import {
    saveSchoolShippingReducer,
    saveUserShippingDetailsReducer,
 } from './reducers/shippingReducers';
+import { createOrderReducer } from './reducers/orderReducers';
 
 // All reduers
 const reducer = combineReducers({
@@ -33,6 +34,7 @@ const reducer = combineReducers({
    schoolShipping: saveSchoolShippingReducer,
    userShippingDetails: saveUserShippingDetailsReducer,
    paymentMethod: savePaymentMethodReducer,
+   createOrder: createOrderReducer,
 });
 
 const schoolShippingData =

@@ -1,9 +1,27 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { createOrder } from '../../store/actions/orderActions';
+import { useRouter } from 'next/router';
+import { SmallWhiteSpinner } from '../Spinner';
 
 const ConfirmOrderCheckOut = () => {
+   const dispatch = useDispatch();
+   const router = useRouter();
+
    const cartState = useSelector((state) => state.cart);
    const { cartItems } = cartState;
+
+   const createOrderState = useSelector((state) => state.createOrder);
+   const { success, loading, order } = createOrderState;
+
+   useEffect(() => {
+      if (success) {
+         router.push(`/ordersuccess/${order._id}`);
+      }
+   }, [success, router]);
+   const placeorderHandler = () => {
+      dispatch(createOrder());
+   };
 
    return (
       <div className="confirm-order-checkout p-1 my-1">
@@ -19,17 +37,20 @@ const ConfirmOrderCheckOut = () => {
          <div className="checkout-btn my-1">
             <button
                disabled={cartItems.length === 0}
-               //    onClick={checkOutHandler}
+               onClick={placeorderHandler}
                className="btn btn-primary"
             >
-               Checkout now{' '}
-               <span>
-                  #{' '}
-                  {cartItems.reduce(
+               {loading ? (
+                  <SmallWhiteSpinner />
+               ) : (
+                  `Checkout now ${' '}
+                  #${' '}
+                  ${cartItems.reduce(
                      (acc, item) => acc + item.qty * item.price,
                      0
                   )}
-               </span>
+               `
+               )}{' '}
             </button>
          </div>
       </div>

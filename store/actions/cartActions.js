@@ -31,7 +31,8 @@ export const addToCart = (id, size, qty) => async (dispatch, getState) => {
          JSON.stringify(getState().cart.cartItems)
       );
    } catch (err) {
-      dispatch(returnErrors(err.response.data.msg));
+      console.log(err);
+      // dispatch(returnErrors(err.response.data.msg));
       dispatch({ type: ADD_TO_CART_FAIL });
    }
 };
