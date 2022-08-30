@@ -13,6 +13,9 @@ import {
    GET_PRODUCTS_FROM_BRAND_FAIL,
    GET_PRODUCTS_FROM_BRAND_REQUEST,
    GET_PRODUCTS_FROM_BRAND_SUCCESS,
+   GET_PRODUCTS_FROM_CATEGORY_FAIL,
+   GET_PRODUCTS_FROM_CATEGORY_REQUEST,
+   GET_PRODUCTS_FROM_CATEGORY_SUCCESS,
    GET_PRODUCTS_REQUEST,
    GET_PRODUCTS_SUCCESS,
    GET_SINGLE_PRODUCT_FAIL,
@@ -82,7 +85,7 @@ export const getSingleProductReducer = (state = {}, action) => {
    }
 };
 
-// Get single product reducers
+// Get products from brand reducers
 export const getProductsBrandReducer = (state = { products: [] }, action) => {
    switch (action.type) {
       case GET_PRODUCTS_FROM_BRAND_REQUEST:
@@ -96,13 +99,30 @@ export const getProductsBrandReducer = (state = { products: [] }, action) => {
    }
 };
 
+// Get products from category reducers
+export const getProductsCategoryReducer = (
+   state = { products: [] },
+   action
+) => {
+   switch (action.type) {
+      case GET_PRODUCTS_FROM_CATEGORY_REQUEST:
+         return { loading: true };
+      case GET_PRODUCTS_FROM_CATEGORY_SUCCESS:
+         return { loading: false, categoryProducts: action.payload };
+      case GET_PRODUCTS_FROM_CATEGORY_FAIL:
+         return { loading: false };
+      default:
+         return state;
+   }
+};
+
 // Get single product reducers
 export const createProductReducer = (state = { products: {} }, action) => {
    switch (action.type) {
       case CREATE_PRODUCT_REVIEW_REQUEST:
          return { loading: true };
       case CREATE_PRODUCT_REVIEW_SUCCESS:
-         return { loading: false, brandProducts: action.payload };
+         return { loading: false, success: true };
       case CREATE_PRODUCT_REVIEW_FAIL:
          return { loading: false };
       case CREATE_PRODUCT_REVIEW_RESET:

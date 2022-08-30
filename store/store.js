@@ -7,6 +7,7 @@ import {
    getLatestProductsReducer,
    getMostRatedProductsReducer,
    getProductsBrandReducer,
+   getProductsCategoryReducer,
    getProductsReducer,
    getSingleProductReducer,
 } from './reducers/productReducers';
@@ -38,6 +39,7 @@ const reducer = combineReducers({
    getMostRatedProducts: getMostRatedProductsReducer,
    getProduct: getSingleProductReducer,
    getBrandProducts: getProductsBrandReducer,
+   getCategoryProducts: getProductsCategoryReducer,
    saveCart: saveCartReducer,
    cart: cartReducer,
    login: loginUserReducer,

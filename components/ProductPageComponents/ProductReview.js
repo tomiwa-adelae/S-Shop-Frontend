@@ -1,13 +1,14 @@
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaUserAlt } from 'react-icons/fa';
 import { createProductReview } from '../../store/actions/productActions';
 import Rating from '../Rating';
 import { useSelector, useDispatch } from 'react-redux';
-import { ErrorMessageBox } from '../MessageBox';
+import { ErrorMessageBox, SuccessMessageBox } from '../MessageBox';
 import { SmallWhiteSpinner } from '../Spinner';
+import dayjs from 'dayjs';
 
-const ProductReview = () => {
+const ProductReview = ({ product }) => {
    const router = useRouter();
    const dispatch = useDispatch();
 
@@ -21,7 +22,14 @@ const ProductReview = () => {
    const { msg } = errorState;
 
    const createReviewState = useSelector((state) => state.createReview);
-   const { loading } = createReviewState;
+   const { loading, success } = createReviewState;
+
+   useEffect(() => {
+      if (success) {
+         setRating('');
+         setComment('');
+      }
+   }, [success]);
 
    const handleSubmit = (e) => {
       e.preventDefault();
@@ -45,90 +53,28 @@ const ProductReview = () => {
                      <h4>Customer feedbacks and reviews</h4>
                      <button className="btn btn-white">See all</button>
                   </div>
-                  <div className="box p-1 my-0">
-                     <div className="user my-0">
-                        <FaUserAlt className="user-icon mx-0" />
-                        <h5>Adelae Adetomiwa</h5>
+                  {product.reviews.length === 0 && (
+                     <SuccessMessageBox msg="No customer reviews! Write one now" />
+                  )}
+                  {product.reviews?.map((review) => (
+                     <div key={review._id} className="box p-1 my-0">
+                        <div className="user my-0">
+                           <FaUserAlt className="user-icon mx-0" />
+                           <h5>{review.name}</h5>
+                        </div>
+                        <div className="rating">
+                           <Rating rating={review.rating} />
+                        </div>
+                        <div className="comment my-0">
+                           <p>{review.comment}</p>
+                        </div>
+                        <div className="date">
+                           <h6>
+                              {dayjs(review.createdAt).format('DD-MM-YYYY')}
+                           </h6>
+                        </div>
                      </div>
-                     <div className="rating">
-                        <Rating />
-                     </div>
-                     <div className="comment my-0">
-                        <p>
-                           Thick material and coupled with the inner lining made
-                           it comfortable to wear for long hours without skin
-                           irritation. Would recommend Large size for a lady of
-                           size 12 as the XL I ordered for was a lot bigger on
-                           me.
-                        </p>
-                     </div>
-                     <div className="date">
-                        <h6>24-08-2022</h6>
-                     </div>
-                  </div>
-                  <div className="box p-1 my-0">
-                     <div className="user my-0">
-                        <FaUserAlt className="user-icon mx-0" />
-                        <h5>Adelae Adetomiwa</h5>
-                     </div>
-                     <div className="rating">
-                        <Rating />
-                     </div>
-                     <div className="comment my-0">
-                        <p>
-                           Thick material and coupled with the inner lining made
-                           it comfortable to wear for long hours without skin
-                           irritation. Would recommend Large size for a lady of
-                           size 12 as the XL I ordered for was a lot bigger on
-                           me.
-                        </p>
-                     </div>
-                     <div className="date">
-                        <h6>24-08-2022</h6>
-                     </div>
-                  </div>
-                  <div className="box p-1 my-0">
-                     <div className="user my-0">
-                        <FaUserAlt className="user-icon mx-0" />
-                        <h5>Adelae Adetomiwa</h5>
-                     </div>
-                     <div className="rating">
-                        <Rating />
-                     </div>
-                     <div className="comment my-0">
-                        <p>
-                           Thick material and coupled with the inner lining made
-                           it comfortable to wear for long hours without skin
-                           irritation. Would recommend Large size for a lady of
-                           size 12 as the XL I ordered for was a lot bigger on
-                           me.
-                        </p>
-                     </div>
-                     <div className="date">
-                        <h6>24-08-2022</h6>
-                     </div>
-                  </div>
-                  <div className="box p-1 my-0">
-                     <div className="user my-0">
-                        <FaUserAlt className="user-icon mx-0" />
-                        <h5>Adelae Adetomiwa</h5>
-                     </div>
-                     <div className="rating">
-                        <Rating />
-                     </div>
-                     <div className="comment my-0">
-                        <p>
-                           Thick material and coupled with the inner lining made
-                           it comfortable to wear for long hours without skin
-                           irritation. Would recommend Large size for a lady of
-                           size 12 as the XL I ordered for was a lot bigger on
-                           me.
-                        </p>
-                     </div>
-                     <div className="date">
-                        <h6>24-08-2022</h6>
-                     </div>
-                  </div>
+                  ))}
                </div>
                <div className="comment-section">
                   <div className="head py-0">
@@ -164,6 +110,9 @@ const ProductReview = () => {
                         ></textarea>
                      </div>
                      {msg && <ErrorMessageBox msg={msg} />}
+                     {success && (
+                        <SuccessMessageBox msg="Product reviewed successfully!" />
+                     )}
                      <div>
                         <button className="btn btn-primary">
                            {loading ? <SmallWhiteSpinner /> : 'Submit'}

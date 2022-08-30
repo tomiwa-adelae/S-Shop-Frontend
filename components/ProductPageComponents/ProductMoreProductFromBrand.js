@@ -1,8 +1,25 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductsFromBrand } from '../../store/actions/productActions';
 import { SuccessMessageBox } from '../MessageBox';
 import Rating from '../Rating';
+import { PrimarySpinner } from '../Spinner';
 
-const ProductMoreProductFromBrand = ({ brandProducts, product }) => {
+const ProductMoreProductFromBrand = ({ product }) => {
+   const router = useRouter();
+   const dispatch = useDispatch();
+
+   const getBrandProductsState = useSelector((state) => state.getBrandProducts);
+   const { loading, brandProducts } = getBrandProductsState;
+
+   useEffect(() => {
+      if (product) {
+         dispatch(getProductsFromBrand(product.brand, router.query.id));
+      }
+   }, [dispatch, router, product]);
+
    return (
       <div className="product-more-products-from-brand section">
          <div className="container">
@@ -11,7 +28,8 @@ const ProductMoreProductFromBrand = ({ brandProducts, product }) => {
                <button className="btn btn-primary">See all</button>
             </div>
             <div className="products-boxes">
-               {brandProducts.length === 0 && (
+               {loading && <PrimarySpinner />}
+               {brandProducts?.length === 0 && (
                   <SuccessMessageBox
                      msg={`${product?.brand} has no other products`}
                   />

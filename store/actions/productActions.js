@@ -19,6 +19,10 @@ import {
    CREATE_PRODUCT_REVIEW_FAIL,
    CREATE_PRODUCT_REVIEW_REQUEST,
    CREATE_PRODUCT_REVIEW_SUCCESS,
+   CREATE_PRODUCT_REVIEW_RESET,
+   GET_PRODUCTS_FROM_CATEGORY_REQUEST,
+   GET_PRODUCTS_FROM_CATEGORY_SUCCESS,
+   GET_PRODUCTS_FROM_CATEGORY_FAIL,
 } from '../constants/productConstants';
 import { returnErrors } from './errorActions';
 import { tokenConfig } from './userActions';
@@ -66,8 +70,10 @@ export const getMostRatedProducts = () => async (dispatch) => {
 
 // Get single product by Id
 export const getSingleProduct = (id) => async (dispatch) => {
-   dispatch({ type: GET_SINGLE_PRODUCT_REQUEST });
    try {
+      dispatch({ type: CLEAR_ERRORS });
+      dispatch({ type: CREATE_PRODUCT_REVIEW_RESET });
+      dispatch({ type: GET_SINGLE_PRODUCT_REQUEST });
       const { data } = await axios.get(`${server}/api/products/${id}`);
 
       dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: data });
@@ -93,6 +99,22 @@ export const getProductsFromBrand = (brand, id) => async (dispatch) => {
    }
 };
 
+// Get latest category products
+export const getProductsFromCategory = (category, id) => async (dispatch) => {
+   try {
+      dispatch({ type: GET_PRODUCTS_FROM_CATEGORY_REQUEST });
+
+      const { data } = await axios.get(
+         `${server}/api/products/similar/products/${category}/${id}`
+      );
+
+      dispatch({ type: GET_PRODUCTS_FROM_CATEGORY_SUCCESS, payload: data });
+   } catch (err) {
+      dispatch(returnErrors(err.response.data.msg));
+      dispatch({ type: GET_PRODUCTS_FROM_CATEGORY_FAIL });
+   }
+};
+
 // Create product review
 export const createProductReview =
    (id, review) => async (dispatch, getState) => {
@@ -106,7 +128,9 @@ export const createProductReview =
             tokenConfig(getState)
          );
 
-         dispatch({ type: CREATE_PRODUCT_REVIEW_SUCCESS, payload: data });
+         dispatch({ type: CREATE_PRODUCT_REVIEW_SUCCESS });
+         dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: data });
+         dispatch({ type: CLEAR_ERRORS });
       } catch (err) {
          console.log(err);
          dispatch(returnErrors(err.response.data.msg));

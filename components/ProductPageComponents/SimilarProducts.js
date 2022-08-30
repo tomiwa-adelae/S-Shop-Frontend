@@ -1,8 +1,27 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductsFromCategory } from '../../store/actions/productActions';
 import { SuccessMessageBox } from '../MessageBox';
 import Rating from '../Rating';
+import { PrimarySpinner } from '../Spinner';
 
-const SimilarProducts = ({ product, similarProducts }) => {
+const SimilarProducts = ({ product }) => {
+   const router = useRouter();
+   const dispatch = useDispatch();
+
+   const getCategoryProductsState = useSelector(
+      (state) => state.getCategoryProducts
+   );
+   const { loading, categoryProducts } = getCategoryProductsState;
+
+   useEffect(() => {
+      if (product) {
+         dispatch(getProductsFromCategory(product.category, router.query.id));
+      }
+   }, [dispatch, router, product]);
+
    return (
       <div className="similar-products section">
          <div className="container">
@@ -12,12 +31,13 @@ const SimilarProducts = ({ product, similarProducts }) => {
             </div>
 
             <div className="products-boxes">
-               {similarProducts.length === 0 && (
+               {loading && <PrimarySpinner />}
+               {categoryProducts?.length === 0 && (
                   <SuccessMessageBox
                      msg={`There are no other products in ${product?.category} category`}
                   />
                )}
-               {similarProducts?.map((product) => (
+               {categoryProducts?.map((product) => (
                   <Link
                      key={product._id}
                      href="/product/[id]"
