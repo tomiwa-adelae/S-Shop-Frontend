@@ -1,8 +1,30 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 import { FaUserAlt } from 'react-icons/fa';
 import Rating from '../Rating';
 
 const ProductReview = () => {
+   const router = useRouter();
+
+   const userState = useSelector((state) => state.login);
+   const { user } = userState;
+
+   const [rating, setRating] = useState('1');
+   const [comment, setComment] = useState('');
+
+   const handleSubmit = (e) => {
+      e.preventDefault();
+
+      const reviewObj = {
+         rating,
+         comment,
+         firstName: user?.firstName,
+         lastName: user?.lastName,
+      };
+
+      dispatch(createProductReview(id, reviewObj));
+   };
+
    return (
       <div className="product-review section">
          <div className="container">
@@ -101,9 +123,14 @@ const ProductReview = () => {
                   <div className="head py-0">
                      <h4>Write a customer review</h4>
                   </div>
-                  <form>
+                  <form onSubmit={handleSubmit}>
                      <div>
-                        <select name="rating" id="rating">
+                        <select
+                           value={rating}
+                           onChange={(e) => setRating(e.target.value)}
+                           name="rating"
+                           id="rating"
+                        >
                            <option value="">Select...</option>
                            <option value="1">1 - Poor</option>
                            <option value="2">1 - Fair</option>
@@ -119,6 +146,8 @@ const ProductReview = () => {
                            id="comment"
                            cols="30"
                            rows="10"
+                           value={comment}
+                           onChange={(e) => setComment(e.target.value)}
                         ></textarea>
                      </div>
                   </form>

@@ -43,7 +43,7 @@ const Header = () => {
                      <Link href="/profile">
                         <span>
                            <FaUserAlt className="user-icon" />
-                           Hi, {user.firstName}
+                           Hi, {user?.firstName}
                         </span>
                      </Link>
                   ) : (

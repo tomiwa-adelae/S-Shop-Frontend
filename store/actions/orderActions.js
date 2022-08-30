@@ -4,9 +4,15 @@ import {
    CREATE_ORDER_REQUEST,
    CREATE_ORDER_RESET,
    CREATE_ORDER_SUCCESS,
+   GET_MY_ORDERS_FAIL,
+   GET_MY_ORDERS_REQUEST,
+   GET_MY_ORDERS_SUCCESS,
    ORDER_DETAILS_FAIL,
    ORDER_DETAILS_REQUEST,
    ORDER_DETAILS_SUCCESS,
+   ORDER_SIMILAR_PRODUCT_FAIL,
+   ORDER_SIMILAR_PRODUCT_REQUEST,
+   ORDER_SIMILAR_PRODUCT_SUCCESS,
 } from '../constants/orderConstants';
 import { returnErrors } from './errorActions';
 import { server } from '../../config/server';
@@ -17,9 +23,13 @@ import { tokenConfig } from './userActions';
 // Get order details
 export const getOrderDetails = (id) => async (dispatch, getState) => {
    try {
+      dispatch({ type: CLEAR_ERRORS });
       dispatch({ type: ORDER_DETAILS_REQUEST });
 
-      const { data } = await axios.get(`${server}/api/orders/${id}`);
+      const { data } = await axios.get(
+         `${server}/api/orders/${id}`,
+         tokenConfig(getState)
+      );
 
       dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
    } catch (err) {
@@ -27,6 +37,23 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
       dispatch({ type: ORDER_DETAILS_FAIL });
    }
 };
+
+// Get similar products
+export const getOrderSimilarProducts =
+   (category, id) => async (dispatch, getState) => {
+      try {
+         dispatch({ type: ORDER_SIMILAR_PRODUCT_REQUEST });
+
+         const { data } = await axios.get(
+            `${server}/api/products/similar/products/${category}/${id}`
+         );
+
+         dispatch({ type: ORDER_SIMILAR_PRODUCT_SUCCESS, payload: data });
+      } catch (err) {
+         dispatch(returnErrors(err.response.data.msg));
+         dispatch({ type: ORDER_SIMILAR_PRODUCT_FAIL });
+      }
+   };
 
 export const createOrder = () => async (dispatch, getState) => {
    try {
@@ -66,5 +93,22 @@ export const createOrder = () => async (dispatch, getState) => {
    } catch (err) {
       dispatch(returnErrors(err.response.data.msg));
       dispatch({ type: CREATE_ORDER_FAIL });
+   }
+};
+
+// Get my order
+export const getMyOrders = () => async (dispatch, getState) => {
+   try {
+      dispatch({ type: GET_MY_ORDERS_REQUEST });
+
+      const { data } = await axios.get(
+         `${server}/api/orders/myorders/mine`,
+         tokenConfig(getState)
+      );
+
+      dispatch({ type: GET_MY_ORDERS_SUCCESS, payload: data });
+   } catch (err) {
+      dispatch(returnErrors(err.response.data.msg));
+      dispatch({ type: GET_MY_ORDERS_FAIL });
    }
 };

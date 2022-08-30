@@ -3,12 +3,21 @@ import {
    CREATE_ORDER_REQUEST,
    CREATE_ORDER_RESET,
    CREATE_ORDER_SUCCESS,
+   GET_MY_ORDERS_FAIL,
+   GET_MY_ORDERS_REQUEST,
+   GET_MY_ORDERS_RESET,
+   GET_MY_ORDERS_SUCCESS,
    ORDER_DETAILS_FAIL,
    ORDER_DETAILS_REQUEST,
    ORDER_DETAILS_RESET,
    ORDER_DETAILS_SUCCESS,
+   ORDER_SIMILAR_PRODUCT_FAIL,
+   ORDER_SIMILAR_PRODUCT_REQUEST,
+   ORDER_SIMILAR_PRODUCT_RESET,
+   ORDER_SIMILAR_PRODUCT_SUCCESS,
 } from '../constants/orderConstants';
 
+// Get order details
 export const orderDetailsReducer = (state = { orderItems: [] }, action) => {
    switch (action.type) {
       case ORDER_DETAILS_REQUEST:
@@ -29,6 +38,29 @@ export const orderDetailsReducer = (state = { orderItems: [] }, action) => {
    }
 };
 
+// Get similar orders product
+export const getOrderSimilarProductsReducer = (
+   state = { products: [] },
+   action
+) => {
+   switch (action.type) {
+      case ORDER_SIMILAR_PRODUCT_REQUEST:
+         return { loading: true };
+      case ORDER_SIMILAR_PRODUCT_SUCCESS:
+         return {
+            loading: false,
+            products: action.payload,
+         };
+      case ORDER_SIMILAR_PRODUCT_RESET:
+         return { loading: false };
+      case ORDER_SIMILAR_PRODUCT_FAIL:
+         return {};
+      default:
+         return state;
+   }
+};
+
+// Create new order
 export const createOrderReducer = (state = { orderItems: [] }, action) => {
    switch (action.type) {
       case CREATE_ORDER_REQUEST:
@@ -44,6 +76,25 @@ export const createOrderReducer = (state = { orderItems: [] }, action) => {
       case CREATE_ORDER_FAIL:
          return { loading: false };
       case CREATE_ORDER_RESET:
+         return {};
+      default:
+         return state;
+   }
+};
+
+// Get my orders list
+export const getMyOrdersListReducer = (state = { orders: [] }, action) => {
+   switch (action.type) {
+      case GET_MY_ORDERS_REQUEST:
+         return { loading: true };
+      case GET_MY_ORDERS_SUCCESS:
+         return {
+            loading: false,
+            orders: action.payload,
+         };
+      case GET_MY_ORDERS_RESET:
+         return { loading: false };
+      case GET_MY_ORDERS_FAIL:
          return {};
       default:
          return state;

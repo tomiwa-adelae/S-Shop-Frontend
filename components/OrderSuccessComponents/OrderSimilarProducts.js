@@ -1,7 +1,23 @@
 import Link from 'next/link';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getOrderSimilarProducts } from '../../store/actions/orderActions';
 import { SuccessMessageBox } from '../MessageBox';
+import Rating from '../Rating';
+import { PrimarySpinner } from '../Spinner';
 
-const OrderSimilarProducts = ({ product, similarProducts }) => {
+const OrderSimilarProducts = ({ product }) => {
+   const dispatch = useDispatch();
+
+   const orderSimilarProductsState = useSelector(
+      (state) => state.orderSimilarProducts
+   );
+   const { loading, products } = orderSimilarProductsState;
+
+   useEffect(() => {
+      dispatch(getOrderSimilarProducts(product.category, product._id));
+   }, [dispatch, product]);
+
    return (
       <div className="similar-products section">
          <div className="container">
@@ -10,13 +26,14 @@ const OrderSimilarProducts = ({ product, similarProducts }) => {
                <button className="btn btn-primary">See all</button>
             </div>
 
+            {loading && <PrimarySpinner />}
             <div className="products-boxes">
-               {similarProducts.length === 0 && (
+               {products?.length === 0 && (
                   <SuccessMessageBox
                      msg={`There are no other products in ${product?.category} category`}
                   />
                )}
-               {similarProducts?.map((product) => (
+               {products?.map((product) => (
                   <Link
                      key={product._id}
                      href="/product/[id]"
@@ -27,11 +44,12 @@ const OrderSimilarProducts = ({ product, similarProducts }) => {
                            <img src={product.image} alt={product.name} />
                         </div>
                         <div className="details p-1">
-                           <h5>
+                           <h5 className="py-0">
                               {product.name.length >= 15
                                  ? `${product.name.substring(0, 16)}...`
                                  : product.name}
                            </h5>
+                           <Rating rating={product?.rating} />
                            <h5 className="py-0">#{product?.price}</h5>
                         </div>
                      </div>

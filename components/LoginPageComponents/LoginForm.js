@@ -44,7 +44,6 @@ const LoginForm = () => {
             <div className="intro">
                <p className="lead">Login to your S-SHOP account</p>
             </div>
-            {msg && <ErrorMessageBox msg={msg} />}
             <form onSubmit={handleSubmit}>
                <div>
                   <input
@@ -65,6 +64,7 @@ const LoginForm = () => {
                      {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </span>
                </div>
+               {msg && <ErrorMessageBox msg={msg} />}
                <div>
                   <button className="btn btn-primary">
                      {loading ? <SmallWhiteSpinner /> : 'Login'}{' '}

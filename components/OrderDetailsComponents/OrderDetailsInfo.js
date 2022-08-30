@@ -13,13 +13,14 @@ const OrderDetailsInfo = ({ order }) => {
                      <div className="box my-0 p-0">
                         <h6>Payment Method</h6>
                         <small>{order?.paymentMethod}</small>
-                        {order.paymentMethod === 'Pay with Cards' && (
-                           <div className="my-0">
-                              <button className="btn btn-secondary">
-                                 Pay now
-                              </button>
-                           </div>
-                        )}
+                        {!order.isPaid &&
+                           order?.paymentMethod === 'Pay with Cards' && (
+                              <div className="my-0">
+                                 <button className="btn btn-secondary">
+                                    Pay now
+                                 </button>
+                              </div>
+                           )}
                      </div>
                      <div className="box my-0 p-0">
                         <h6>Payment Details</h6>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getProducts } from '../../store/actions/productActions';
+import Rating from '../Rating';
 
 const HomePopularProducts = () => {
    const dispatch = useDispatch();
@@ -66,12 +67,13 @@ const HomePopularProducts = () => {
                         <img src={image.src} alt="" />
                      </div>
                      <div className="details p-1">
-                        <h5>
+                        <h5 className="py-0">
                            {' '}
                            {image.alt.length >= 15
                               ? `${image.alt.substring(0, 16)}...`
                               : image.alt}
                         </h5>
+                        <Rating rating={product?.rating} />
                         <h5 className="py-0">#{product?.price}</h5>
                      </div>
                   </div>

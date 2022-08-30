@@ -1,10 +1,5 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'react-slick';
-import { addToCart } from '../../store/actions/cartActions';
-import { getOrderDetails } from '../../store/actions/orderActions';
 
 function SampleNextArrow(props) {
    const { onClick } = props;
@@ -34,23 +29,10 @@ var settings = {
    prevArrow: <SamplePrevArrow />,
 };
 
-const OrderSuccessCarousel = () => {
-   const router = useRouter();
-
-   const dispatch = useDispatch();
-
-   const orderDetailsState = useSelector((state) => state.orderDetails);
-   const { order, orderItems } = orderDetailsState;
-
-   useEffect(() => {
-      if (router.query.id) {
-         dispatch(getOrderDetails(router.query.id));
-      }
-   }, [dispatch, router]);
-
+const OrderSuccessCarousel = ({ orderItems }) => {
    return (
       <>
-         {order && orderItems.length !== 0 && (
+         {orderItems.length !== 0 && (
             <div className="product-carousel">
                <Slider {...settings}>
                   {orderItems?.map((product) => (

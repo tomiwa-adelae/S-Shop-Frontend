@@ -1,7 +1,17 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store/actions/userActions';
 
 const ProfileInfo = () => {
+   const dispatch = useDispatch();
+   const router = useRouter();
+
+   const logoutHandler = () => {
+      dispatch(logout());
+   };
+
    return (
       <div className="profile-info section">
          <div className="container">
@@ -25,6 +35,9 @@ const ProfileInfo = () => {
                      <small>Change your password </small>
                   </div>
                </Link>
+               <div onClick={logoutHandler} className="box logout p-1">
+                  <h4>Logout</h4>
+               </div>
             </div>
          </div>
       </div>

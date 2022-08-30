@@ -11,8 +11,12 @@ import {
 } from './reducers/productReducers';
 import errorReducer from './reducers/errorReducers';
 import { cartReducer, saveCartReducer } from './reducers/cartReducers';
-import { useEffect } from 'react';
-import { loginUserReducer } from './reducers/userReducers';
+import {
+   changeLoginReducer,
+   loginUserReducer,
+   registerUserReducer,
+   updateUserProfileReducer,
+} from './reducers/userReducers';
 import {
    savePaymentMethodReducer,
    saveSchoolShippingReducer,
@@ -20,6 +24,8 @@ import {
 } from './reducers/shippingReducers';
 import {
    createOrderReducer,
+   getMyOrdersListReducer,
+   getOrderSimilarProductsReducer,
    orderDetailsReducer,
 } from './reducers/orderReducers';
 
@@ -34,11 +40,16 @@ const reducer = combineReducers({
    saveCart: saveCartReducer,
    cart: cartReducer,
    login: loginUserReducer,
+   register: registerUserReducer,
    schoolShipping: saveSchoolShippingReducer,
    userShippingDetails: saveUserShippingDetailsReducer,
    paymentMethod: savePaymentMethodReducer,
    createOrder: createOrderReducer,
    orderDetails: orderDetailsReducer,
+   orderSimilarProducts: getOrderSimilarProductsReducer,
+   getMyOrders: getMyOrdersListReducer,
+   updateUserProfile: updateUserProfileReducer,
+   changeLogin: changeLoginReducer,
 });
 
 const schoolShippingData =
@@ -70,6 +81,7 @@ const userToken =
 const initalState = {
    cart: { cartItems: [] },
    login: { user: userData, token: userToken },
+   register: { user: userData, token: userToken },
    schoolShipping: { location: schoolShippingData },
    userShippingDetails: { userShippingDetails: userShippingDetailsData },
    paymentMethod: { paymentMethod: paymentMethodData },

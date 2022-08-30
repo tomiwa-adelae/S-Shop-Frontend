@@ -1,12 +1,48 @@
 import Link from 'next/link';
-import React from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateProfile } from '../../store/actions/userActions';
+import { ErrorMessageBox, SuccessMessageBox } from '../MessageBox';
+import { SmallWhiteSpinner } from '../Spinner';
 
 const PersonalDetailsForm = () => {
+   const dispatch = useDispatch();
+   const router = useRouter();
+
+   const userState = useSelector((state) => state.login);
+   const { user } = userState;
+
+   const updateUserProfileState = useSelector(
+      (state) => state.updateUserProfile
+   );
+   const { success, loading } = updateUserProfileState;
+
+   const errorState = useSelector((state) => state.error);
+   const { msg } = errorState;
+
+   const [firstName, setFirstName] = useState(user ? user.firstName : '');
+   const [lastName, setLastName] = useState(user ? user.lastName : '');
+   const [email] = useState(user ? user.email : '');
+   const [phoneNumber, setPhoneNumber] = useState(user ? user.phoneNumber : '');
+
+   useEffect(() => {
+      if (!user) {
+         router.push('/login?redirect=personaldetails');
+      }
+   }, [user]);
+
+   const handleSubmit = (e) => {
+      e.preventDefault();
+
+      dispatch(updateProfile({ firstName, lastName, phoneNumber }));
+   };
+
    return (
       <div className="personal-details-form section">
          <div className="container">
             <div className="wrapper">
-               <form>
+               <form onSubmit={handleSubmit}>
                   <div className="links-tags">
                      <h6 className="py-1">
                         <Link href="/">
@@ -31,16 +67,44 @@ const PersonalDetailsForm = () => {
                      </div>
                   </div>
                   <div>
-                     <input type="text" placeholder="First name" />
+                     <input
+                        type="text"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        placeholder="First name"
+                     />
                   </div>
                   <div>
-                     <input type="text" placeholder="Last name" />
+                     <input
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        type="text"
+                        placeholder="Last name"
+                     />
                   </div>
                   <div>
-                     <input type="text" placeholder="Phone number" />
+                     <input
+                        type="email"
+                        defaultValue={email}
+                        // onChange={() => {}}
+                        placeholder="Email"
+                        disabled
+                     />
                   </div>
                   <div>
-                     <button className="btn btn-primary">Update profile</button>
+                     <input
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        type="number"
+                        placeholder="Phone number"
+                     />
+                  </div>
+                  {success && <SuccessMessageBox msg="Profile updated!" />}
+                  {msg && <ErrorMessageBox msg={msg} />}
+                  <div>
+                     <button className="btn btn-primary">
+                        {loading ? <SmallWhiteSpinner /> : 'Update profile'}
+                     </button>
                   </div>
                </form>
             </div>

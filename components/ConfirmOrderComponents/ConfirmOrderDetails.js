@@ -7,11 +7,6 @@ import { useRouter } from 'next/router';
 const ConfirmOrderDetails = () => {
    const router = useRouter();
 
-   // const userShippingDetailsState = useSelector(
-   //    (state) => state.userShippingDetails
-   // );
-   // const { userShippingDetails } = userShippingDetailsState;
-
    const schoolShippingState = useSelector((state) => state.schoolShipping);
    const { location } = schoolShippingState;
 
@@ -23,11 +18,6 @@ const ConfirmOrderDetails = () => {
 
    const userState = useSelector((state) => state.login);
    const { user } = userState;
-
-   const [firstName, setFirstName] = useState(user && user.firstName);
-   const [lastName, setLastName] = useState(user && user.lastName);
-   const [email, setEmail] = useState(user && user.email);
-   const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
 
    useEffect(() => {
       if (!user) {
@@ -56,16 +46,24 @@ const ConfirmOrderDetails = () => {
                </div>
                <div className="details">
                   <div className="my-0 p-0 item">
-                     <h6>First name : {firstName}</h6>
+                     <h6 suppressHydrationWarning={true}>
+                        {user && `First name : ${user.firstName}`}
+                     </h6>
                   </div>
                   <div className="my-0 p-0 item">
-                     <h6>Last name : {lastName}</h6>
+                     <h6 suppressHydrationWarning={true}>
+                        {user && `Last name : ${user.lastName}`}
+                     </h6>
                   </div>
                   <div className="my-0 p-0 item">
-                     <h6>Email : {email}</h6>
+                     <h6 suppressHydrationWarning={true}>
+                        {user && `Email : ${user.email}`}
+                     </h6>
                   </div>
                   <div className="my-0 p-0 item">
-                     <h6>Phone number : {phoneNumber}</h6>
+                     <h6 suppressHydrationWarning={true}>
+                        {user && `Phone number : ${user.phoneNumber}`}
+                     </h6>
                   </div>
                </div>
             </div>
@@ -79,7 +77,9 @@ const ConfirmOrderDetails = () => {
                </div>
                <div className="details">
                   <div className="my-0 p-0 item">
-                     <h6>Location : {location && location}</h6>
+                     <h6 suppressHydrationWarning={true}>
+                        {location && `Location : ${location}`}
+                     </h6>
                   </div>
                </div>
             </div>
@@ -94,7 +94,9 @@ const ConfirmOrderDetails = () => {
                </div>
                <div className="details">
                   <div className="my-0 p-0 item">
-                     <h6>Method : {paymentMethod && paymentMethod}</h6>
+                     <h6 suppressHydrationWarning={true}>
+                        {paymentMethod && `Method : ${paymentMethod}`}
+                     </h6>
                   </div>
                </div>
             </div>
@@ -117,7 +119,11 @@ const ConfirmOrderDetails = () => {
                            <img src={item.image} alt={item.name} />
                         </div>
                         <div className="name mx-0">
-                           <h6>Nezuko gown</h6>
+                           <h6>
+                              {item.name.length >= 50
+                                 ? `${item.name.substring(0, 50)}...`
+                                 : ''}
+                           </h6>
                            <h6 className="my-0 brand">
                               Brand : {item.brand}{' '}
                               <span>

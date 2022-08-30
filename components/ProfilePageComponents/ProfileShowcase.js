@@ -1,10 +1,20 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 import { useSelector } from 'react-redux';
 
 const ProfileShowcase = () => {
+   const router = useRouter();
+
    const userState = useSelector((state) => state.login);
    const { user } = userState;
+
+   useEffect(() => {
+      if (!user) {
+         router.push('/login');
+      }
+   }, [user]);
 
    return (
       <div className="profile-showcase section">

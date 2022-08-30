@@ -40,7 +40,7 @@ const OrderDetailsItems = ({ orderDetails }) => {
                            </h6>
                         </div>
                         <div className="col-two p-0">
-                           {orderDetails.isPaid ? (
+                           {orderDetails?.isPaid ? (
                               <span className="badge badge-secondary my-0">
                                  Paid
                               </span>
@@ -49,7 +49,7 @@ const OrderDetailsItems = ({ orderDetails }) => {
                                  Not Paid
                               </span>
                            )}
-                           {orderDetails.isDelivered ? (
+                           {orderDetails?.isDelivered ? (
                               <span className="badge badge-secondary my-0">
                                  Delivered
                               </span>

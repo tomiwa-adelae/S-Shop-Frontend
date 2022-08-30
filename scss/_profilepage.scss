@@ -55,6 +55,10 @@
                text-transform: uppercase;
             }
          }
+
+         .logout {
+            background-color: $danger-color;
+         }
       }
    }
 }

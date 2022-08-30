@@ -31,7 +31,7 @@ const ProductShowcase = ({ product }) => {
                               <span>{product?.brand}</span>
                            </Link>{' '}
                            &gt;{' '}
-                           <Link href="/">
+                           <Link href={`/product/${product?._id}`}>
                               <span>{product?.name}</span>
                            </Link>
                         </h6>
