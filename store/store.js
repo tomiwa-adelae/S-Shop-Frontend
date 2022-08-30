@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createWrapper } from 'next-redux-wrapper';
 import {
+   createProductReducer,
    getLatestProductsReducer,
    getMostRatedProductsReducer,
    getProductsBrandReducer,
@@ -50,6 +51,7 @@ const reducer = combineReducers({
    getMyOrders: getMyOrdersListReducer,
    updateUserProfile: updateUserProfileReducer,
    changeLogin: changeLoginReducer,
+   createReview: createProductReducer,
 });
 
 const schoolShippingData =

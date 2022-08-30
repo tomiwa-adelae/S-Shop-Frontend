@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { server } from '../../config/server';
+import { CLEAR_ERRORS } from '../constants/errorConstants';
 import {
    GET_LATEST_PRODUCTS_FAIL,
    GET_LATEST_PRODUCTS_REQUEST,
@@ -15,8 +16,12 @@ import {
    GET_PRODUCTS_FROM_BRAND_REQUEST,
    GET_PRODUCTS_FROM_BRAND_FAIL,
    GET_PRODUCTS_FROM_BRAND_SUCCESS,
+   CREATE_PRODUCT_REVIEW_FAIL,
+   CREATE_PRODUCT_REVIEW_REQUEST,
+   CREATE_PRODUCT_REVIEW_SUCCESS,
 } from '../constants/productConstants';
 import { returnErrors } from './errorActions';
+import { tokenConfig } from './userActions';
 
 // Get all products
 export const getProducts = () => async (dispatch) => {
@@ -87,3 +92,24 @@ export const getProductsFromBrand = (brand, id) => async (dispatch) => {
       dispatch({ type: GET_PRODUCTS_FROM_BRAND_FAIL });
    }
 };
+
+// Create product review
+export const createProductReview =
+   (id, review) => async (dispatch, getState) => {
+      try {
+         dispatch({ type: CLEAR_ERRORS });
+         dispatch({ type: CREATE_PRODUCT_REVIEW_REQUEST });
+
+         const { data } = await axios.post(
+            `${server}/api/products/${id}/reviews`,
+            review,
+            tokenConfig(getState)
+         );
+
+         dispatch({ type: CREATE_PRODUCT_REVIEW_SUCCESS, payload: data });
+      } catch (err) {
+         console.log(err);
+         dispatch(returnErrors(err.response.data.msg));
+         dispatch({ type: CREATE_PRODUCT_REVIEW_FAIL });
+      }
+   };

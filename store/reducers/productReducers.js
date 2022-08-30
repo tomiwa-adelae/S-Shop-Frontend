@@ -1,4 +1,8 @@
 import {
+   CREATE_PRODUCT_REVIEW_FAIL,
+   CREATE_PRODUCT_REVIEW_REQUEST,
+   CREATE_PRODUCT_REVIEW_RESET,
+   CREATE_PRODUCT_REVIEW_SUCCESS,
    GET_LATEST_PRODUCTS_FAIL,
    GET_LATEST_PRODUCTS_REQUEST,
    GET_LATEST_PRODUCTS_SUCCESS,
@@ -87,6 +91,22 @@ export const getProductsBrandReducer = (state = { products: [] }, action) => {
          return { loading: false, brandProducts: action.payload };
       case GET_PRODUCTS_FROM_BRAND_FAIL:
          return { loading: false };
+      default:
+         return state;
+   }
+};
+
+// Get single product reducers
+export const createProductReducer = (state = { products: {} }, action) => {
+   switch (action.type) {
+      case CREATE_PRODUCT_REVIEW_REQUEST:
+         return { loading: true };
+      case CREATE_PRODUCT_REVIEW_SUCCESS:
+         return { loading: false, brandProducts: action.payload };
+      case CREATE_PRODUCT_REVIEW_FAIL:
+         return { loading: false };
+      case CREATE_PRODUCT_REVIEW_RESET:
+         return {};
       default:
          return state;
    }

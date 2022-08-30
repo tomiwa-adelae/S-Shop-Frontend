@@ -1,16 +1,27 @@
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useState } from 'react';
 import { FaUserAlt } from 'react-icons/fa';
+import { createProductReview } from '../../store/actions/productActions';
 import Rating from '../Rating';
+import { useSelector, useDispatch } from 'react-redux';
+import { ErrorMessageBox } from '../MessageBox';
+import { SmallWhiteSpinner } from '../Spinner';
 
 const ProductReview = () => {
    const router = useRouter();
+   const dispatch = useDispatch();
+
+   const [rating, setRating] = useState('');
+   const [comment, setComment] = useState('');
 
    const userState = useSelector((state) => state.login);
    const { user } = userState;
 
-   const [rating, setRating] = useState('1');
-   const [comment, setComment] = useState('');
+   const errorState = useSelector((state) => state.error);
+   const { msg } = errorState;
+
+   const createReviewState = useSelector((state) => state.createReview);
+   const { loading } = createReviewState;
 
    const handleSubmit = (e) => {
       e.preventDefault();
@@ -22,7 +33,7 @@ const ProductReview = () => {
          lastName: user?.lastName,
       };
 
-      dispatch(createProductReview(id, reviewObj));
+      dispatch(createProductReview(router.query.id, reviewObj));
    };
 
    return (
@@ -127,21 +138,23 @@ const ProductReview = () => {
                      <div>
                         <select
                            value={rating}
+                           required
                            onChange={(e) => setRating(e.target.value)}
                            name="rating"
                            id="rating"
                         >
                            <option value="">Select...</option>
                            <option value="1">1 - Poor</option>
-                           <option value="2">1 - Fair</option>
-                           <option value="3">1 - Good</option>
-                           <option value="4">1 - Very Good</option>
-                           <option value="5">1 - Excellent</option>
+                           <option value="2">2 - Fair</option>
+                           <option value="3">3 - Good</option>
+                           <option value="4">4 - Very Good</option>
+                           <option value="5">5 - Excellent</option>
                         </select>
                      </div>
                      <div>
                         <textarea
                            name="comment"
+                           required
                            placeholder="Write comment..."
                            id="comment"
                            cols="30"
@@ -149,6 +162,12 @@ const ProductReview = () => {
                            value={comment}
                            onChange={(e) => setComment(e.target.value)}
                         ></textarea>
+                     </div>
+                     {msg && <ErrorMessageBox msg={msg} />}
+                     <div>
+                        <button className="btn btn-primary">
+                           {loading ? <SmallWhiteSpinner /> : 'Submit'}
+                        </button>
                      </div>
                   </form>
                </div>
