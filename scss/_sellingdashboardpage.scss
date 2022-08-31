@@ -1,0 +1,104 @@
+.selling-dashboard-page {
+   .selling-dashboard-showcase {
+      background-color: $white-color;
+      color: $primary-color;
+
+      .wrapper {
+         display: flex;
+         align-items: center;
+         justify-content: space-evenly;
+         flex-wrap: wrap-reverse;
+         width: 100%;
+         gap: 1rem;
+
+         .img {
+            width: 300px;
+            height: 300px;
+
+            img {
+               border-radius: 100%;
+               object-fit: cover;
+               border: 2px solid $primary-color;
+               background-color: $white-color;
+               @include easeOut();
+            }
+         }
+      }
+   }
+
+   .learn-basics {
+      background-color: $primary-color;
+      color: $white-color;
+
+      .boxes {
+         display: flex;
+         align-items: flex-start;
+         justify-content: flex-start;
+         flex-direction: column;
+         flex-wrap: wrap;
+         gap: 1rem;
+
+         .box {
+            background-color: $grey-color;
+            width: 100%;
+            color: $white-color;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            cursor: pointer;
+            @include easeOut();
+
+            .img {
+               width: 150px;
+               height: 120px;
+
+               img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  border-radius: 100%;
+               }
+            }
+
+            .details {
+               width: 100%;
+               //    position: absolute;
+               //    top: 50%;
+               //    left: 50%;
+               //    transform: translate(-50%, -50%);
+               //    z-index: 2;
+
+               h5 {
+                  text-transform: uppercase;
+                  @include easeOut();
+               }
+            }
+
+            // &::before {
+            //    content: '';
+            //    width: 100%;
+            //    height: 100%;
+            //    position: absolute;
+            //    background-color: rgba($black-color, 0.5);
+            //    left: 0;
+            //    top: 0;
+            //    @include easeOut();
+            // }
+
+            // &:hover {
+            //    transform: scale(1.01);
+            //    border: 2px solid $secondary-color;
+
+            //    &::before {
+            //       background-color: rgba($black-color, 0.9);
+            //    }
+
+            //    h5 {
+            //       color: $secondary-color;
+            //    }
+            // }
+         }
+      }
+   }
+}
