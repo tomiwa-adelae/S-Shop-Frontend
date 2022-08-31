@@ -1,20 +1,16 @@
 import Link from 'next/link';
+import React from 'react';
 import Rating from '../Rating';
 
-const HomeLatestProducts = ({ latestProducts }) => {
+const BrandProducts = ({ brandName, brandProducts }) => {
    return (
-      <div className="home-latest-products section">
+      <div className="brand-products section">
          <div className="container">
             <div className="head py-1">
-               <h4>Latest products</h4>
-               {latestProducts.length >= 10 && (
-                  <Link href="/allproducts">
-                     <button className="btn btn-primary">See all</button>
-                  </Link>
-               )}
+               <h4>{brandName}</h4>
             </div>
             <div className="products-boxes">
-               {latestProducts.slice(0, 10)?.map((product) => (
+               {brandProducts?.map((product) => (
                   <Link
                      key={product._id}
                      href="/product/[id]"
@@ -42,4 +38,4 @@ const HomeLatestProducts = ({ latestProducts }) => {
    );
 };
 
-export default HomeLatestProducts;
+export default BrandProducts;

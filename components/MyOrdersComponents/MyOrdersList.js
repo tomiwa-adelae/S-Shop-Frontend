@@ -40,16 +40,14 @@ const MyOrdersList = () => {
                            <div className="details">
                               <div className="col-one p-0">
                                  <div className="name">
-                                    <Link href="/">
-                                       <h5>
-                                          {order.orderItems[0].name.length >= 60
-                                             ? `${order.orderItems[0].name.substring(
-                                                  0,
-                                                  60
-                                               )}...`
-                                             : order.orderItems[0].name}
-                                       </h5>
-                                    </Link>
+                                    <h5>
+                                       {order.orderItems[0].name.length >= 60
+                                          ? `${order.orderItems[0].name.substring(
+                                               0,
+                                               60
+                                            )}...`
+                                          : order.orderItems[0].name}
+                                    </h5>
                                     <h6 className="my-0 brand">
                                        Brand: {order.orderItems[0].brand}
                                        <span>

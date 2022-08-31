@@ -16,6 +16,10 @@
 @import 'personaldetailspage';
 @import 'changeloginpage';
 @import 'myorderspage';
+@import 'brandpage';
+@import 'allproductspage';
+@import 'popularproductspage';
+@import 'searchpage';
 
 * {
    margin: 0;
@@ -64,43 +68,11 @@ header {
          }
       }
 
-      form {
-         flex: 3;
-         position: relative;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-
-         div {
-            width: 100%;
-            .search {
-               position: absolute;
-               color: $grey-color;
-               top: 50%;
-               left: 1.5%;
-               transform: translate(-1.5%, -50%);
-               font-size: 1.2rem;
-               font-weight: lighter;
-            }
-
-            input {
-               padding-left: 2.5rem;
-            }
-
-            .btn {
-               position: absolute;
-               top: 50%;
-               right: 0;
-               transform: translate(0%, -50%);
-            }
-         }
-      }
-
       nav {
          flex: 1;
          display: flex;
          align-items: center;
-         justify-content: space-around;
+         justify-content: flex-end;
 
          span {
             font-weight: bold;

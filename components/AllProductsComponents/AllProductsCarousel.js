@@ -29,11 +29,11 @@ var settings = {
    prevArrow: <SamplePrevArrow />,
 };
 
-const HomeProductCarousel = ({ mostRatedProducts }) => {
+const AllProductsCarousel = ({ products }) => {
    return (
       <div className="product-carousel">
          <Slider {...settings}>
-            {mostRatedProducts.slice(0, 10)?.map((product) => (
+            {products.slice(0, 10)?.map((product) => (
                <Link
                   key={product._id}
                   href="/product/[id]"
@@ -60,4 +60,4 @@ const HomeProductCarousel = ({ mostRatedProducts }) => {
    );
 };
 
-export default HomeProductCarousel;
+export default AllProductsCarousel;

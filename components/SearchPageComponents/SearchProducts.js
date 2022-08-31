@@ -1,20 +1,32 @@
 import Link from 'next/link';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProducts } from '../../store/actions/productActions';
 import Rating from '../Rating';
+import { PrimarySpinner } from '../Spinner';
+import { SuccessMessageBox } from '../MessageBox';
 
-const HomeLatestProducts = ({ latestProducts }) => {
+const SearchProducts = () => {
+   const dispatch = useDispatch();
+
+   const productsState = useSelector((state) => state.getProducts);
+   const { products, loading } = productsState;
+
+   useEffect(() => {
+      dispatch(getProducts());
+   }, [dispatch]);
    return (
-      <div className="home-latest-products section">
+      <div className="search-products section">
          <div className="container">
             <div className="head py-1">
-               <h4>Latest products</h4>
-               {latestProducts.length >= 10 && (
-                  <Link href="/allproducts">
-                     <button className="btn btn-primary">See all</button>
-                  </Link>
-               )}
+               <h4>All products</h4>
             </div>
             <div className="products-boxes">
-               {latestProducts.slice(0, 10)?.map((product) => (
+               {loading && <PrimarySpinner />}
+               {products?.length === 0 && (
+                  <SuccessMessageBox msg={`No product found!`} />
+               )}
+               {products?.map((product) => (
                   <Link
                      key={product._id}
                      href="/product/[id]"
@@ -42,4 +54,4 @@ const HomeLatestProducts = ({ latestProducts }) => {
    );
 };
 
-export default HomeLatestProducts;
+export default SearchProducts;

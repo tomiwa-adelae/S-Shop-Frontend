@@ -99,6 +99,7 @@ export const createOrder = () => async (dispatch, getState) => {
 // Get my order
 export const getMyOrders = () => async (dispatch, getState) => {
    try {
+      dispatch({ type: CLEAR_ERRORS });
       dispatch({ type: GET_MY_ORDERS_REQUEST });
 
       const { data } = await axios.get(

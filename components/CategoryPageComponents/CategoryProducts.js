@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import Rating from '../Rating';
+import { SuccessMessageBox } from '../MessageBox';
 
 const CategoryProducts = ({ products }) => {
    const router = useRouter();
@@ -10,9 +11,11 @@ const CategoryProducts = ({ products }) => {
          <div className="container">
             <div className="head py-1">
                <h4>{router.query.category}</h4>
-               <button className="btn btn-primary">See all</button>
             </div>
             <div className="products-boxes">
+               {products?.length === 0 && (
+                  <SuccessMessageBox msg="Category does not exist!" />
+               )}
                {products?.map((product) => (
                   <Link
                      key={product._id}

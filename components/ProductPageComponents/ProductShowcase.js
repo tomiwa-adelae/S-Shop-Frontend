@@ -26,7 +26,10 @@ const ProductShowcase = ({ product }) => {
                            <span>{product?.category}</span>
                         </Link>{' '}
                         &gt;{' '}
-                        <Link href="/">
+                        <Link
+                           href="/brand/[name]"
+                           as={`/brand/${product?.brand}`}
+                        >
                            <span>{product?.brand}</span>
                         </Link>{' '}
                         &gt;{' '}

@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createWrapper } from 'next-redux-wrapper';
 import {
    createProductReducer,
+   getAllProductsBrandReducer,
    getLatestProductsReducer,
    getMostRatedProductsReducer,
    getProductsBrandReducer,
@@ -39,6 +40,7 @@ const reducer = combineReducers({
    getMostRatedProducts: getMostRatedProductsReducer,
    getProduct: getSingleProductReducer,
    getBrandProducts: getProductsBrandReducer,
+   getAllBrandProducts: getAllProductsBrandReducer,
    getCategoryProducts: getProductsCategoryReducer,
    saveCart: saveCartReducer,
    cart: cartReducer,

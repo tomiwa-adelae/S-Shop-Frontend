@@ -51,12 +51,14 @@ const ProductReview = ({ product }) => {
                <div className="review-boxes">
                   <div className="head py-1">
                      <h4>Customer feedbacks and reviews</h4>
-                     <button className="btn btn-white">See all</button>
+                     {product.reviews.length >= 3 && (
+                        <button className="btn btn-white">See all</button>
+                     )}
                   </div>
                   {product.reviews.length === 0 && (
                      <SuccessMessageBox msg="No customer reviews! Write one now" />
                   )}
-                  {product.reviews?.map((review) => (
+                  {product.reviews.slice(0, 3)?.map((review) => (
                      <div key={review._id} className="box p-1 my-0">
                         <div className="user my-0">
                            <FaUserAlt className="user-icon mx-0" />

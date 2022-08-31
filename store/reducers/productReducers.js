@@ -3,6 +3,9 @@ import {
    CREATE_PRODUCT_REVIEW_REQUEST,
    CREATE_PRODUCT_REVIEW_RESET,
    CREATE_PRODUCT_REVIEW_SUCCESS,
+   GET_ALL_PRODUCTS_FROM_BRAND_FAIL,
+   GET_ALL_PRODUCTS_FROM_BRAND_REQUEST,
+   GET_ALL_PRODUCTS_FROM_BRAND_SUCCESS,
    GET_LATEST_PRODUCTS_FAIL,
    GET_LATEST_PRODUCTS_REQUEST,
    GET_LATEST_PRODUCTS_SUCCESS,
@@ -93,6 +96,23 @@ export const getProductsBrandReducer = (state = { products: [] }, action) => {
       case GET_PRODUCTS_FROM_BRAND_SUCCESS:
          return { loading: false, brandProducts: action.payload };
       case GET_PRODUCTS_FROM_BRAND_FAIL:
+         return { loading: false };
+      default:
+         return state;
+   }
+};
+
+// Get all products from brand reducers
+export const getAllProductsBrandReducer = (
+   state = { products: [] },
+   action
+) => {
+   switch (action.type) {
+      case GET_ALL_PRODUCTS_FROM_BRAND_REQUEST:
+         return { loading: true };
+      case GET_ALL_PRODUCTS_FROM_BRAND_SUCCESS:
+         return { loading: false, brandProducts: action.payload };
+      case GET_ALL_PRODUCTS_FROM_BRAND_FAIL:
          return { loading: false };
       default:
          return state;

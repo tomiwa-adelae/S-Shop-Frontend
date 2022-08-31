@@ -23,22 +23,29 @@ import {
    GET_PRODUCTS_FROM_CATEGORY_REQUEST,
    GET_PRODUCTS_FROM_CATEGORY_SUCCESS,
    GET_PRODUCTS_FROM_CATEGORY_FAIL,
+   GET_ALL_PRODUCTS_FROM_BRAND_FAIL,
+   GET_ALL_PRODUCTS_FROM_BRAND_REQUEST,
+   GET_ALL_PRODUCTS_FROM_BRAND_SUCCESS,
 } from '../constants/productConstants';
 import { returnErrors } from './errorActions';
 import { tokenConfig } from './userActions';
 
 // Get all products
-export const getProducts = () => async (dispatch) => {
-   dispatch({ type: GET_PRODUCTS_REQUEST });
-   try {
-      const { data } = await axios.get(`${server}/api/products`);
+export const getProducts =
+   (keyword = '') =>
+   async (dispatch) => {
+      dispatch({ type: GET_PRODUCTS_REQUEST });
+      try {
+         const { data } = await axios.get(
+            `${server}/api/products?keyword=${keyword}`
+         );
 
-      dispatch({ type: GET_PRODUCTS_SUCCESS, payload: data });
-   } catch (err) {
-      dispatch(returnErrors(err.response.data.msg));
-      dispatch({ type: GET_PRODUCTS_FAIL });
-   }
-};
+         dispatch({ type: GET_PRODUCTS_SUCCESS, payload: data });
+      } catch (err) {
+         dispatch(returnErrors(err.response.data.msg));
+         dispatch({ type: GET_PRODUCTS_FAIL });
+      }
+   };
 
 // Get latest products
 export const getLatestProducts = () => async (dispatch) => {
@@ -96,6 +103,22 @@ export const getProductsFromBrand = (brand, id) => async (dispatch) => {
    } catch (err) {
       dispatch(returnErrors(err.response.data.msg));
       dispatch({ type: GET_PRODUCTS_FROM_BRAND_FAIL });
+   }
+};
+
+// Get all brand products
+export const getAllBrandProducts = (brand) => async (dispatch) => {
+   try {
+      dispatch({ type: GET_ALL_PRODUCTS_FROM_BRAND_REQUEST });
+
+      const { data } = await axios.get(
+         `${server}/api/products/all/${brand}/products`
+      );
+
+      dispatch({ type: GET_ALL_PRODUCTS_FROM_BRAND_SUCCESS, payload: data });
+   } catch (err) {
+      dispatch(returnErrors(err.response.data.msg));
+      dispatch({ type: GET_ALL_PRODUCTS_FROM_BRAND_FAIL });
    }
 };
 

@@ -5,13 +5,13 @@ import HomePopularProducts from '../components/HomeComponents/HomePopularProduct
 import HomeProductCarousel from '../components/HomeComponents/HomeProductCarousel';
 import { server } from '../config/server';
 
-export default function Home({ mostRatedProducts, latestProducts }) {
+export default function Home({ mostRatedProducts, products }) {
    return (
       <div className="homepage">
          <HomeProductCarousel mostRatedProducts={mostRatedProducts} />
          <HomeCategories />
-         {/* <HomePopularProducts /> */}
-         <HomeLatestProducts latestProducts={latestProducts} />
+         <HomePopularProducts mostRatedProducts={mostRatedProducts} />
+         <HomeLatestProducts latestProducts={products} />
          {/* <HomeMostOrderedProducts /> */}
       </div>
    );
@@ -22,14 +22,14 @@ export const getStaticProps = async () => {
 
    const mostRatedProducts = await res.json();
 
-   const resLatest = await fetch(`${server}/api/products/latest`);
+   const resProducts = await fetch(`${server}/api/products`);
 
-   const latestProducts = await resLatest.json();
+   const products = await resProducts.json();
 
    return {
       props: {
          mostRatedProducts,
-         latestProducts,
+         products,
       },
    };
 };

@@ -19,10 +19,6 @@ const HomeCategories = () => {
          name: 'bags',
          image: 'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/88/187259/1.jpg?4497',
       },
-      {
-         name: 'all',
-         image: 'https://thumbs.dreamstime.com/b/simple-vector-red-scratch-rubber-stamp-sample-transparent-effect-background-155834864.jpg',
-      },
    ]);
 
    return (
@@ -45,6 +41,19 @@ const HomeCategories = () => {
                      </div>
                   </Link>
                ))}
+               <Link href="/allproducts">
+                  <div className="box">
+                     <div className="img">
+                        <img
+                           src="https://thumbs.dreamstime.com/b/simple-vector-red-scratch-rubber-stamp-sample-transparent-effect-background-155834864.jpg"
+                           alt="All Products"
+                        />
+                     </div>
+                     <div className="details">
+                        <h5>All</h5>
+                     </div>
+                  </div>
+               </Link>
             </div>
          </div>
       </div>

@@ -27,7 +27,14 @@ const SimilarProducts = ({ product }) => {
          <div className="container">
             <div className="head py-1">
                <h4>Similar products</h4>
-               <button className="btn btn-primary">See all</button>
+               {categoryProducts?.length >= 5 && (
+                  <Link
+                     href="/category/[category]"
+                     as={`/category/${categoryProducts[0].category}`}
+                  >
+                     <button className="btn btn-primary">See all</button>
+                  </Link>
+               )}
             </div>
 
             <div className="products-boxes">

@@ -20,7 +20,9 @@ const ProductWrapper = () => {
    const { loading, product } = productState;
 
    useEffect(() => {
-      dispatch(getSingleProduct(router.query.id));
+      if (router.query.id) {
+         dispatch(getSingleProduct(router.query.id));
+      }
    }, [dispatch, router]);
 
    return (

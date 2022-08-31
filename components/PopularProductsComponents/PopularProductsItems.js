@@ -1,20 +1,18 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React from 'react';
 import Rating from '../Rating';
 
-const HomeLatestProducts = ({ latestProducts }) => {
+const PopularProductsItems = ({ products }) => {
+   const router = useRouter();
    return (
-      <div className="home-latest-products section">
+      <div className="popular-products-items section">
          <div className="container">
             <div className="head py-1">
-               <h4>Latest products</h4>
-               {latestProducts.length >= 10 && (
-                  <Link href="/allproducts">
-                     <button className="btn btn-primary">See all</button>
-                  </Link>
-               )}
+               <h4>All Popular Products</h4>
             </div>
             <div className="products-boxes">
-               {latestProducts.slice(0, 10)?.map((product) => (
+               {products?.map((product) => (
                   <Link
                      key={product._id}
                      href="/product/[id]"
@@ -42,4 +40,4 @@ const HomeLatestProducts = ({ latestProducts }) => {
    );
 };
 
-export default HomeLatestProducts;
+export default PopularProductsItems;

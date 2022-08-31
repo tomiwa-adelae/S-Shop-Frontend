@@ -2,9 +2,12 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { FaUserAlt, FaShoppingCart, FaSearch } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 
 const Header = () => {
+   const router = useRouter();
    const [userDetails, setUserDetails] = useState(null);
+   const [keyword, setKeyword] = useState('');
 
    const userState = useSelector((state) => state.login);
    const { user } = userState;
@@ -24,21 +27,15 @@ const Header = () => {
                   </h3>
                </Link>
             </div>
-            <form className="search-form">
-               <div>
-                  <FaSearch className="search" />
-                  <input
-                     type="text"
-                     placeholder="Search products, brands, categories..."
-                  />
-                  <div className="search-btn">
-                     <button className="btn btn-secondary">Search</button>
-                  </div>
-               </div>
-               <br />
-            </form>
             <nav className="nav">
-               <span>
+               <span className="mx-1">
+                  <Link href="/search">
+                     <span>
+                        <FaSearch className="search" />
+                     </span>
+                  </Link>
+               </span>
+               <span className="mx-1">
                   {userDetails ? (
                      <Link href="/profile">
                         <span>
@@ -55,24 +52,8 @@ const Header = () => {
                      </Link>
                   )}
                </span>
-               {/* {user ? (
-                  <Link href="/profile">
-                     <span>
-                        <FaUserAlt className="user-icon" />
-                        Hi, {user?.firstName}
-                     </span>
-                  </Link>
-               ) : (
-                  // </Link>
-                  <Link href="/login">
-                     <span>
-                        <FaUserAlt className="user-icon" />
-                        Hi,Sign In
-                     </span>
-                  </Link>
-               )} */}
                <Link href="/cart">
-                  <span>
+                  <span className="mx-1">
                      <FaShoppingCart className="cart-icon" />
                      Cart
                   </span>
