@@ -2,19 +2,22 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { UPDATE_USER_RESET } from '../../store/constants/userConstants';
 
 const ProfileShowcase = () => {
    const router = useRouter();
+   const dispatch = useDispatch();
 
    const userState = useSelector((state) => state.login);
    const { user } = userState;
 
    useEffect(() => {
+      dispatch({ type: UPDATE_USER_RESET });
       if (!user) {
          router.push('/login');
       }
-   }, [user]);
+   }, [user, dispatch]);
 
    return (
       <div className="profile-showcase section">

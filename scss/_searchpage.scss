@@ -1,6 +1,6 @@
 .search-page {
    .search-form {
-      padding-top: 2rem;
+      // padding-top: 2rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -32,5 +32,9 @@
             }
          }
       }
+   }
+
+   .search-products {
+      padding-top: 0;
    }
 }

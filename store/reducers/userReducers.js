@@ -10,6 +10,7 @@ import {
    REGISTER_USER_SUCCESS,
    UPDATE_USER_FAIL,
    UPDATE_USER_REQUEST,
+   UPDATE_USER_RESET,
    UPDATE_USER_SUCCESS,
    USER_LOGOUT,
 } from '../constants/userConstants';
@@ -66,6 +67,8 @@ export const updateUserProfileReducer = (state = {}, action) => {
          };
       case UPDATE_USER_FAIL:
          return { loading: false, user: null, success: false };
+      case UPDATE_USER_RESET:
+         return {};
       case USER_LOGOUT:
          return { loading: false, user: null };
       default:

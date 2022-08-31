@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateProfile } from '../../store/actions/userActions';
+import { CLEAR_ERRORS } from '../../store/constants/errorConstants';
 import { ErrorMessageBox, SuccessMessageBox } from '../MessageBox';
 import { SmallWhiteSpinner } from '../Spinner';
 
@@ -27,10 +28,11 @@ const PersonalDetailsForm = () => {
    const [phoneNumber, setPhoneNumber] = useState(user ? user.phoneNumber : '');
 
    useEffect(() => {
+      dispatch({ type: CLEAR_ERRORS });
       if (!user) {
          router.push('/login?redirect=personaldetails');
       }
-   }, [user]);
+   }, [user, dispatch]);
 
    const handleSubmit = (e) => {
       e.preventDefault();
