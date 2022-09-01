@@ -249,6 +249,15 @@ h6 {
       }
    }
 
+   &-danger {
+      background-color: $danger-color;
+      color: $white-color;
+
+      &:hover {
+         background-color: darken($danger-color, 10%);
+      }
+   }
+
    &:disabled {
       opacity: 0.6;
       cursor: not-allowed;
@@ -277,6 +286,16 @@ form {
 
       select {
          cursor: pointer;
+      }
+
+      label {
+         padding: 0.8rem 0;
+         margin: 0.5rem 0;
+         font-size: 0.8rem;
+         border: none;
+         outline: none;
+         width: 100%;
+         font-weight: bold;
       }
    }
 
@@ -662,6 +681,15 @@ select {
    }
 }
 
+.admin-notification-box {
+   p {
+      background-color: $secondary-color;
+      color: $white-color;
+      text-align: center;
+      font-weight: bold;
+   }
+}
+
 .search-box {
    form {
       // background-color: orange;
@@ -686,5 +714,56 @@ select {
             right: 0;
          }
       }
+   }
+}
+
+.upload-modal {
+   border: 2px dotted $primary-color;
+   height: 4rem;
+   color: $primary-color;
+   font-weight: bold;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+   margin-bottom: 0.5rem;
+   border-radius: 5px;
+   @include easeOut();
+}
+
+.modal-active {
+   border: 2px dotted $secondary-color;
+   // background-color: $grey-color;
+   font-weight: bold;
+   height: 4rem;
+   color: $secondary-color;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+   margin-bottom: 0.5rem;
+   border-radius: 5px;
+}
+
+.preview-file {
+   div {
+      // background-color: $black-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      // border: 2px solid $white-color;
+
+      img {
+         width: 100px;
+         object-fit: cover;
+         height: 100px;
+         margin-right: 1rem;
+         border-radius: 100%;
+      }
+   }
+
+   span {
+      display: inline-block;
    }
 }

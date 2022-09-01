@@ -1,0 +1,27 @@
+.register-seller-page {
+   .register-seller-form {
+      form {
+         section {
+            h6 {
+               text-transform: uppercase;
+               color: $secondary-color;
+            }
+            div {
+               input {
+                  border: 1px solid $primary-color;
+                  @include easeOut();
+
+                  &:focus {
+                     border: 1px solid $secondary-color;
+                  }
+               }
+            }
+         }
+         p {
+            span {
+               cursor: pointer;
+            }
+         }
+      }
+   }
+}

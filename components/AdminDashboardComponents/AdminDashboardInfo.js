@@ -1,30 +1,37 @@
 import Link from 'next/link';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { logout } from '../../store/actions/userActions';
+import { logoutAdmin } from '../../store/actions/userSellerActions';
 
-const ProfileInfo = () => {
+const AdminDashboardInfo = () => {
    const dispatch = useDispatch();
 
    const logoutHandler = () => {
-      dispatch(logout());
+      dispatch(logoutAdmin());
    };
 
    return (
-      <div className="profile-info section">
+      <div className="admin-dashboard-info section">
          <div className="container">
             <div className="wrapper">
-               <Link href="/personaldetails">
+               <Link href="/adminorders">
                   <div className="box p-1">
-                     <h4>Personal Details</h4>
-                     <small>Edit name, email, phone number, image </small>
+                     <h4>All orders</h4>
+                     <small>Check out all your orders</small>
                   </div>
                </Link>
-               <Link href="/myorders">
+               <Link href="/adminproducts">
                   <div className="box p-1">
-                     <h4>Your Orders</h4>
-
-                     <small>Track and see all your orders</small>
+                     <h4>All Products</h4>
+                     <small>Check out all your products</small>
+                  </div>
+               </Link>
+               <Link href="/adminpersonaldetails">
+                  <div className="box p-1">
+                     <h4>Personal Information</h4>
+                     <small>
+                        Edit name, email, phone number, brand logo ...
+                     </small>
                   </div>
                </Link>
                <Link href="/changelogin">
@@ -34,7 +41,7 @@ const ProfileInfo = () => {
                   </div>
                </Link>
                <div onClick={logoutHandler} className="box logout p-1">
-                  <h4>Logout</h4>
+                  <h4>Logout as admin</h4>
                   <small className="p-0"></small>
                </div>
             </div>
@@ -43,4 +50,4 @@ const ProfileInfo = () => {
    );
 };
 
-export default ProfileInfo;
+export default AdminDashboardInfo;

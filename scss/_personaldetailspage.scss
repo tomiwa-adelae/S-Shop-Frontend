@@ -30,6 +30,8 @@
                   height: 300px;
 
                   img {
+                     height: 100%;
+                     width: 100%;
                      border-radius: 100%;
                      object-fit: cover;
                      border: 2px solid $primary-color;

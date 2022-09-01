@@ -8,6 +8,9 @@ import {
    REGISTER_USER_FAIL,
    REGISTER_USER_REQUEST,
    REGISTER_USER_SUCCESS,
+   // SAVE_BRAND_DETAILS_FAIL,
+   // SAVE_BRAND_DETAILS_REQUEST,
+   // SAVE_BRAND_DETAILS_SUCCESS,
    UPDATE_USER_FAIL,
    UPDATE_USER_REQUEST,
    UPDATE_USER_SUCCESS,
@@ -33,6 +36,7 @@ export const loginUser = (user) => async (dispatch) => {
       const { data } = await axios.post(`${server}/api/auth`, user, config);
 
       dispatch({ type: LOGIN_USER_SUCCESS, payload: data });
+      dispatch({ type: REGISTER_USER_SUCCESS, payload: data });
 
       localStorage.setItem('user', JSON.stringify(data.user));
       localStorage.setItem('token', JSON.stringify(data.token));
@@ -122,8 +126,6 @@ export const logout = () => async (dispatch) => {
    localStorage.removeItem('cartItems');
    localStorage.removeItem('savePaymentMethod');
    localStorage.removeItem('schoolShipping');
-
-   // window.location = '/login';
 };
 
 export const tokenConfig = (getState) => {

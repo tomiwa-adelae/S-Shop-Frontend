@@ -2,15 +2,17 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { FaUserAlt, FaShoppingCart, FaSearch } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
 
 const Header = () => {
-   const router = useRouter();
    const [userDetails, setUserDetails] = useState(null);
-   const [keyword, setKeyword] = useState('');
 
    const userState = useSelector((state) => state.login);
    const { user } = userState;
+
+   const sellerState = useSelector((state) => state.loginSeller);
+   const { seller = user } = sellerState;
+
+   console.log(seller);
 
    useEffect(() => {
       setUserDetails(user);

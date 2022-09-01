@@ -31,6 +31,10 @@ import {
    getOrderSimilarProductsReducer,
    orderDetailsReducer,
 } from './reducers/orderReducers';
+import {
+   loginSellerReducer,
+   registerSellerReducer,
+} from './reducers/userSellerReducers';
 
 // All reduers
 const reducer = combineReducers({
@@ -56,6 +60,10 @@ const reducer = combineReducers({
    updateUserProfile: updateUserProfileReducer,
    changeLogin: changeLoginReducer,
    createReview: createProductReducer,
+
+   // Seller reducers
+   registerSeller: registerSellerReducer,
+   loginSeller: loginSellerReducer,
 });
 
 const schoolShippingData =
@@ -83,11 +91,23 @@ const userToken =
       ? JSON.parse(localStorage.getItem('token'))
       : null;
 
+const sellerData =
+   typeof window !== 'undefined' && localStorage.getItem('seller')
+      ? JSON.parse(localStorage.getItem('seller'))
+      : null;
+
+const sellerToken =
+   typeof window !== 'undefined' && localStorage.getItem('sellerToken')
+      ? JSON.parse(localStorage.getItem('sellerToken'))
+      : null;
+
 // initial states here
 const initalState = {
    cart: { cartItems: [] },
    login: { user: userData, token: userToken },
+   loginSeller: { user: sellerData, sellerToken: sellerToken },
    register: { user: userData, token: userToken },
+   registerSeller: { user: sellerData, sellerToken: sellerToken },
    schoolShipping: { location: schoolShippingData },
    userShippingDetails: { userShippingDetails: userShippingDetailsData },
    paymentMethod: { paymentMethod: paymentMethodData },
