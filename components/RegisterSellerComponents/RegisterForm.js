@@ -30,7 +30,7 @@ const RegisterForm = () => {
    const [showPassword2, setShowPassword2] = useState(false);
 
    const registerSellerState = useSelector((state) => state.registerSeller);
-   const { loading, user } = registerSellerState;
+   const { loading, seller } = registerSellerState;
 
    const errorState = useSelector((state) => state.error);
    const { msg } = errorState;
@@ -38,10 +38,10 @@ const RegisterForm = () => {
    useEffect(() => {
       dispatch(logout());
 
-      if (user) {
+      if (seller) {
          router.push('/admindashboard');
       }
-   }, [dispatch, user]);
+   }, [dispatch, seller]);
 
    useEffect(() => {
       dispatch({ type: CLEAR_ERRORS });

@@ -17,11 +17,11 @@ export const registerSellerReducer = (state = {}, action) => {
       case REGISTER_SELLER_USER_SUCCESS:
          return {
             loading: false,
-            user: action.payload.seller,
+            seller: action.payload.seller,
             token: action.payload.token,
          };
       case REGISTER_SELLER_USER_FAIL:
-         return { loading: false, user: null, token: null };
+         return { loading: false, seller: null, token: null };
       case ADMIN_LOGOUT:
          return {};
       default:
@@ -37,11 +37,11 @@ export const loginSellerReducer = (state = {}, action) => {
       case LOGIN_SELLER_USER_SUCCESS:
          return {
             loading: false,
-            user: action.payload.seller,
+            seller: action.payload.seller,
             token: action.payload.token,
          };
       case LOGIN_SELLER_USER_FAIL:
-         return { loading: false, user: null, token: null };
+         return { loading: false, seller: null, token: null };
       case ADMIN_LOGOUT:
          return {};
       default:

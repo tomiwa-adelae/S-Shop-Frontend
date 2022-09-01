@@ -19,7 +19,7 @@ const LoginForm = () => {
    const [showPassword1, setShowPassword1] = useState(false);
 
    const loginSellerState = useSelector((state) => state.loginSeller);
-   const { loading, user } = loginSellerState;
+   const { loading, seller } = loginSellerState;
 
    const errorState = useSelector((state) => state.error);
    const { msg } = errorState;
@@ -27,10 +27,10 @@ const LoginForm = () => {
    useEffect(() => {
       dispatch(logout());
 
-      if (user) {
+      if (seller) {
          router.push('/admindashboard');
       }
-   }, [dispatch, user]);
+   }, [dispatch, seller]);
 
    useEffect(() => {
       dispatch({ type: CLEAR_ERRORS });

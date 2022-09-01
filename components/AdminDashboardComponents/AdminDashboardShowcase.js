@@ -1,19 +1,23 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 const AdminDashboardShowcase = () => {
    const router = useRouter();
 
+   const [brandLogo, setBrandLogo] = useState(null);
+
    const sellerState = useSelector((state) => state.loginSeller);
-   const { user } = sellerState;
+   const { seller } = sellerState;
 
    useEffect(() => {
-      if (!user) {
+      setBrandLogo(seller?.brandLogo || seller?.picture);
+
+      if (!seller) {
          router.push('/loginseller');
       }
-   }, [router, user]);
+   }, [router, seller]);
 
    return (
       <div className="admin-dashboard-showcase section">
@@ -32,27 +36,21 @@ const AdminDashboardShowcase = () => {
                      </h6>
                   </div>
                   <h3 suppressHydrationWarning={true}>
-                     {user ? `${user.firstName} ${user.lastName}` : null}
+                     {seller ? `${seller.firstName} ${seller.lastName}` : null}
                   </h3>
                   <h4 suppressHydrationWarning={true} className="my-0">
-                     {user?.email}
+                     {seller?.email}
                   </h4>
-                  <h5 suppressHydrationWarning={true}>{user?.phoneNumber}</h5>
+                  <h5 suppressHydrationWarning={true}>{seller?.phoneNumber}</h5>
                </div>
                <div className="img">
                   <img
                      suppressHydrationWarning={true}
-                     src={
-                        user
-                           ? user.brandLogo
-                              ? user.brandLogo
-                              : user.picture
-                           : 'https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg'
-                     }
-                     alt=""
+                     src={brandLogo}
+                     alt="S-Shop"
                   />
                   <h5 suppressHydrationWarning={true} className="my-0">
-                     {user?.brandName}
+                     {seller?.brandName}
                   </h5>
                </div>
             </div>

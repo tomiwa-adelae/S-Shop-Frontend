@@ -105,9 +105,9 @@ const sellerToken =
 const initalState = {
    cart: { cartItems: [] },
    login: { user: userData, token: userToken },
-   loginSeller: { user: sellerData, sellerToken: sellerToken },
+   loginSeller: { seller: sellerData, sellerToken: sellerToken },
    register: { user: userData, token: userToken },
-   registerSeller: { user: sellerData, sellerToken: sellerToken },
+   registerSeller: { seller: sellerData, sellerToken: sellerToken },
    schoolShipping: { location: schoolShippingData },
    userShippingDetails: { userShippingDetails: userShippingDetailsData },
    paymentMethod: { paymentMethod: paymentMethodData },
