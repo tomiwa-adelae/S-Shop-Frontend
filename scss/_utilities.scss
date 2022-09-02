@@ -286,6 +286,13 @@ form {
 
       select {
          cursor: pointer;
+         text-transform: uppercase;
+
+         option {
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+         }
       }
 
       label {
@@ -356,6 +363,10 @@ select {
 
 .text-secondary {
    color: $secondary-color;
+}
+
+.text-danger {
+   color: $danger-color;
 }
 
 .text-grey {

@@ -18,7 +18,6 @@ const RegisterForm = () => {
    const [lastName, setLastName] = useState('');
    const [email, setEmail] = useState('');
    const [phoneNumber, setPhoneNumber] = useState('');
-   const [additionalPhoneNumber, setAdditionalPhoneNumber] = useState('');
    const [brandName, setBrandName] = useState('');
    const [brandLogo, setBrandLogo] = useState('');
    const [accountNumber, setAccountNumber] = useState('');
@@ -39,7 +38,7 @@ const RegisterForm = () => {
       dispatch(logout());
 
       if (seller) {
-         router.push('/admindashboard');
+         router.push('/sellerdashboard');
       }
    }, [dispatch, seller]);
 
@@ -68,7 +67,6 @@ const RegisterForm = () => {
          lastName,
          email,
          phoneNumber,
-         additionalPhoneNumber,
          brandName,
          brandLogo,
          accountNumber,
@@ -126,17 +124,8 @@ const RegisterForm = () => {
                         value={phoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         type="number"
+                        max={11}
                         placeholder="Phone number *"
-                     />
-                  </div>
-                  <div>
-                     <input
-                        value={additionalPhoneNumber}
-                        onChange={(e) =>
-                           setAdditionalPhoneNumber(e.target.value)
-                        }
-                        type="number"
-                        placeholder="Addtional phone number (Optional)"
                      />
                   </div>
                </section>

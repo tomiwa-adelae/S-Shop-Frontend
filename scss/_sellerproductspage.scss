@@ -1,5 +1,12 @@
-.all-my-orders-page {
-   .all-my-orders-list {
+.seller-products-page {
+   .seller-products-intro {
+      .wrapper {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+      }
+   }
+   .seller-products-list {
       .wrapper {
          .boxes {
             .box {
@@ -20,6 +27,19 @@
                   .col-one {
                      .name {
                         width: 100%;
+
+                        h5 {
+                           cursor: pointer;
+                           @include easeOut();
+
+                           &:hover {
+                              color: $secondary-color;
+                           }
+                        }
+
+                        h6 {
+                           text-transform: capitalize;
+                        }
 
                         .brand {
                            text-transform: uppercase;
@@ -51,7 +71,7 @@
       }
    }
 
-   .all-my-ordes-list.section {
+   .my-ordes-list.section {
       padding-top: 0;
    }
 }

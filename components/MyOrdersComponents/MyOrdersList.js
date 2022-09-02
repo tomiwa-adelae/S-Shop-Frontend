@@ -21,7 +21,7 @@ const MyOrdersList = () => {
    return (
       <>
          <div className="container">{msg && <ErrorMessageBox msg={msg} />}</div>
-         <div className="my-ordes-list section">
+         <div className="my-orders-list section">
             <div className="container">
                <div className="wrapper">
                   {loading && <PrimarySpinner />}

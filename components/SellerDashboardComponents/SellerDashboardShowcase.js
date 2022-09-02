@@ -3,24 +3,26 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-const AdminDashboardShowcase = () => {
+const SellerDashboardShowcase = () => {
    const router = useRouter();
-
-   const [brandLogo, setBrandLogo] = useState(null);
 
    const sellerState = useSelector((state) => state.loginSeller);
    const { seller } = sellerState;
 
-   useEffect(() => {
-      setBrandLogo(seller?.brandLogo || seller?.picture);
+   const [brandLogo, setBrandLogo] = useState('');
 
+   useEffect(() => {
+      setBrandLogo(
+         seller?.brandLogo ||
+            'https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg'
+      );
       if (!seller) {
          router.push('/loginseller');
       }
    }, [router, seller]);
 
    return (
-      <div className="admin-dashboard-showcase section">
+      <div className="seller-dashboard-showcase section">
          <div className="container">
             <div className="wrapper">
                <div className="box details">
@@ -30,8 +32,8 @@ const AdminDashboardShowcase = () => {
                            <span>S-Shop</span>
                         </Link>{' '}
                         &gt;{' '}
-                        <Link href={`/admindashboard`}>
-                           <span>Admin</span>
+                        <Link href={`/sellerdashboard`}>
+                           <span>Seller</span>
                         </Link>
                      </h6>
                   </div>
@@ -47,7 +49,7 @@ const AdminDashboardShowcase = () => {
                   <img
                      suppressHydrationWarning={true}
                      src={brandLogo}
-                     alt="S-Shop"
+                     alt={seller?.brandName}
                   />
                   <h5 suppressHydrationWarning={true} className="my-0">
                      {seller?.brandName}
@@ -59,4 +61,4 @@ const AdminDashboardShowcase = () => {
    );
 };
 
-export default AdminDashboardShowcase;
+export default SellerDashboardShowcase;

@@ -13,23 +13,30 @@ const HomePopularProducts = ({ mostRatedProducts }) => {
                   </Link>
                )}
             </div>
+
             <div className="products-boxes">
                {mostRatedProducts.slice(0, 10)?.map((product) => (
-                  <div key={product?._id} className="box">
-                     <div className="img">
-                        <img src={product?.image} alt="" />
+                  <Link
+                     key={product._id}
+                     href="/product/[id]"
+                     as={`/product/${product._id}`}
+                  >
+                     <div className="box">
+                        <div className="img">
+                           <img src={product?.image} alt="" />
+                        </div>
+                        <div className="details p-1">
+                           <h5 className="py-0">
+                              {' '}
+                              {product?.name.length >= 15
+                                 ? `${product?.name.substring(0, 16)}...`
+                                 : product?.name}
+                           </h5>
+                           <Rating rating={product?.rating} />
+                           <h5 className="py-0">#{product?.price}</h5>
+                        </div>
                      </div>
-                     <div className="details p-1">
-                        <h5 className="py-0">
-                           {' '}
-                           {product?.name.length >= 15
-                              ? `${product?.name.substring(0, 16)}...`
-                              : product?.name}
-                        </h5>
-                        <Rating rating={product?.rating} />
-                        <h5 className="py-0">#{product?.price}</h5>
-                     </div>
-                  </div>
+                  </Link>
                ))}
             </div>
          </div>

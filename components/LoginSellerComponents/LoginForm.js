@@ -28,7 +28,7 @@ const LoginForm = () => {
       dispatch(logout());
 
       if (seller) {
-         router.push('/admindashboard');
+         router.push('/sellerdashboard');
       }
    }, [dispatch, seller]);
 

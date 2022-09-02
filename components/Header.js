@@ -23,12 +23,10 @@ const Header = () => {
          <div className="wrapper">
             <div className="logo">
                <Link href="/">
-                  <>
-                     <h3>
-                        S-<span className="text-secondary">S</span>H
-                        <span className="text-grey">O</span>P
-                     </h3>{' '}
-                  </>
+                  <h3>
+                     S-<span className="text-secondary">S</span>H
+                     <span className="text-grey">O</span>P
+                  </h3>
                </Link>
             </div>
             <nav className="nav">
@@ -48,17 +46,14 @@ const Header = () => {
                         </span>
                      </Link>
                   ) : adminDetails ? (
-                     <Link href="/admindashboard">
+                     <Link href="/sellerdashboard">
                         <span>
-                           {seller?.brandLogo ? (
-                              <div className="img">
-                                 <img src={seller?.brandLogo} alt="" />
-                              </div>
-                           ) : (
-                              <div className="img">
-                                 <img src={seller?.picture} alt="" />
-                              </div>
-                           )}
+                           <div className="img">
+                              <img
+                                 src={seller?.brandLogo}
+                                 alt={seller?.brandName}
+                              />
+                           </div>
                            Hi, {seller?.firstName}
                         </span>
                      </Link>

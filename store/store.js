@@ -34,7 +34,15 @@ import {
 import {
    loginSellerReducer,
    registerSellerReducer,
+   updateSellerUserProfileReducer,
 } from './reducers/userSellerReducers';
+import {
+   getSellerProductReducer,
+   getSellerProductsReducer,
+   sellerCreateProductsReducer,
+   sellerDeleteProductReducer,
+   sellerUpdateProductsReducer,
+} from './reducers/sellerProductReducers';
 
 // All reduers
 const reducer = combineReducers({
@@ -64,6 +72,12 @@ const reducer = combineReducers({
    // Seller reducers
    registerSeller: registerSellerReducer,
    loginSeller: loginSellerReducer,
+   updateSellerUserProfile: updateSellerUserProfileReducer,
+   getSellerProducts: getSellerProductsReducer,
+   getSellerProduct: getSellerProductReducer,
+   sellerCreateProduct: sellerCreateProductsReducer,
+   sellerDeleteProduct: sellerDeleteProductReducer,
+   sellerUpdateProduct: sellerUpdateProductsReducer,
 });
 
 const schoolShippingData =

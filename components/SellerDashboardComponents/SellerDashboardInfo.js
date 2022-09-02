@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { logoutAdmin } from '../../store/actions/userSellerActions';
 
-const AdminDashboardInfo = () => {
+const SellerDashboardInfo = () => {
    const dispatch = useDispatch();
 
    const logoutHandler = () => {
@@ -11,22 +11,22 @@ const AdminDashboardInfo = () => {
    };
 
    return (
-      <div className="admin-dashboard-info section">
+      <div className="seller-dashboard-info section">
          <div className="container">
             <div className="wrapper">
-               <Link href="/adminorders">
+               <Link href="/sellerorders">
                   <div className="box p-1">
                      <h4>All orders</h4>
                      <small>Check out all your orders</small>
                   </div>
                </Link>
-               <Link href="/adminproducts">
+               <Link href="/sellerproducts">
                   <div className="box p-1">
                      <h4>All Products</h4>
                      <small>Check out all your products</small>
                   </div>
                </Link>
-               <Link href="/adminpersonaldetails">
+               <Link href="/sellerpersonaldetails">
                   <div className="box p-1">
                      <h4>Personal Information</h4>
                      <small>
@@ -34,14 +34,14 @@ const AdminDashboardInfo = () => {
                      </small>
                   </div>
                </Link>
-               <Link href="/changelogin">
+               <Link href="/changesellerlogin">
                   <div className="box p-1">
                      <h4>Login Details</h4>
                      <small>Change your password </small>
                   </div>
                </Link>
                <div onClick={logoutHandler} className="box logout p-1">
-                  <h4>Logout as admin</h4>
+                  <h4>Logout as seller</h4>
                   <small className="p-0"></small>
                </div>
             </div>
@@ -50,4 +50,4 @@ const AdminDashboardInfo = () => {
    );
 };
 
-export default AdminDashboardInfo;
+export default SellerDashboardInfo;

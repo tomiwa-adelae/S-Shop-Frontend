@@ -21,10 +21,17 @@
 @import 'allproductspage';
 @import 'popularproductspage';
 @import 'searchpage';
+
+// Sellers style
 @import 'sellingdashboardpage';
 @import 'registersellerpage';
 @import 'loginsellerpage';
-@import 'admindashboardpage';
+@import 'sellerdashboardpage';
+@import 'sellerpersonaldetails';
+@import 'sellerproductspage';
+@import 'sellercreateproductpage';
+@import 'sellerproductpage';
+@import 'sellereditproductpage';
 
 * {
    margin: 0;
