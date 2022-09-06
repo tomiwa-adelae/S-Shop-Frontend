@@ -96,7 +96,7 @@ export const createOrder = () => async (dispatch, getState) => {
    }
 };
 
-// Get my order
+// Get my orders
 export const getMyOrders = () => async (dispatch, getState) => {
    try {
       dispatch({ type: CLEAR_ERRORS });

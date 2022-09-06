@@ -18,6 +18,15 @@
             .btn {
                width: 100%;
             }
+
+            .btn {
+               width: inherit;
+               display: flex;
+               align-items: center;
+            }
+            h5 {
+               text-transform: capitalize;
+            }
          }
 
          .img {
@@ -40,6 +49,7 @@
 
             h5 {
                color: $secondary-color;
+               text-transform: capitalize;
             }
          }
       }

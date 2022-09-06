@@ -1,0 +1,28 @@
+.change-seller-login-page {
+   .change-seller-login-form {
+      .wrapper {
+         form {
+            div {
+               input {
+                  border: 1px solid $primary-color;
+                  @include easeOut();
+
+                  &:focus {
+                     border: 1px solid $secondary-color;
+                  }
+               }
+            }
+
+            p {
+               span {
+                  cursor: pointer;
+               }
+            }
+         }
+      }
+   }
+
+   .back-btn.container {
+      margin: 1rem auto;
+   }
+}

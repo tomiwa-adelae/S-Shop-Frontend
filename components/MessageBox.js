@@ -2,7 +2,7 @@ import React from 'react';
 
 const SuccessMessageBox = ({ msg }) => {
    return (
-      <div className="success-msg p-1 my-1">
+      <div className="success-msg p-1 my-0">
          <h6>{msg}</h6>
       </div>
    );
@@ -10,7 +10,7 @@ const SuccessMessageBox = ({ msg }) => {
 
 const ErrorMessageBox = ({ msg }) => {
    return (
-      <div className="danger-msg p-1 my-1">
+      <div className="danger-msg p-1 my-0">
          <h6>{msg}</h6>
       </div>
    );

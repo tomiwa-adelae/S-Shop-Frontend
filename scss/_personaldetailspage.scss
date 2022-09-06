@@ -13,6 +13,16 @@
                }
             }
 
+            .back-btn {
+               button {
+                  width: initial;
+               }
+            }
+
+            .back-btn.container {
+               width: 100%;
+            }
+
             p {
                span {
                   cursor: pointer;

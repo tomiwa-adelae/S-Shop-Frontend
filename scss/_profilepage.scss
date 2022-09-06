@@ -18,6 +18,16 @@
             .btn {
                width: 100%;
             }
+
+            .back-btn {
+               button {
+                  width: initial;
+               }
+            }
+
+            .back-btn.container {
+               width: 100%;
+            }
          }
 
          .img {
@@ -60,6 +70,7 @@
 
          .logout {
             background-color: $danger-color;
+            text-align: center;
          }
       }
    }

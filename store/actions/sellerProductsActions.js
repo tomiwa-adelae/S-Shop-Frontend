@@ -2,12 +2,18 @@ import axios from 'axios';
 import { server } from '../../config/server';
 import { CLEAR_ERRORS } from '../constants/errorConstants';
 import {
+   GET_ADMIN_PRODUCTS_FAIL,
+   GET_ADMIN_PRODUCTS_REQUEST,
+   GET_ADMIN_PRODUCTS_SUCCESS,
    GET_SELLER_PRODUCTS_FAIL,
    GET_SELLER_PRODUCTS_REQUEST,
    GET_SELLER_PRODUCTS_SUCCESS,
    GET_SELLER_PRODUCT_FAIL,
    GET_SELLER_PRODUCT_REQUEST,
    GET_SELLER_PRODUCT_SUCCESS,
+   GET_ADMIN_PRODUCT_FAIL,
+   GET_ADMIN_PRODUCT_REQUEST,
+   GET_ADMIN_PRODUCT_SUCCESS,
    SELLER_CREATE_PRODUCT_FAIL,
    SELLER_CREATE_PRODUCT_REQUEST,
    SELLER_CREATE_PRODUCT_SUCCESS,
@@ -41,6 +47,25 @@ export const getSellerProducts = () => async (dispatch, getState) => {
    }
 };
 
+// Get the products of a admin
+export const getAdminProducts = () => async (dispatch, getState) => {
+   try {
+      dispatch({ type: SELLER_DELETE_PRODUCT_RESET });
+      dispatch({ type: CLEAR_ERRORS });
+      dispatch({ type: GET_ADMIN_PRODUCTS_REQUEST });
+
+      const { data } = await axios.get(
+         `${server}/api/seller/products/admin/products`,
+         tokenSellerConfig(getState)
+      );
+
+      dispatch({ type: GET_ADMIN_PRODUCTS_SUCCESS, payload: data });
+   } catch (err) {
+      dispatch(returnErrors(err.response.data.msg));
+      dispatch({ type: GET_ADMIN_PRODUCTS_FAIL });
+   }
+};
+
 // Get a single product of a seller
 export const getSellerProduct = (id) => async (dispatch, getState) => {
    try {
@@ -56,6 +81,24 @@ export const getSellerProduct = (id) => async (dispatch, getState) => {
    } catch (err) {
       dispatch(returnErrors(err.response.data.msg));
       dispatch({ type: GET_SELLER_PRODUCT_FAIL });
+   }
+};
+
+// Get a single product of a admin
+export const getAdminProduct = (id) => async (dispatch, getState) => {
+   try {
+      dispatch({ type: CLEAR_ERRORS });
+      dispatch({ type: GET_ADMIN_PRODUCT_REQUEST });
+
+      const { data } = await axios.get(
+         `${server}/api/seller/products/${id}/admin/product`,
+         tokenSellerConfig(getState)
+      );
+
+      dispatch({ type: GET_ADMIN_PRODUCT_SUCCESS, payload: data });
+   } catch (err) {
+      dispatch(returnErrors(err.response.data.msg));
+      dispatch({ type: GET_ADMIN_PRODUCT_FAIL });
    }
 };
 

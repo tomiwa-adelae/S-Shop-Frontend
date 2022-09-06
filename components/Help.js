@@ -10,4 +10,16 @@ const SomethingWrong = () => {
    );
 };
 
-export { SomethingWrong };
+const HelpOrdering = () => {
+   return (
+      <div className="container">
+         <div className="something-wrong section-small">
+            <p className="p-1">
+               Need help placing an order? Call 0802-783-6001
+            </p>
+         </div>
+      </div>
+   );
+};
+
+export { SomethingWrong, HelpOrdering };

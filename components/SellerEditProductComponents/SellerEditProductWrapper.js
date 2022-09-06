@@ -3,9 +3,11 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSellerProduct } from '../../store/actions/sellerProductsActions';
+import BackBtn from '../BackBtn';
 import { ErrorMessageBox } from '../MessageBox';
 import { PrimarySpinner } from '../Spinner';
 import SellerEditProductForm from './SellerEditProductForm';
+import SellerEditProductIntro from './SellerEditProductIntro';
 
 const SellerEditProductWrapper = () => {
    const router = useRouter();
@@ -32,9 +34,18 @@ const SellerEditProductWrapper = () => {
       <div className="seller-product-wrapper">
          {loading ? (
             <PrimarySpinner />
+         ) : msg ? (
+            <>
+               <BackBtn to="/sellerproducts" />
+               <div className="container">
+                  <ErrorMessageBox msg={msg} />
+               </div>
+            </>
          ) : (
             product && (
                <>
+                  <BackBtn to={`sellerproduct/${product?._id}`} />
+                  <SellerEditProductIntro />
                   <SellerEditProductForm productDetails={product} />
                </>
             )

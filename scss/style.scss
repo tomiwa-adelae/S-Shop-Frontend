@@ -32,6 +32,16 @@
 @import 'sellercreateproductpage';
 @import 'sellerproductpage';
 @import 'sellereditproductpage';
+@import 'changesellerloginpage';
+
+// Admin styles
+@import 'adminorderspage';
+@import 'adminorderdetailspage';
+@import 'adminuserspage';
+@import 'adminsellerspage';
+@import 'adminsellerdetailspage';
+@import 'adminproductspage';
+@import 'adminproductpage';
 
 * {
    margin: 0;

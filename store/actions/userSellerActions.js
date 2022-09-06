@@ -2,7 +2,19 @@ import axios from 'axios';
 import { server } from '../../config/server';
 import { CLEAR_ERRORS } from '../constants/errorConstants';
 import {
+   ADMIN_GET_SELLERS_FAIL,
+   ADMIN_GET_SELLERS_REQUEST,
+   ADMIN_GET_SELLERS_SUCCESS,
+   ADMIN_GET_USERS_FAIL,
+   ADMIN_GET_USERS_REQUEST,
+   ADMIN_GET_USERS_SUCCESS,
    ADMIN_LOGOUT,
+   ADMIN_SELLER_DETAILS_FAIL,
+   ADMIN_SELLER_DETAILS_REQUEST,
+   ADMIN_SELLER_DETAILS_SUCCESS,
+   CHANGE_SELLER_LOGIN_FAIL,
+   CHANGE_SELLER_LOGIN_REQUEST,
+   CHANGE_SELLER_LOGIN_SUCCESS,
    LOGIN_SELLER_USER_FAIL,
    LOGIN_SELLER_USER_REQUEST,
    LOGIN_SELLER_USER_SUCCESS,
@@ -96,6 +108,83 @@ export const updateSellerProfile = (details) => async (dispatch, getState) => {
       console.log(err);
       dispatch(returnErrors(err.response.data.msg));
       dispatch({ type: UPDATE_SELLER_USER_FAIL });
+   }
+};
+
+// Change user login
+export const updateSellerLogin = (passwords) => async (dispatch, getState) => {
+   try {
+      dispatch({ type: CLEAR_ERRORS });
+      dispatch({ type: CHANGE_SELLER_LOGIN_REQUEST });
+
+      const { data } = await axios.put(
+         `${server}/api/users/sellers/profile/login`,
+         passwords,
+         tokenSellerConfig(getState)
+      );
+
+      dispatch({ type: CHANGE_SELLER_LOGIN_SUCCESS, payload: data });
+      dispatch({ type: LOGIN_SELLER_USER_SUCCESS, payload: data });
+
+      localStorage.setItem('seller', JSON.stringify(data.seller));
+      localStorage.setItem('sellerToken', JSON.stringify(data.token));
+   } catch (err) {
+      dispatch(returnErrors(err.response.data.msg));
+      dispatch({ type: CHANGE_SELLER_LOGIN_FAIL });
+   }
+};
+
+// Get all users as an admin
+export const getAllUsers = () => async (dispatch, getState) => {
+   try {
+      dispatch({ type: CLEAR_ERRORS });
+      dispatch({ type: ADMIN_GET_USERS_REQUEST });
+
+      const { data } = await axios.get(
+         `${server}/api/users/sellers`,
+         tokenSellerConfig(getState)
+      );
+
+      dispatch({ type: ADMIN_GET_USERS_SUCCESS, payload: data });
+   } catch (err) {
+      dispatch(returnErrors(err.response.data.msg));
+      dispatch({ type: ADMIN_GET_USERS_FAIL });
+   }
+};
+
+// Get all sellers as an admin
+export const getAllSellers = () => async (dispatch, getState) => {
+   try {
+      dispatch({ type: CLEAR_ERRORS });
+      dispatch({ type: ADMIN_GET_SELLERS_REQUEST });
+
+      const { data } = await axios.get(
+         `${server}/api/users/sellers/all/sellers`,
+         tokenSellerConfig(getState)
+      );
+
+      dispatch({ type: ADMIN_GET_SELLERS_SUCCESS, payload: data });
+   } catch (err) {
+      dispatch(returnErrors(err.response.data.msg));
+      dispatch({ type: ADMIN_GET_SELLERS_FAIL });
+   }
+};
+
+// Get seller details
+export const getAdminSellerDetails = (id) => async (dispatch, getState) => {
+   try {
+      dispatch({ type: CLEAR_ERRORS });
+      dispatch({ type: ADMIN_SELLER_DETAILS_REQUEST });
+
+      const { data } = await axios.get(
+         `${server}/api/users/sellers/${id}`,
+         tokenSellerConfig(getState)
+      );
+
+      dispatch({ type: ADMIN_SELLER_DETAILS_SUCCESS, payload: data });
+   } catch (err) {
+      dispatch(returnErrors(err.response.data.msg));
+      dispatch({ type: ADMIN_SELLER_DETAILS_FAIL });
    }
 };
 

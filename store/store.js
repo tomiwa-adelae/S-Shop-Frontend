@@ -32,17 +32,29 @@ import {
    orderDetailsReducer,
 } from './reducers/orderReducers';
 import {
+   adminGetSellersReducer,
+   adminGetUsersReducer,
+   adminSellerDetailsReducer,
+   changeSellerLoginReducer,
    loginSellerReducer,
    registerSellerReducer,
    updateSellerUserProfileReducer,
 } from './reducers/userSellerReducers';
 import {
+   getAdminProductReducer,
+   getAdminProductsReducer,
    getSellerProductReducer,
    getSellerProductsReducer,
    sellerCreateProductsReducer,
    sellerDeleteProductReducer,
    sellerUpdateProductsReducer,
 } from './reducers/sellerProductReducers';
+import {
+   adminDeliverOrderReducer,
+   adminOrderDetailsReducer,
+   adminPayOrderReducer,
+   getAdminOrdersListReducer,
+} from './reducers/sellerOrderReducers';
 
 // All reduers
 const reducer = combineReducers({
@@ -78,6 +90,18 @@ const reducer = combineReducers({
    sellerCreateProduct: sellerCreateProductsReducer,
    sellerDeleteProduct: sellerDeleteProductReducer,
    sellerUpdateProduct: sellerUpdateProductsReducer,
+   changeSellerLogin: changeSellerLoginReducer,
+
+   // Admin reducers
+   getAdminOrders: getAdminOrdersListReducer,
+   adminOrderDetails: adminOrderDetailsReducer,
+   adminPayOrder: adminPayOrderReducer,
+   adminDeliverOrder: adminDeliverOrderReducer,
+   adminGetUsers: adminGetUsersReducer,
+   adminGetSellers: adminGetSellersReducer,
+   adminSellerDetails: adminSellerDetailsReducer,
+   getAdminProducts: getAdminProductsReducer,
+   getAdminProduct: getAdminProductReducer,
 });
 
 const schoolShippingData =

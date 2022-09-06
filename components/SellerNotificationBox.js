@@ -3,8 +3,8 @@ import React from 'react';
 const SellerNotificationBox = () => {
    return (
       <div className="container">
-         <div className="admin-notification-box section-small">
-            <p className="p-1">You are currently logged in as an seller</p>
+         <div className="seller-notification-box section-small">
+            <h6 className="p-1">You are currently logged in as an seller</h6>
          </div>
       </div>
    );

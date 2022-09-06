@@ -116,7 +116,7 @@ const ConfirmOrderDetails = () => {
                   {cartItems?.map((item) => (
                      <div key={item.id} className="order-item item my-0 p-0">
                         <div className="img">
-                           <img src={item.image} alt={item.name} />
+                           <img src={item.productImage} alt={item.name} />
                         </div>
                         <div className="name mx-0">
                            <h6>

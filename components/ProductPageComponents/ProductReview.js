@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ErrorMessageBox, SuccessMessageBox } from '../MessageBox';
 import { SmallWhiteSpinner } from '../Spinner';
 import dayjs from 'dayjs';
+import Link from 'next/link';
 
 const ProductReview = ({ product }) => {
    const router = useRouter();
@@ -78,50 +79,63 @@ const ProductReview = ({ product }) => {
                      </div>
                   ))}
                </div>
-               <div className="comment-section">
-                  <div className="head py-0">
-                     <h4>Write a customer review</h4>
+               {user ? (
+                  <div className="comment-section">
+                     <div className="head py-0">
+                        <h4>Write a customer review</h4>
+                     </div>
+                     <form onSubmit={handleSubmit}>
+                        <div>
+                           <select
+                              value={rating}
+                              required
+                              onChange={(e) => setRating(e.target.value)}
+                              name="rating"
+                              id="rating"
+                           >
+                              <option value="">Select...</option>
+                              <option value="1">1 - Poor</option>
+                              <option value="2">2 - Fair</option>
+                              <option value="3">3 - Good</option>
+                              <option value="4">4 - Very Good</option>
+                              <option value="5">5 - Excellent</option>
+                           </select>
+                        </div>
+                        <div>
+                           <textarea
+                              name="comment"
+                              required
+                              placeholder="Write comment..."
+                              id="comment"
+                              cols="30"
+                              rows="10"
+                              value={comment}
+                              onChange={(e) => setComment(e.target.value)}
+                           ></textarea>
+                        </div>
+                        {msg && <ErrorMessageBox msg={msg} />}
+                        {success && (
+                           <SuccessMessageBox msg="Product reviewed successfully!" />
+                        )}
+                        <div>
+                           <button className="btn btn-primary">
+                              {loading ? <SmallWhiteSpinner /> : 'Submit'}
+                           </button>
+                        </div>
+                     </form>
                   </div>
-                  <form onSubmit={handleSubmit}>
-                     <div>
-                        <select
-                           value={rating}
-                           required
-                           onChange={(e) => setRating(e.target.value)}
-                           name="rating"
-                           id="rating"
+               ) : (
+                  <div className="p-1 my-0 primary-msg">
+                     <h6>
+                        Login to leave a customer review.{' '}
+                        <Link
+                           href={`/login?redirect=product/${router.query.id}`}
                         >
-                           <option value="">Select...</option>
-                           <option value="1">1 - Poor</option>
-                           <option value="2">2 - Fair</option>
-                           <option value="3">3 - Good</option>
-                           <option value="4">4 - Very Good</option>
-                           <option value="5">5 - Excellent</option>
-                        </select>
-                     </div>
-                     <div>
-                        <textarea
-                           name="comment"
-                           required
-                           placeholder="Write comment..."
-                           id="comment"
-                           cols="30"
-                           rows="10"
-                           value={comment}
-                           onChange={(e) => setComment(e.target.value)}
-                        ></textarea>
-                     </div>
-                     {msg && <ErrorMessageBox msg={msg} />}
-                     {success && (
-                        <SuccessMessageBox msg="Product reviewed successfully!" />
-                     )}
-                     <div>
-                        <button className="btn btn-primary">
-                           {loading ? <SmallWhiteSpinner /> : 'Submit'}
-                        </button>
-                     </div>
-                  </form>
-               </div>
+                           Login now
+                        </Link>
+                     </h6>
+                  </div>
+               )}
             </div>
          </div>
       </div>

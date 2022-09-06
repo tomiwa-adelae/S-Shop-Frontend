@@ -25,15 +25,18 @@ const LoginForm = () => {
    const { msg } = errorState;
 
    useEffect(() => {
+      const redirect = router.query.redirect
+         ? router.query.redirect
+         : '/sellerdashboard';
       dispatch(logout());
 
       if (seller) {
-         router.push('/sellerdashboard');
+         router.push(redirect);
       }
    }, [dispatch, seller]);
 
    useEffect(() => {
-      dispatch({ type: CLEAR_ERRORS });
+      // dispatch({ type: CLEAR_ERRORS });
    }, [dispatch]);
 
    const handleSubmit = (e) => {

@@ -65,9 +65,9 @@ const SellerEditProductForm = ({ productDetails }) => {
          name,
          price,
          description,
-         brand,
+         brand: brand || 'S-Shop',
          productImage,
-         category,
+         category: category || 'all',
       };
 
       dispatch(updateProduct(details, productDetails?._id));
@@ -78,7 +78,7 @@ const SellerEditProductForm = ({ productDetails }) => {
    });
 
    return (
-      <div className="seller-edit-product-form section">
+      <div className="seller-edit-product-form">
          <div className="container">
             <div className="head py-1">
                <h4>S-Shop product: {productDetails?._id} </h4>

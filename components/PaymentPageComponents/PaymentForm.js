@@ -36,7 +36,7 @@ const PaymentForm = () => {
    return (
       <div className="payment-form">
          <form onSubmit={handleSubmit}>
-            <div className="checkbox my-0 p-0">
+            <div className="checkbox">
                <input
                   type="radio"
                   id="Cash on Delivery"
@@ -49,7 +49,7 @@ const PaymentForm = () => {
                />
                <label htmlFor="Cash on Delivery">Cash on Delivery</label>
             </div>
-            <div className="checkbox my-0 p-0">
+            <div className="checkbox">
                <input
                   type="radio"
                   id="Transfer on Delivery"
@@ -63,7 +63,7 @@ const PaymentForm = () => {
                   Transfer on Delivery
                </label>
             </div>
-            <div className="checkbox my-0 p-0">
+            <div className="checkbox">
                <input
                   type="radio"
                   id="Pay with Cards"

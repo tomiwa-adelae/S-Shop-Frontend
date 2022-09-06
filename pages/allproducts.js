@@ -7,8 +7,8 @@ import { server } from '../config/server';
 const allproducts = ({ products }) => {
    return (
       <div className="all-products-page">
-         <AllProductsCarousel products={products} />
-         <AllProductsIntro />
+         {products.length !== 0 && <AllProductsCarousel products={products} />}
+         {products.length !== 0 && <AllProductsIntro />}
          <AllProductsItems products={products} />
       </div>
    );

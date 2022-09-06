@@ -33,20 +33,13 @@ const SellerProductShowcase = ({ product }) => {
                            <span>S-Shop</span>
                         </Link>{' '}
                         &gt;{' '}
-                        <Link href={`/category/${product?.category}`}>
-                           <span>{product?.category}</span>
+                        <Link href={`/sellerdashboard`}>
+                           <span>Dashboard</span>
                         </Link>{' '}
                         &gt;{' '}
-                        <Link
-                           href="/brand/[name]"
-                           as={`/brand/${product?.brand}`}
-                        >
-                           <span>{product?.brand}</span>
-                        </Link>{' '}
-                        &gt;{' '}
-                        <Link href={`/product/${product?._id}`}>
+                        <Link href={`/sellerproduct/${product?._id}`}>
                            <span>{product?.name}</span>
-                        </Link>
+                        </Link>{' '}
                      </h6>
                   </div>
                   <h4>{product?.name}</h4>

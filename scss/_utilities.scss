@@ -498,6 +498,13 @@ select {
    text-transform: uppercase;
 }
 
+.primary-msg {
+   background-color: $primary-color;
+   color: $white-color;
+   width: 100%;
+   text-transform: uppercase;
+}
+
 .danger-msg {
    background-color: $danger-color;
    color: $white-color;
@@ -692,12 +699,13 @@ select {
    }
 }
 
-.admin-notification-box {
-   p {
+.seller-notification-box {
+   h6 {
       background-color: $secondary-color;
       color: $white-color;
       text-align: center;
       font-weight: bold;
+      text-transform: uppercase;
    }
 }
 
@@ -777,4 +785,8 @@ select {
    span {
       display: inline-block;
    }
+}
+
+.back-btn {
+   margin: 0.5rem 0;
 }

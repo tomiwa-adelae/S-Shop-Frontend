@@ -9,7 +9,7 @@ const OrderDetailsItems = ({ orderDetails }) => {
                {orderDetails.orderItems.map((order) => (
                   <div key={order._id} className="order my-0">
                      <div className="img">
-                        <img src={order.image} alt={order.name} />
+                        <img src={order.productImage} alt={order.name} />
                      </div>
                      <div className="details">
                         <div className="col-one p-0">

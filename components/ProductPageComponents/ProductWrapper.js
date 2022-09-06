@@ -5,6 +5,8 @@ import {
    getProductsFromBrand,
    getSingleProduct,
 } from '../../store/actions/productActions';
+import BackBtn from '../BackBtn';
+import { ErrorMessageBox } from '../MessageBox';
 import { PrimarySpinner } from '../Spinner';
 import ProductDescription from './ProductDescription';
 import ProductMoreProductFromBrand from './ProductMoreProductFromBrand';
@@ -19,6 +21,9 @@ const ProductWrapper = () => {
    const productState = useSelector((state) => state.getProduct);
    const { loading, product } = productState;
 
+   const errorState = useSelector((state) => state.error);
+   const { msg } = errorState;
+
    useEffect(() => {
       if (router.query.id) {
          dispatch(getSingleProduct(router.query.id));
@@ -29,6 +34,13 @@ const ProductWrapper = () => {
       <div className="product-wrapper">
          {loading ? (
             <PrimarySpinner />
+         ) : msg === 'Product not found!' ? (
+            <>
+               <div className="container section-small">
+                  <ErrorMessageBox msg={msg} />
+                  <BackBtn to="" />
+               </div>
+            </>
          ) : (
             product && (
                <>

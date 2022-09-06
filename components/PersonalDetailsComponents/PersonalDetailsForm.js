@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateProfile } from '../../store/actions/userActions';
 import { CLEAR_ERRORS } from '../../store/constants/errorConstants';
+import BackBtn from '../BackBtn';
 import { ErrorMessageBox, SuccessMessageBox } from '../MessageBox';
 import { SmallWhiteSpinner } from '../Spinner';
 
@@ -60,6 +61,7 @@ const PersonalDetailsForm = () => {
                         </Link>{' '}
                      </h6>
                   </div>
+                  <BackBtn to="profile" />
                   <div className="img-container">
                      <div className="img">
                         <img

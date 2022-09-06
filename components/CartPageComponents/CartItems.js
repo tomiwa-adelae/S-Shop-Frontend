@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -27,6 +28,13 @@ const CartItems = ({ id, size, qty }) => {
 
    return (
       <>
+         {cartItems.length === 0 && (
+            <div className="container">
+               <h5 className="message my-0 p-1">
+                  Your cart is empty! <Link href="/">Go shopping</Link>
+               </h5>
+            </div>
+         )}
          {cartItems.length !== 0 && (
             <div className="cart-items section">
                <div className="container">

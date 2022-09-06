@@ -21,7 +21,7 @@ const Item = ({ item }) => {
    return (
       <div className="item my-0">
          <div className="img">
-            <img src={item.image} alt={item.name} />
+            <img src={item.productImage} alt={item.name} />
          </div>
          <div className="details p-0">
             <div className="col-one">

@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSellerProduct } from '../../store/actions/sellerProductsActions';
 import { SELLER_UPDATE_PRODUCT_RESET } from '../../store/constants/sellerProductConstants';
+import BackBtn from '../BackBtn';
 import { ErrorMessageBox } from '../MessageBox';
 import { PrimarySpinner } from '../Spinner';
 import SellerProductDescription from './SellerProductDescription';
@@ -26,7 +27,7 @@ const SellerProductWrapper = () => {
    useEffect(() => {
       dispatch({ type: SELLER_UPDATE_PRODUCT_RESET });
       if (!seller) {
-         router.push('/loginseller');
+         router.push(`/loginseller?redirect=sellerproduct/${router.query.id}`);
       }
 
       dispatch(getSellerProduct(router.query.id));
@@ -37,12 +38,16 @@ const SellerProductWrapper = () => {
          {loading ? (
             <PrimarySpinner />
          ) : msg ? (
-            <div className="container">
-               <ErrorMessageBox msg={msg} />
-            </div>
+            <>
+               <BackBtn to="sellerproducts" />
+               <div className="container">
+                  <ErrorMessageBox msg={msg} />
+               </div>
+            </>
          ) : (
             product && (
                <>
+                  <BackBtn to="sellerproducts" />
                   <SellerProductShowcase product={product} />
                   <SellerProductDescription product={product} />
                   <SellerProductReview product={product} />

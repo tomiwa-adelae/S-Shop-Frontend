@@ -21,7 +21,7 @@ const MyOrdersList = () => {
    return (
       <>
          <div className="container">{msg && <ErrorMessageBox msg={msg} />}</div>
-         <div className="my-orders-list section">
+         <div className="my-orders-list section-small">
             <div className="container">
                <div className="wrapper">
                   {loading && <PrimarySpinner />}
@@ -33,7 +33,7 @@ const MyOrdersList = () => {
                         <div key={order._id} className="box my-0">
                            <div className="img">
                               <img
-                                 src={order.orderItems[0].image}
+                                 src={order.orderItems[0].productImage}
                                  alt={order.orderItems[0].name}
                               />
                            </div>

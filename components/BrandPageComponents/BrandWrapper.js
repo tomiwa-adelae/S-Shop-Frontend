@@ -7,6 +7,7 @@ import { PrimarySpinner } from '../Spinner';
 import BrandCarousel from './BrandCarousel';
 import BrandIntro from './BrandIntro';
 import BrandProducts from './BrandProducts';
+import BackBtn from '../BackBtn';
 
 const BrandWrapper = () => {
    const router = useRouter();
@@ -25,7 +26,10 @@ const BrandWrapper = () => {
    }, [dispatch, router]);
    return (
       <div className="brand-wrapper">
-         <div className="container">{msg && <ErrorMessageBox msg={msg} />}</div>
+         <div className="container section-small">
+            {msg && <ErrorMessageBox msg={msg} />}
+            <BackBtn to="/" />
+         </div>
          {loading ? (
             <PrimarySpinner />
          ) : (

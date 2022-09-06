@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-
+import BackBtn from '../BackBtn';
 import { useDispatch, useSelector } from 'react-redux';
 import { UPDATE_USER_RESET } from '../../store/constants/userConstants';
 
@@ -35,6 +35,7 @@ const ProfileShowcase = () => {
                         </Link>{' '}
                      </h6>
                   </div>
+                  <BackBtn to="" />
                   <h3 suppressHydrationWarning={true}>
                      {user ? `${user.firstName} ${user.lastName}` : null}
                   </h3>

@@ -8,7 +8,8 @@
                   text-transform: uppercase;
                }
                div {
-                  input {
+                  input,
+                  section {
                      border: 1px solid $primary-color;
                      @include easeOut();
 
@@ -16,6 +17,10 @@
                         border: 1px solid $secondary-color;
                      }
                   }
+               }
+
+               select {
+                  border: 1px solid $primary-color;
                }
 
                p {
@@ -48,5 +53,9 @@
             }
          }
       }
+   }
+
+   .back-btn.container {
+      margin: 1rem auto;
    }
 }

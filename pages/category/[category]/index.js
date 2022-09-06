@@ -7,7 +7,8 @@ const category = ({ products }) => {
    return (
       <div className="category-page">
          <CategoryProductCarousel products={products} />
-         <CategoryIntro />
+         {products.length !== 0 && <CategoryIntro />}
+
          <CategoryProducts products={products} />
       </div>
    );

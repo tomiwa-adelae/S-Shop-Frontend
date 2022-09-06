@@ -6,6 +6,7 @@ import { updateLogin } from '../../store/actions/userActions';
 import { ErrorMessageBox, SuccessMessageBox } from '../MessageBox';
 import { SmallWhiteSpinner } from '../Spinner';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import BackBtn from '../BackBtn';
 
 const ChangeLoginForm = () => {
    const dispatch = useDispatch();
@@ -49,71 +50,74 @@ const ChangeLoginForm = () => {
    };
 
    return (
-      <div className="change-login-form section">
-         <div className="container">
-            <div className="wrapper">
-               <form onSubmit={handleSubmit}>
-                  <div className="links-tags">
-                     <h6 className="py-1">
-                        <Link href="/">
-                           <span>S-Shop</span>
-                        </Link>{' '}
-                        &gt;{' '}
-                        <Link href={`/profile`}>
-                           <span>Profile</span>
-                        </Link>{' '}
-                        &gt;{' '}
-                        <Link href={`/changelogin`}>
-                           <span>Login Details</span>
-                        </Link>{' '}
-                     </h6>
-                  </div>
-                  <div className="password">
-                     <input
-                        value={currentPassword}
-                        onChange={(e) => setCurrentPassword(e.target.value)}
-                        type={showPassword1 ? 'text' : 'password'}
-                        placeholder="Current password"
-                     />
-                     <span onClick={() => setShowPassword1(!showPassword1)}>
-                        {showPassword1 ? <FaEyeSlash /> : <FaEye />}
-                     </span>
-                  </div>
-                  <div className="password">
-                     <input
-                        value={newPassword}
-                        onChange={(e) => setNewPassword(e.target.value)}
-                        type={showPassword2 ? 'text' : 'password'}
-                        placeholder="New password"
-                     />
-                     <span onClick={() => setShowPassword2(!showPassword2)}>
-                        {showPassword2 ? <FaEyeSlash /> : <FaEye />}
-                     </span>
-                  </div>
-                  <div className="password">
-                     <input
-                        value={retypePassword}
-                        onChange={(e) => setRetypePassword(e.target.value)}
-                        type={showPassword3 ? 'text' : 'password'}
-                        placeholder="Re-type new password"
-                     />
-                     <span onClick={() => setShowPassword3(!showPassword3)}>
-                        {showPassword3 ? <FaEyeSlash /> : <FaEye />}
-                     </span>
-                  </div>
-                  {success && (
-                     <SuccessMessageBox msg="Login details updated!" />
-                  )}
-                  {msg && <ErrorMessageBox msg={msg} />}
-                  <div>
-                     <button className="btn btn-primary">
-                        {loading ? <SmallWhiteSpinner /> : 'Update Login'}
-                     </button>
-                  </div>
-               </form>
+      <>
+         <div className="change-login-form section">
+            <div className="container">
+               <div className="wrapper">
+                  <form onSubmit={handleSubmit}>
+                     <div className="links-tags">
+                        <h6 className="py-1">
+                           <Link href="/">
+                              <span>S-Shop</span>
+                           </Link>{' '}
+                           &gt;{' '}
+                           <Link href={`/profile`}>
+                              <span>Profile</span>
+                           </Link>{' '}
+                           &gt;{' '}
+                           <Link href={`/changelogin`}>
+                              <span>Login Details</span>
+                           </Link>{' '}
+                        </h6>
+                     </div>
+                     <BackBtn to="profile" />
+                     <div className="password">
+                        <input
+                           value={currentPassword}
+                           onChange={(e) => setCurrentPassword(e.target.value)}
+                           type={showPassword1 ? 'text' : 'password'}
+                           placeholder="Current password"
+                        />
+                        <span onClick={() => setShowPassword1(!showPassword1)}>
+                           {showPassword1 ? <FaEyeSlash /> : <FaEye />}
+                        </span>
+                     </div>
+                     <div className="password">
+                        <input
+                           value={newPassword}
+                           onChange={(e) => setNewPassword(e.target.value)}
+                           type={showPassword2 ? 'text' : 'password'}
+                           placeholder="New password"
+                        />
+                        <span onClick={() => setShowPassword2(!showPassword2)}>
+                           {showPassword2 ? <FaEyeSlash /> : <FaEye />}
+                        </span>
+                     </div>
+                     <div className="password">
+                        <input
+                           value={retypePassword}
+                           onChange={(e) => setRetypePassword(e.target.value)}
+                           type={showPassword3 ? 'text' : 'password'}
+                           placeholder="Re-type new password"
+                        />
+                        <span onClick={() => setShowPassword3(!showPassword3)}>
+                           {showPassword3 ? <FaEyeSlash /> : <FaEye />}
+                        </span>
+                     </div>
+                     {success && (
+                        <SuccessMessageBox msg="Login details updated!" />
+                     )}
+                     {msg && <ErrorMessageBox msg={msg} />}
+                     <div>
+                        <button className="btn btn-primary">
+                           {loading ? <SmallWhiteSpinner /> : 'Update Login'}
+                        </button>
+                     </div>
+                  </form>
+               </div>
             </div>
          </div>
-      </div>
+      </>
    );
 };
 

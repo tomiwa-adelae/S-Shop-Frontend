@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSellerProducts } from '../../store/actions/sellerProductsActions';
 import { SELLER_CREATE_PRODUCT_RESET } from '../../store/constants/sellerProductConstants';
+import BackBtn from '../BackBtn';
 import { ErrorMessageBox, SuccessMessageBox } from '../MessageBox';
 import { PrimarySpinner } from '../Spinner';
 
@@ -22,7 +23,7 @@ const SellerProductsList = () => {
 
    useEffect(() => {
       if (!seller) {
-         router.push('/loginseller');
+         router.push('/loginseller?redirect=sellerproducts');
       }
 
       dispatch({ type: SELLER_CREATE_PRODUCT_RESET });
@@ -33,6 +34,7 @@ const SellerProductsList = () => {
    return (
       <>
          <div className="container">{msg && <ErrorMessageBox msg={msg} />}</div>
+         <BackBtn to="sellerdashboard" />
          <div className="seller-products-list section-small">
             <div className="container">
                <div className="wrapper">

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import BackBtn from '../BackBtn';
 
 const MyOrdersIntro = () => {
    return (
@@ -21,6 +22,7 @@ const MyOrdersIntro = () => {
                      </Link>{' '}
                   </h6>
                </div>
+               <BackBtn to="profile" />
             </div>
          </div>
       </div>

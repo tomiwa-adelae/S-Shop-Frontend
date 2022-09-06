@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
+import BackBtn from '../BackBtn';
 import Rating from '../Rating';
 
 const AllProductsItems = ({ products }) => {
@@ -8,6 +9,7 @@ const AllProductsItems = ({ products }) => {
    return (
       <div className="all-products-items section">
          <div className="container">
+            <BackBtn to="" />
             <div className="head py-1">
                <h4>All Products</h4>
             </div>
@@ -20,7 +22,7 @@ const AllProductsItems = ({ products }) => {
                   >
                      <div className="box">
                         <div className="img">
-                           <img src={product.image} alt={product.name} />
+                           <img src={product.productImage} alt={product.name} />
                         </div>
                         <div className="details p-1">
                            <h5 className="py-0">

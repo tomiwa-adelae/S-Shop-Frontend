@@ -24,7 +24,7 @@ const OrderDetailsInfo = ({ order }) => {
                      </div>
                      <div className="box my-0 p-0">
                         <h6>Payment Details</h6>
-                        <small>Total Price : # {order?.totalPrice}</small>
+                        <small>Total Price : #{order?.totalPrice}</small>
                      </div>
                   </div>
                </div>

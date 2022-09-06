@@ -9,8 +9,11 @@ const SellingDashboardShowcase = () => {
                <div className="box">
                   <h3>Make money selling on S-Shop</h3>
                   <h5 className="py-1">Make money, money, make money</h5>
-                  <Link href="registerseller">
-                     <button className="btn btn-secondary">Sign up</button>
+                  <Link href="/loginseller">
+                     <button className="btn btn-primary">Login</button>
+                  </Link>
+                  <Link href="/registerseller">
+                     <button className="btn btn-secondary mx-1">Sign up</button>
                   </Link>
                </div>
                <div className="box img">

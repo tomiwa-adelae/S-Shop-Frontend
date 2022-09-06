@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Slider from 'react-slick';
+import { SuccessMessageBox } from '../MessageBox';
 
 function SampleNextArrow(props) {
    const { onClick } = props;
@@ -31,32 +32,37 @@ var settings = {
 
 const HomeProductCarousel = ({ mostRatedProducts }) => {
    return (
-      <div className="product-carousel">
-         <Slider {...settings}>
-            {mostRatedProducts.slice(0, 10)?.map((product) => (
-               <Link
-                  key={product._id}
-                  href="/product/[id]"
-                  as={`/product/${product._id}`}
-               >
-                  <div className="box">
-                     <div className="content">
-                        <div className="title">
-                           <h4>
-                              {product.name.length >= 30
-                                 ? `${product.name.substring(0, 31)}...`
-                                 : product.name}
-                           </h4>
-                        </div>
-                        <div className="img">
-                           <img src={product.image} alt={product.name} />
+      mostRatedProducts?.length !== 0 && (
+         <div className="product-carousel">
+            <Slider {...settings}>
+               {mostRatedProducts.slice(0, 10)?.map((product) => (
+                  <Link
+                     key={product._id}
+                     href="/product/[id]"
+                     as={`/product/${product._id}`}
+                  >
+                     <div className="box">
+                        <div className="content">
+                           <div className="title">
+                              <h4>
+                                 {product.name.length >= 30
+                                    ? `${product.name.substring(0, 31)}...`
+                                    : product.name}
+                              </h4>
+                           </div>
+                           <div className="img">
+                              <img
+                                 src={product.productImage}
+                                 alt={product.name}
+                              />
+                           </div>
                         </div>
                      </div>
-                  </div>
-               </Link>
-            ))}
-         </Slider>
-      </div>
+                  </Link>
+               ))}
+            </Slider>
+         </div>
+      )
    );
 };
 

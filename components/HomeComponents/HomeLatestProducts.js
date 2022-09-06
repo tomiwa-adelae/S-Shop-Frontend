@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Rating from '../Rating';
+import { SuccessMessageBox } from '../MessageBox';
 
 const HomeLatestProducts = ({ latestProducts }) => {
    return (
@@ -13,6 +14,11 @@ const HomeLatestProducts = ({ latestProducts }) => {
                   </Link>
                )}
             </div>
+
+            {latestProducts.length === 0 && (
+               <SuccessMessageBox msg="There are no products" />
+            )}
+
             <div className="products-boxes">
                {latestProducts.slice(0, 10)?.map((product) => (
                   <Link
@@ -22,7 +28,7 @@ const HomeLatestProducts = ({ latestProducts }) => {
                   >
                      <div className="box">
                         <div className="img">
-                           <img src={product.image} alt={product.name} />
+                           <img src={product.productImage} alt={product.name} />
                         </div>
                         <div className="details p-1">
                            <h5 className="py-0">

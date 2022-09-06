@@ -90,7 +90,12 @@ const RegisterForm = () => {
                <h4>Get started selling on S-Shop</h4>
             </div>
             <div className="intro">
-               <p className="lead">Create a S-Shop seller's account</p>
+               <p className="lead">
+                  Create a S-Shop seller's account.{' '}
+                  <Link href="/loginseller">
+                     Login to your seller's account
+                  </Link>
+               </p>
             </div>
             <form onSubmit={handleSubmit}>
                <section className="box section">
@@ -124,7 +129,6 @@ const RegisterForm = () => {
                         value={phoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         type="number"
-                        max={11}
                         placeholder="Phone number *"
                      />
                   </div>
@@ -180,12 +184,21 @@ const RegisterForm = () => {
                      />
                   </div>
                   <div>
-                     <input
+                     <select
                         value={bankName}
                         onChange={(e) => setBankName(e.target.value)}
-                        type="text"
-                        placeholder="Bank name *"
-                     />
+                        name="bankName"
+                        id="bankName"
+                     >
+                        <option value="">Select bank</option>
+                        <option value="Access bank">Access Bank</option>
+                        <option value="United bank of africa">
+                           United bank of africa
+                        </option>
+                        <option value="First bank">first bank</option>
+                        <option value="Zenith bank">Zenith bank</option>
+                        <option value="Polaris bank">Polaris bank</option>
+                     </select>
                   </div>
                   <div>
                      <input

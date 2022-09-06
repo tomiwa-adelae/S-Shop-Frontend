@@ -17,6 +17,12 @@ import {
    SELLER_UPDATE_PRODUCT_REQUEST,
    SELLER_UPDATE_PRODUCT_RESET,
    SELLER_UPDATE_PRODUCT_SUCCESS,
+   GET_ADMIN_PRODUCTS_REQUEST,
+   GET_ADMIN_PRODUCTS_SUCCESS,
+   GET_ADMIN_PRODUCTS_FAIL,
+   GET_ADMIN_PRODUCT_REQUEST,
+   GET_ADMIN_PRODUCT_SUCCESS,
+   GET_ADMIN_PRODUCT_FAIL,
 } from '../constants/sellerProductConstants';
 
 // Get seller products reducer
@@ -27,6 +33,20 @@ export const getSellerProductsReducer = (state = { products: [] }, action) => {
       case GET_SELLER_PRODUCTS_SUCCESS:
          return { loading: false, products: action.payload };
       case GET_SELLER_PRODUCTS_FAIL:
+         return { loading: false };
+      default:
+         return state;
+   }
+};
+
+// Get seller products reducer
+export const getAdminProductsReducer = (state = { products: [] }, action) => {
+   switch (action.type) {
+      case GET_ADMIN_PRODUCTS_REQUEST:
+         return { loading: true };
+      case GET_ADMIN_PRODUCTS_SUCCESS:
+         return { loading: false, products: action.payload };
+      case GET_ADMIN_PRODUCTS_FAIL:
          return { loading: false };
       default:
          return state;
@@ -47,6 +67,20 @@ export const getSellerProductReducer = (state = { product: {} }, action) => {
    }
 };
 
+// Get admin products reducer
+export const getAdminProductReducer = (state = { product: {} }, action) => {
+   switch (action.type) {
+      case GET_ADMIN_PRODUCT_REQUEST:
+         return { loading: true };
+      case GET_ADMIN_PRODUCT_SUCCESS:
+         return { loading: false, product: action.payload };
+      case GET_ADMIN_PRODUCT_FAIL:
+         return { loading: false };
+      default:
+         return state;
+   }
+};
+
 // Get seller products reducer
 export const sellerCreateProductsReducer = (
    state = { product: {} },
@@ -56,7 +90,7 @@ export const sellerCreateProductsReducer = (
       case SELLER_CREATE_PRODUCT_REQUEST:
          return { loading: true };
       case SELLER_CREATE_PRODUCT_SUCCESS:
-         return { loading: false, product: action.payload };
+         return { loading: false, product: action.payload, success: true };
       case SELLER_CREATE_PRODUCT_FAIL:
          return { loading: false };
       case SELLER_CREATE_PRODUCT_RESET:
