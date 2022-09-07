@@ -1,7 +1,5 @@
 import Link from 'next/link';
 import Rating from '../Rating';
-import VariationClotheBox from '../VariationClotheBox';
-import VariationShoeBox from '../VariationShoeBox';
 import { useRouter } from 'next/router';
 import BackBtn from '../BackBtn';
 
@@ -39,7 +37,7 @@ const ProductShowcase = ({ product }) => {
                         </Link>
                      </h6>
                   </div>
-                  <BackBtn to="" />
+                  <BackBtn to="/" />
                   <h4>{product?.name}</h4>
                   <h5 className="py-1">
                      {product && `Brand: ${product.brand}`}
@@ -47,39 +45,11 @@ const ProductShowcase = ({ product }) => {
                   <Rating rating={product?.rating} />
                   <h3>#{product?.price}</h3>
 
-                  {/* Variation box */}
-                  {/* For clothe */}
-                  {product?.category === 'clothes' && (
-                     <VariationClotheBox product={product} />
-                  )}
-                  {/* For Shoes */}
-                  {product?.category === 'shoes' && (
-                     <VariationShoeBox product={product} />
-                  )}
-
-                  {product?.category === 'bags' && (
-                     <div>
-                        <button onClick={addToCart} className="btn btn-primary">
-                           Add to cart
-                        </button>
-                     </div>
-                  )}
-
-                  {product?.category === 'electronics' && (
-                     <div>
-                        <button onClick={addToCart} className="btn btn-primary">
-                           Add to cart
-                        </button>
-                     </div>
-                  )}
-
-                  {product?.category === 'all' && (
-                     <div>
-                        <button onClick={addToCart} className="btn btn-primary">
-                           Add to cart
-                        </button>
-                     </div>
-                  )}
+                  <div>
+                     <button onClick={addToCart} className="btn btn-primary">
+                        Add to cart
+                     </button>
+                  </div>
                </div>
                <div className="box img">
                   <img src={product?.productImage} alt={product?.name} />

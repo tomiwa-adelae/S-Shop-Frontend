@@ -2,21 +2,17 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { FaUserAlt, FaShoppingCart, FaSearch } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import TopBanner from './TopBanner';
 
 const Header = () => {
    const [userDetails, setUserDetails] = useState(null);
-   const [adminDetails, setAdminDetails] = useState(null);
 
    const userState = useSelector((state) => state.login);
    const { user } = userState;
 
-   const sellerState = useSelector((state) => state.loginSeller);
-   const { seller } = sellerState;
-
    useEffect(() => {
       setUserDetails(user);
-      setAdminDetails(seller);
-   }, [user, seller]);
+   }, [user]);
 
    return (
       <header>
@@ -45,21 +41,6 @@ const Header = () => {
                            Hi, {user?.firstName}
                         </span>
                      </Link>
-                  ) : adminDetails ? (
-                     <Link href="/sellerdashboard">
-                        <span>
-                           <div className="img">
-                              <img
-                                 src={
-                                    seller?.brandLogo ||
-                                    'https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg'
-                                 }
-                                 alt={seller?.brandName}
-                              />
-                           </div>
-                           Hi, {seller?.firstName}
-                        </span>
-                     </Link>
                   ) : (
                      <Link href="/login">
                         <span>
@@ -77,6 +58,7 @@ const Header = () => {
                </Link>
             </nav>
          </div>
+         <TopBanner />
       </header>
    );
 };

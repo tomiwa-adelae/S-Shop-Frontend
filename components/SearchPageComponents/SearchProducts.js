@@ -18,7 +18,7 @@ const SearchProducts = () => {
    }, [dispatch]);
    return (
       <div className="search-products section">
-         <BackBtn to="" />
+         <BackBtn to="/" />
          <div className="container">
             <div className="head py-1">
                <h4>All products</h4>

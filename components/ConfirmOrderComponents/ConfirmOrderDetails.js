@@ -124,17 +124,7 @@ const ConfirmOrderDetails = () => {
                                  ? `${item.name.substring(0, 50)}...`
                                  : ''}
                            </h6>
-                           <h6 className="my-0 brand">
-                              Brand : {item.brand}{' '}
-                              <span>
-                                 {item.category === 'clothes' &&
-                                    ` | Size: ${item.size}`}
-                              </span>
-                              <span>
-                                 {item.category === 'shoes' &&
-                                    ` | Size: ${item.size}`}
-                              </span>
-                           </h6>
+                           <h6 className="my-0 brand">Brand : {item.brand} </h6>
                            <h6>
                               {item.qty} x {item.price} = #{' '}
                               {item.qty * item.price}

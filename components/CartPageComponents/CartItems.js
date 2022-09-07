@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../store/actions/cartActions';
 import CartCheckOut from './CartCheckOut';
 import Item from './Item';
+import { SuccessMessageBox } from '../MessageBox';
+import BackBtn from '../BackBtn';
 
-const CartItems = ({ id, size, qty }) => {
+const CartItems = ({ id, qty }) => {
    const dispatch = useDispatch();
    const router = useRouter();
 
@@ -18,7 +20,7 @@ const CartItems = ({ id, size, qty }) => {
 
    useEffect(() => {
       if (id) {
-         dispatch(addToCart(id, size, qty));
+         dispatch(addToCart(id, qty));
       }
 
       if (success) {
@@ -30,11 +32,11 @@ const CartItems = ({ id, size, qty }) => {
       <>
          {cartItems.length === 0 && (
             <div className="container">
-               <h5 className="message my-0 p-1">
-                  Your cart is empty! <Link href="/">Go shopping</Link>
-               </h5>
+               <SuccessMessageBox msg="Your cart is empty! Go shopping!" />
             </div>
          )}
+         <BackBtn to="/" />
+
          {cartItems.length !== 0 && (
             <div className="cart-items section">
                <div className="container">

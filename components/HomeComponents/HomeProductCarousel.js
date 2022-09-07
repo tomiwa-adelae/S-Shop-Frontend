@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Slider from 'react-slick';
 import { SuccessMessageBox } from '../MessageBox';
+import { PrimarySpinner } from '../Spinner';
 
 function SampleNextArrow(props) {
    const { onClick } = props;
@@ -30,39 +31,40 @@ var settings = {
    prevArrow: <SamplePrevArrow />,
 };
 
-const HomeProductCarousel = ({ mostRatedProducts }) => {
+const HomeProductCarousel = ({ loading, mostRatedProducts }) => {
    return (
-      mostRatedProducts?.length !== 0 && (
-         <div className="product-carousel">
-            <Slider {...settings}>
-               {mostRatedProducts.slice(0, 10)?.map((product) => (
-                  <Link
-                     key={product._id}
-                     href="/product/[id]"
-                     as={`/product/${product._id}`}
-                  >
-                     <div className="box">
-                        <div className="content">
-                           <div className="title">
-                              <h4>
-                                 {product.name.length >= 30
-                                    ? `${product.name.substring(0, 31)}...`
-                                    : product.name}
-                              </h4>
-                           </div>
-                           <div className="img">
-                              <img
-                                 src={product.productImage}
-                                 alt={product.name}
-                              />
-                           </div>
+      <div className="product-carousel">
+         {loading && <PrimarySpinner />}
+         {mostRatedProducts?.length === 0 && (
+            <div className="container">
+               <SuccessMessageBox msg="No products to display!" />
+            </div>
+         )}
+         <Slider {...settings}>
+            {mostRatedProducts?.slice(0, 10)?.map((product) => (
+               <Link
+                  key={product._id}
+                  href="/product/[id]"
+                  as={`/product/${product._id}`}
+               >
+                  <div className="box">
+                     <div className="content">
+                        <div className="title">
+                           <h4>
+                              {product.name.length >= 30
+                                 ? `${product.name.substring(0, 31)}...`
+                                 : product.name}
+                           </h4>
+                        </div>
+                        <div className="img">
+                           <img src={product.productImage} alt={product.name} />
                         </div>
                      </div>
-                  </Link>
-               ))}
-            </Slider>
-         </div>
-      )
+                  </div>
+               </Link>
+            ))}
+         </Slider>
+      </div>
    );
 };
 

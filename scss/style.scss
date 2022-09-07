@@ -22,27 +22,6 @@
 @import 'popularproductspage';
 @import 'searchpage';
 
-// Sellers style
-@import 'sellingdashboardpage';
-@import 'registersellerpage';
-@import 'loginsellerpage';
-@import 'sellerdashboardpage';
-@import 'sellerpersonaldetails';
-@import 'sellerproductspage';
-@import 'sellercreateproductpage';
-@import 'sellerproductpage';
-@import 'sellereditproductpage';
-@import 'changesellerloginpage';
-
-// Admin styles
-@import 'adminorderspage';
-@import 'adminorderdetailspage';
-@import 'adminuserspage';
-@import 'adminsellerspage';
-@import 'adminsellerdetailspage';
-@import 'adminproductspage';
-@import 'adminproductpage';
-
 * {
    margin: 0;
    padding: 0;
@@ -68,6 +47,7 @@ header {
    position: sticky;
    top: 0;
    z-index: 3;
+   border-bottom: 1px solid $white-color;
 
    .wrapper {
       display: flex;
@@ -79,8 +59,6 @@ header {
 
       .logo {
          flex: 1;
-
-         // background-color: orange;
 
          h3 {
             cursor: pointer;
@@ -105,7 +83,6 @@ header {
             align-items: center;
             justify-content: center;
             text-transform: uppercase;
-            // padding: 0.5rem;
             @include easeOut();
 
             .img {
@@ -128,6 +105,20 @@ header {
             &:hover {
                color: $secondary-color;
             }
+         }
+      }
+   }
+
+   .top-banner {
+      background-color: $primary-color;
+      border-top: 1px solid $white-color;
+      color: $primary-color;
+      padding: 0.3rem;
+
+      .wrapper {
+         a {
+            color: $white-color;
+            font-weight: bold;
          }
       }
    }

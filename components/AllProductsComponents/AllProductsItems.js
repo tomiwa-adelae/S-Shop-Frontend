@@ -9,7 +9,7 @@ const AllProductsItems = ({ products }) => {
    return (
       <div className="all-products-items section">
          <div className="container">
-            <BackBtn to="" />
+            <BackBtn to="/" />
             <div className="head py-1">
                <h4>All Products</h4>
             </div>

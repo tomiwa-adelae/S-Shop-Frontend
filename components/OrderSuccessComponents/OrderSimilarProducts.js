@@ -23,7 +23,12 @@ const OrderSimilarProducts = ({ product }) => {
          <div className="container">
             <div className="head py-1">
                <h4>More Products</h4>
-               <button className="btn btn-primary">See all</button>
+               <Link
+                  href="/category/[category]"
+                  as={`/category/${product?.category}`}
+               >
+                  <button className="btn btn-primary">See all</button>
+               </Link>
             </div>
 
             {loading && <PrimarySpinner />}
@@ -33,7 +38,7 @@ const OrderSimilarProducts = ({ product }) => {
                      msg={`There are no other products in ${product?.category} category`}
                   />
                )}
-               {products?.map((product) => (
+               {products?.slice(0, 10)?.map((product) => (
                   <Link
                      key={product._id}
                      href="/product/[id]"

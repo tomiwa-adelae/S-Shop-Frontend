@@ -8,6 +8,7 @@ const PopularProductsItems = ({ products }) => {
    return (
       <div className="popular-products-items section">
          <div className="container">
+            <BackBtn to='/' />
             <div className="head py-1">
                <h4>All Popular Products</h4>
             </div>

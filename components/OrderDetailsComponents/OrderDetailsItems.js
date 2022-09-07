@@ -5,6 +5,9 @@ const OrderDetailsItems = ({ orderDetails }) => {
    return (
       <div className="order-details-items section">
          <div className="container">
+            <Link href="/myorders">
+               <button className="btn btn-primary">Back</button>
+            </Link>
             <div className="wrapper">
                {orderDetails.orderItems.map((order) => (
                   <div key={order._id} className="order my-0">
@@ -23,17 +26,7 @@ const OrderDetailsItems = ({ orderDetails }) => {
                                     : order.name}
                               </h5>
                            </Link>
-                           <h6 className="my-0">
-                              Brand: {order.brand}
-                              <span>
-                                 {order.category === 'clothes' &&
-                                    ` | Size: ${order.size}`}
-                              </span>
-                              <span>
-                                 {order.category === 'shoes' &&
-                                    ` | Size: ${order.size}`}
-                              </span>
-                           </h6>
+                           <h6 className="my-0">Brand: {order.brand}</h6>
                            <h6>
                               {order.qty} x {order.price} = #{' '}
                               {order.qty * order.price}

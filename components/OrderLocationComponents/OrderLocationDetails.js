@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveShippingSchool } from '../../store/actions/shippingActions';
+import BackBtn from '../BackBtn';
 
 const OrderLocationDetails = () => {
    const dispatch = useDispatch();
@@ -30,6 +31,8 @@ const OrderLocationDetails = () => {
                Choose where you want your order to be delivered to
             </p>
 
+            <BackBtn to="/cart" />
+
             <div className="btns my-1">
                <button
                   onClick={() => saveShippingForSchool()}
@@ -37,7 +40,6 @@ const OrderLocationDetails = () => {
                >
                   Ajayi Crowther Univerisity
                </button>
-               <button className="btn btn-primary">Others</button>
             </div>
          </div>
       </div>

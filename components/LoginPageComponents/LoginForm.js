@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../store/actions/userActions';
 import { ErrorMessageBox } from '../MessageBox';
 import { SmallWhiteSpinner } from '../Spinner';
-import { logoutAdmin } from '../../store/actions/userSellerActions';
 
 const LoginForm = () => {
    const dispatch = useDispatch();
@@ -23,7 +22,6 @@ const LoginForm = () => {
    const { msg } = errorState;
 
    useEffect(() => {
-      dispatch(logoutAdmin());
       const redirect = router.query.redirect ? router.query.redirect : '/';
 
       if (user) {

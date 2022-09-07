@@ -1,4 +1,5 @@
 import React from 'react';
+import BackBtn from '../BackBtn';
 
 const PaymentHead = () => {
    return (
@@ -6,6 +7,8 @@ const PaymentHead = () => {
          <h3>Method of payment</h3>
 
          <p className="lead my-1">Choose a method of payment for your orders</p>
+
+         <BackBtn to="/orderlocation" />
       </div>
    );
 };

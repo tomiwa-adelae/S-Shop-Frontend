@@ -1,4 +1,5 @@
 import React from 'react';
+import BackBtn from '../BackBtn';
 
 const ConfirmOrderHead = () => {
    return (
@@ -9,6 +10,8 @@ const ConfirmOrderHead = () => {
             <p className="lead my-1">
                Please confirm the details for your order
             </p>
+
+            <BackBtn to="/payment" />
          </div>
       </div>
    );

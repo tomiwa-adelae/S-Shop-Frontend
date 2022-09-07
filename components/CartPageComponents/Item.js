@@ -7,11 +7,11 @@ import { useDispatch } from 'react-redux';
 const Item = ({ item }) => {
    const dispatch = useDispatch();
    const decreaseQty = (qty) => {
-      dispatch(addToCart(item.id, item.size, Number(qty) - 1));
+      dispatch(addToCart(item.id, Number(qty) - 1));
    };
 
    const increaseQty = (qty) => {
-      dispatch(addToCart(item.id, item.size, Number(qty) + 1));
+      dispatch(addToCart(item.id, Number(qty) + 1));
    };
 
    const removeFromCartHandler = (id) => {
@@ -33,15 +33,7 @@ const Item = ({ item }) => {
                            : item.name}
                      </h5>
                   </Link>
-                  <h6>
-                     Brand: {item.brand}
-                     <span>
-                        {item.category === 'clothes' && ` | Size: ${item.size}`}
-                     </span>
-                     <span>
-                        {item.category === 'shoes' && ` | Size: ${item.size}`}
-                     </span>
-                  </h6>
+                  <h6>Brand: {item.brand}</h6>
                </div>
                <div
                   onClick={() => removeFromCartHandler(item.id)}

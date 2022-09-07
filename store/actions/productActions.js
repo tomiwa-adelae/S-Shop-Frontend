@@ -2,9 +2,6 @@ import axios from 'axios';
 import { server } from '../../config/server';
 import { CLEAR_ERRORS } from '../constants/errorConstants';
 import {
-   GET_LATEST_PRODUCTS_FAIL,
-   GET_LATEST_PRODUCTS_REQUEST,
-   GET_LATEST_PRODUCTS_SUCCESS,
    GET_MOST_RATED_PRODUCTS_REQUEST,
    GET_MOST_RATED_PRODUCTS_SUCCESS,
    GET_PRODUCTS_FAIL,
@@ -46,19 +43,6 @@ export const getProducts =
          dispatch({ type: GET_PRODUCTS_FAIL });
       }
    };
-
-// Get latest products
-export const getLatestProducts = () => async (dispatch) => {
-   dispatch({ type: GET_LATEST_PRODUCTS_REQUEST });
-   try {
-      const { data } = await axios.get(`${server}/api/products/latest`);
-
-      dispatch({ type: GET_LATEST_PRODUCTS_SUCCESS, payload: data });
-   } catch (err) {
-      dispatch(returnErrors(err.response.data.msg));
-      dispatch({ type: GET_LATEST_PRODUCTS_FAIL });
-   }
-};
 
 // Get most rated products
 export const getMostRatedProducts = () => async (dispatch) => {

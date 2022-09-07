@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import React from 'react';
+import BackBtn from '../BackBtn';
 import Rating from '../Rating';
 
 const BrandProducts = ({ brandName, brandProducts }) => {
    return (
       <div className="brand-products section">
          <div className="container">
+            <BackBtn to="/" />
             <div className="head py-1">
                <h4>{brandName}</h4>
             </div>

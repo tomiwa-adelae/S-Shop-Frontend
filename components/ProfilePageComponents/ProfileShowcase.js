@@ -35,7 +35,7 @@ const ProfileShowcase = () => {
                         </Link>{' '}
                      </h6>
                   </div>
-                  <BackBtn to="" />
+                  <BackBtn to="/" />
                   <h3 suppressHydrationWarning={true}>
                      {user ? `${user.firstName} ${user.lastName}` : null}
                   </h3>

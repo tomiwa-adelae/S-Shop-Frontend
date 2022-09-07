@@ -9,7 +9,7 @@ import { returnErrors } from './errorActions';
 import { server } from '../../config/server';
 
 // Get products details for cartItems
-export const addToCart = (id, size, qty) => async (dispatch, getState) => {
+export const addToCart = (id, qty) => async (dispatch, getState) => {
    try {
       const { data } = await axios.get(`${server}/api/products/${id}`);
       dispatch({
@@ -21,7 +21,6 @@ export const addToCart = (id, size, qty) => async (dispatch, getState) => {
             price: data.price,
             brand: data.brand,
             category: data.category,
-            size,
             qty,
          },
       });
@@ -31,8 +30,7 @@ export const addToCart = (id, size, qty) => async (dispatch, getState) => {
          JSON.stringify(getState().cart.cartItems)
       );
    } catch (err) {
-      console.log(err);
-      // dispatch(returnErrors(err.response.data.msg));
+      dispatch(returnErrors(err.response.data.msg));
       dispatch({ type: ADD_TO_CART_FAIL });
    }
 };
@@ -50,7 +48,6 @@ export const removeFromCart = (id) => async (dispatch, getState) => {
          JSON.stringify(getState().cart.cartItems)
       );
    } catch (err) {
-      // console.log(err);
       dispatch(returnErrors(err.response.data.msg));
       dispatch({ type: REMOVE_FROM_CART_FAIL });
    }

@@ -61,7 +61,7 @@ const PersonalDetailsForm = () => {
                         </Link>{' '}
                      </h6>
                   </div>
-                  <BackBtn to="profile" />
+                  <BackBtn to="/profile" />
                   <div className="img-container">
                      <div className="img">
                         <img

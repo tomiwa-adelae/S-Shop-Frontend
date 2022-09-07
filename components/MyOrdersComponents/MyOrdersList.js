@@ -50,16 +50,6 @@ const MyOrdersList = () => {
                                     </h5>
                                     <h6 className="my-0 brand">
                                        Brand: {order.orderItems[0].brand}
-                                       <span>
-                                          {order.orderItems[0].category ===
-                                             'clothes' &&
-                                             ` | Size: ${order.orderItems[0].size}`}
-                                       </span>
-                                       <span>
-                                          {order.orderItems[0].category ===
-                                             'shoes' &&
-                                             ` | Size: ${order.orderItems[0].size}`}
-                                       </span>
                                     </h6>
                                     <Link
                                        href="/order/[id]"

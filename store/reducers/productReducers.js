@@ -6,9 +6,6 @@ import {
    GET_ALL_PRODUCTS_FROM_BRAND_FAIL,
    GET_ALL_PRODUCTS_FROM_BRAND_REQUEST,
    GET_ALL_PRODUCTS_FROM_BRAND_SUCCESS,
-   GET_LATEST_PRODUCTS_FAIL,
-   GET_LATEST_PRODUCTS_REQUEST,
-   GET_LATEST_PRODUCTS_SUCCESS,
    GET_MOST_RATED_PRODUCTS_FAIL,
    GET_MOST_RATED_PRODUCTS_REQUEST,
    GET_MOST_RATED_PRODUCTS_SUCCESS,
@@ -34,23 +31,6 @@ export const getProductsReducer = (state = { products: [] }, action) => {
       case GET_PRODUCTS_SUCCESS:
          return { loading: false, products: action.payload };
       case GET_PRODUCTS_FAIL:
-         return { loading: false };
-      default:
-         return state;
-   }
-};
-
-// Latest products reducers
-export const getLatestProductsReducer = (
-   state = { latestProducts: [] },
-   action
-) => {
-   switch (action.type) {
-      case GET_LATEST_PRODUCTS_REQUEST:
-         return { loading: true };
-      case GET_LATEST_PRODUCTS_SUCCESS:
-         return { loading: false, latestProducts: action.payload };
-      case GET_LATEST_PRODUCTS_FAIL:
          return { loading: false };
       default:
          return state;

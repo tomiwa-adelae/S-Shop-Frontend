@@ -1,26 +1,29 @@
 import Link from 'next/link';
 import Rating from '../Rating';
 import { SuccessMessageBox } from '../MessageBox';
+import { PrimarySpinner } from '../Spinner';
 
-const HomeLatestProducts = ({ latestProducts }) => {
+const HomeLatestProducts = ({ loading, latestProducts }) => {
    return (
       <div className="home-latest-products section">
          <div className="container">
             <div className="head py-1">
                <h4>Latest products</h4>
-               {latestProducts.length >= 10 && (
+               {latestProducts?.length >= 10 && (
                   <Link href="/allproducts">
                      <button className="btn btn-primary">See all</button>
                   </Link>
                )}
             </div>
 
-            {latestProducts.length === 0 && (
-               <SuccessMessageBox msg="There are no products" />
+            {loading && <PrimarySpinner />}
+
+            {latestProducts?.length === 0 && (
+               <SuccessMessageBox msg="No products to display!" />
             )}
 
             <div className="products-boxes">
-               {latestProducts.slice(0, 10)?.map((product) => (
+               {latestProducts?.slice(0, 10)?.map((product) => (
                   <Link
                      key={product._id}
                      href="/product/[id]"

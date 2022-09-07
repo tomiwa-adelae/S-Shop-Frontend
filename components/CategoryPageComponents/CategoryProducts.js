@@ -10,7 +10,7 @@ const CategoryProducts = ({ products }) => {
    return (
       <div className="category-products section">
          <div className="container">
-            <BackBtn to="" />
+            <BackBtn to="/" />
             <div className="head py-1">
                <h4>{router.query.category}</h4>
             </div>
