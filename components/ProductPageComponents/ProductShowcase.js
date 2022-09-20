@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Rating from '../Rating';
 import { useRouter } from 'next/router';
-import BackBtn from '../BackBtn';
 
 const ProductShowcase = ({ product }) => {
    const router = useRouter();
@@ -37,7 +36,6 @@ const ProductShowcase = ({ product }) => {
                         </Link>
                      </h6>
                   </div>
-                  <BackBtn to="/" />
                   <h4>{product?.name}</h4>
                   <h5 className="py-1">
                      {product && `Brand: ${product.brand}`}

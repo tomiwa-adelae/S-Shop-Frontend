@@ -5,7 +5,6 @@ import { getProducts } from '../../store/actions/productActions';
 import Rating from '../Rating';
 import { PrimarySpinner } from '../Spinner';
 import { SuccessMessageBox } from '../MessageBox';
-import BackBtn from '../BackBtn';
 
 const SearchProducts = () => {
    const dispatch = useDispatch();
@@ -18,7 +17,6 @@ const SearchProducts = () => {
    }, [dispatch]);
    return (
       <div className="search-products section">
-         <BackBtn to="/" />
          <div className="container">
             <div className="head py-1">
                <h4>All products</h4>

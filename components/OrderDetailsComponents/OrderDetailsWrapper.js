@@ -8,6 +8,7 @@ import OrderDetailsCarousel from './OrderDetailsCarousel';
 import OrderDetailsInfo from './OrderDetailsInfo';
 import OrderDetailsIntro from './OrderDetailsIntro';
 import OrderDetailsItems from './OrderDetailsItems';
+import BackBtn from '../BackBtn';
 
 const OrderDetailsWrapper = () => {
    const router = useRouter();
@@ -34,6 +35,7 @@ const OrderDetailsWrapper = () => {
    }, [dispatch, router, user]);
    return (
       <div>
+         <BackBtn to="/myorders" />
          <>
             <div className="container">
                {msg && <ErrorMessageBox msg={msg} />}

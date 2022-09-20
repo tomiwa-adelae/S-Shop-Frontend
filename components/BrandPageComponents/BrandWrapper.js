@@ -26,9 +26,9 @@ const BrandWrapper = () => {
    }, [dispatch, router]);
    return (
       <div className="brand-wrapper">
+         <BackBtn to="/" />
          <div className="container section-small">
             {msg && <ErrorMessageBox msg={msg} />}
-            <BackBtn to="/" />
          </div>
          {loading ? (
             <PrimarySpinner />

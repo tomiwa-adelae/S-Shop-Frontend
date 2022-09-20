@@ -1,3 +1,4 @@
+import BackBtn from '../../../components/BackBtn';
 import CategoryIntro from '../../../components/CategoryPageComponents/CategoryIntro';
 import CategoryProductCarousel from '../../../components/CategoryPageComponents/CategoryProductCarousel';
 import CategoryProducts from '../../../components/CategoryPageComponents/CategoryProducts';
@@ -6,6 +7,7 @@ import { server } from '../../../config/server';
 const category = ({ products }) => {
    return (
       <div className="category-page">
+         <BackBtn to="/" />
          <CategoryProductCarousel products={products} />
          {products.length !== 0 && <CategoryIntro />}
 

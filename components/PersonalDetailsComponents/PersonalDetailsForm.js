@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateProfile } from '../../store/actions/userActions';
 import { CLEAR_ERRORS } from '../../store/constants/errorConstants';
-import BackBtn from '../BackBtn';
 import { ErrorMessageBox, SuccessMessageBox } from '../MessageBox';
 import { SmallWhiteSpinner } from '../Spinner';
 
@@ -61,7 +60,6 @@ const PersonalDetailsForm = () => {
                         </Link>{' '}
                      </h6>
                   </div>
-                  <BackBtn to="/profile" />
                   <div className="img-container">
                      <div className="img">
                         <img
@@ -90,7 +88,6 @@ const PersonalDetailsForm = () => {
                      <input
                         type="email"
                         defaultValue={email}
-                        // onChange={() => {}}
                         placeholder="Email"
                         disabled
                      />
@@ -109,6 +106,13 @@ const PersonalDetailsForm = () => {
                      <button className="btn btn-primary">
                         {loading ? <SmallWhiteSpinner /> : 'Update profile'}
                      </button>
+                     {success && (
+                        <Link href="/profile">
+                           <button className="btn btn-secondary mx-1">
+                              Go back to profile
+                           </button>
+                        </Link>
+                     )}
                   </div>
                </form>
             </div>

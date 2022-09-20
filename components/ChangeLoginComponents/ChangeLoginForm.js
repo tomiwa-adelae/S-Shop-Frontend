@@ -6,7 +6,6 @@ import { updateLogin } from '../../store/actions/userActions';
 import { ErrorMessageBox, SuccessMessageBox } from '../MessageBox';
 import { SmallWhiteSpinner } from '../Spinner';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import BackBtn from '../BackBtn';
 
 const ChangeLoginForm = () => {
    const dispatch = useDispatch();
@@ -70,7 +69,6 @@ const ChangeLoginForm = () => {
                            </Link>{' '}
                         </h6>
                      </div>
-                     <BackBtn to="profile" />
                      <div className="password">
                         <input
                            value={currentPassword}
@@ -112,6 +110,13 @@ const ChangeLoginForm = () => {
                         <button className="btn btn-primary">
                            {loading ? <SmallWhiteSpinner /> : 'Update Login'}
                         </button>
+                        {success && (
+                           <Link href="/profile">
+                              <button className="btn btn-secondary mx-1">
+                                 Go back to profile
+                              </button>
+                           </Link>
+                        )}
                      </div>
                   </form>
                </div>

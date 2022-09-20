@@ -3,14 +3,12 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import Rating from '../Rating';
 import { SuccessMessageBox } from '../MessageBox';
-import BackBtn from '../BackBtn';
 
 const CategoryProducts = ({ products }) => {
    const router = useRouter();
    return (
       <div className="category-products section">
          <div className="container">
-            <BackBtn to="/" />
             <div className="head py-1">
                <h4>{router.query.category}</h4>
             </div>

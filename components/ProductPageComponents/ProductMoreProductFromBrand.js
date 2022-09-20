@@ -25,11 +25,9 @@ const ProductMoreProductFromBrand = ({ product }) => {
          <div className="container">
             <div className="head py-1">
                <h4>More products from {product?.brand}</h4>
-               {brandProducts?.length >= 5 && (
-                  <Link href="/brand/[name]" as={`/brand/${product?.brand}`}>
-                     <button className="btn btn-primary">See all</button>
-                  </Link>
-               )}
+               <Link href="/brand/[name]" as={`/brand/${product?.brand}`}>
+                  <button className="btn btn-primary">See all</button>
+               </Link>
             </div>
             <div className="products-boxes">
                {loading && <PrimarySpinner />}

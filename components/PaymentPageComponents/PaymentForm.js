@@ -63,20 +63,6 @@ const PaymentForm = () => {
                   Transfer on Delivery
                </label>
             </div>
-            <div className="checkbox">
-               <input
-                  type="radio"
-                  id="Pay with Cards"
-                  value={payment}
-                  name="payment"
-                  required
-                  autoComplete="off"
-                  onChange={(e) => setPayment(e.target.id)}
-               />
-               <label htmlFor="Pay with Cards">
-                  Pay with Cards e.g Visa, Verve, Mastercard
-               </label>
-            </div>
             <div>
                <button className="btn btn-primary">Proceed</button>
             </div>

@@ -29,7 +29,8 @@ const Header = () => {
                <span className="mx-1">
                   <Link href="/search">
                      <span>
-                        <FaSearch className="search" />
+                        <FaSearch className="search-icon search" />
+                        Search
                      </span>
                   </Link>
                </span>

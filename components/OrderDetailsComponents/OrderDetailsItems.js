@@ -5,9 +5,6 @@ const OrderDetailsItems = ({ orderDetails }) => {
    return (
       <div className="order-details-items section">
          <div className="container">
-            <Link href="/myorders">
-               <button className="btn btn-primary">Back</button>
-            </Link>
             <div className="wrapper">
                {orderDetails.orderItems.map((order) => (
                   <div key={order._id} className="order my-0">

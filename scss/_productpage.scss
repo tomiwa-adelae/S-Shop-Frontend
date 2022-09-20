@@ -14,6 +14,10 @@
          gap: 1rem;
 
          .details {
+            h4 {
+               text-transform: capitalize;
+            }
+
             .btn {
                width: 100%;
             }
@@ -50,6 +54,10 @@
       }
    }
 
+   .product-showcase.section {
+      padding-top: 0;
+   }
+
    .product-description {
       background-color: $primary-color;
       color: $white-color;
@@ -78,27 +86,6 @@
                   justify-content: flex-start;
                }
             }
-         }
-      }
-   }
-}
-
-.variation-box {
-   h5 {
-      text-transform: uppercase;
-   }
-   .boxes {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-
-      div {
-         width: 100%;
-         select {
-            border: 2px solid $secondary-color;
-            color: $primary-color;
-            text-transform: uppercase;
          }
       }
    }

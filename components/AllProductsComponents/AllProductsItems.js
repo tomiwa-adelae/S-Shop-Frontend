@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
-import BackBtn from '../BackBtn';
 import Rating from '../Rating';
 
 const AllProductsItems = ({ products }) => {
@@ -9,7 +8,6 @@ const AllProductsItems = ({ products }) => {
    return (
       <div className="all-products-items section">
          <div className="container">
-            <BackBtn to="/" />
             <div className="head py-1">
                <h4>All Products</h4>
             </div>

@@ -473,6 +473,7 @@ select {
       }
 
       .details {
+         text-transform: capitalize;
          h5:first-child {
             @include easeOut();
          }
@@ -639,6 +640,8 @@ select {
             height: 300px;
 
             img {
+               height: 100%;
+               width: 100%;
                border-radius: 100%;
                object-fit: cover;
                border: 2px solid $white-color;
@@ -699,19 +702,8 @@ select {
    }
 }
 
-.seller-notification-box {
-   h6 {
-      background-color: $secondary-color;
-      color: $white-color;
-      text-align: center;
-      font-weight: bold;
-      text-transform: uppercase;
-   }
-}
-
 .search-box {
    form {
-      // background-color: orange;
       div {
          position: relative;
          .search-icon {

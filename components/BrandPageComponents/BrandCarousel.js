@@ -49,7 +49,7 @@ const BrandCarousel = ({ brandProducts }) => {
                            </h4>
                         </div>
                         <div className="img">
-                           <img src={product.image} alt={product.name} />
+                           <img src={product.productImage} alt={product.name} />
                         </div>
                      </div>
                   </div>

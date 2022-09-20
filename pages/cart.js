@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import CartProductCarousel from '../components/CartPageComponents/CartProductCarousel';
 import CartItems from '../components/CartPageComponents/CartItems';
 import CartIntro from '../components/CartPageComponents/CartIntro';
+import BackBtn from '../components/BackBtn';
 
 const cart = () => {
    const router = useRouter();
@@ -11,6 +12,7 @@ const cart = () => {
 
    return (
       <div className="cart-page">
+         <BackBtn to="/" />
          <CartProductCarousel id={id} size={size} qty={qty} />
          <CartIntro />
          <CartItems id={id} size={size} qty={qty} />

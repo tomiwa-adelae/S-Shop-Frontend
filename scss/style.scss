@@ -16,7 +16,6 @@
 @import 'personaldetailspage';
 @import 'changeloginpage';
 @import 'myorderspage';
-@import 'allmyorderspage';
 @import 'brandpage';
 @import 'allproductspage';
 @import 'popularproductspage';
@@ -98,7 +97,8 @@ header {
                }
             }
             .user-icon,
-            .cart-icon {
+            .cart-icon,
+            .search-icon {
                margin-right: 0.5rem;
             }
 
@@ -155,7 +155,6 @@ footer {
                align-items: flex-start;
                justify-content: flex-start;
                flex-direction: column;
-               // padding: 1rem 0;
 
                strong {
                   cursor: pointer;
@@ -167,7 +166,6 @@ footer {
                      color: $secondary-color;
                   }
                }
-               // margin: 0.3rem 0;
             }
          }
 
@@ -207,8 +205,6 @@ footer {
          }
       }
    }
-
-   .footer-copyright {
-      // text-align: center;
-   }
 }
+
+@import 'mobile';

@@ -5,7 +5,6 @@ import {
    getProductsFromBrand,
    getSingleProduct,
 } from '../../store/actions/productActions';
-import BackBtn from '../BackBtn';
 import { ErrorMessageBox } from '../MessageBox';
 import { PrimarySpinner } from '../Spinner';
 import ProductDescription from './ProductDescription';
@@ -38,7 +37,6 @@ const ProductWrapper = () => {
             <>
                <div className="container section-small">
                   <ErrorMessageBox msg={msg} />
-                  <BackBtn to="" />
                </div>
             </>
          ) : (

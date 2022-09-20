@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,7 +5,6 @@ import { addToCart } from '../../store/actions/cartActions';
 import CartCheckOut from './CartCheckOut';
 import Item from './Item';
 import { SuccessMessageBox } from '../MessageBox';
-import BackBtn from '../BackBtn';
 
 const CartItems = ({ id, qty }) => {
    const dispatch = useDispatch();
@@ -35,7 +33,6 @@ const CartItems = ({ id, qty }) => {
                <SuccessMessageBox msg="Your cart is empty! Go shopping!" />
             </div>
          )}
-         <BackBtn to="/" />
 
          {cartItems.length !== 0 && (
             <div className="cart-items section">

@@ -122,7 +122,7 @@ const ConfirmOrderDetails = () => {
                            <h6>
                               {item.name.length >= 50
                                  ? `${item.name.substring(0, 50)}...`
-                                 : ''}
+                                 : item.name}
                            </h6>
                            <h6 className="my-0 brand">Brand : {item.brand} </h6>
                            <h6>

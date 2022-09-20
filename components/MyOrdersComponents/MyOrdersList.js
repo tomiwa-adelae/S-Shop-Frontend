@@ -29,7 +29,7 @@ const MyOrdersList = () => {
                      <SuccessMessageBox msg="Your order list is empty! Shop now" />
                   )}
                   <div className="boxes">
-                     {orders?.slice(0, 10).map((order) => (
+                     {orders?.map((order) => (
                         <div key={order._id} className="box my-0">
                            <div className="img">
                               <img
@@ -85,13 +85,6 @@ const MyOrdersList = () => {
                         </div>
                      ))}
                   </div>
-                  {orders?.length !== 0 && orders?.length >= 10 && (
-                     <Link href="/allmyorders">
-                        <button className="btn btn-secondary">
-                           See all orders
-                        </button>
-                     </Link>
-                  )}
                </div>
             </div>
          </div>
