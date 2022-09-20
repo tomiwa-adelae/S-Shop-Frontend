@@ -3,7 +3,7 @@ import BackBtn from '../components/BackBtn';
 
 const changelogin = () => {
    return (
-      <div className="change-login-page">
+      <div className="change-login-page page">
          <BackBtn to="/profile" />
          <ChangeLoginForm />
       </div>

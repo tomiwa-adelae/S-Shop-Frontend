@@ -3,7 +3,7 @@ import BackBtn from '../components/BackBtn';
 
 const personaldetails = () => {
    return (
-      <div className="personal-details-page">
+      <div className="personal-details-page page">
          <BackBtn to="/profile" />
          <PersonalDetailsForm />
       </div>

@@ -6,7 +6,7 @@ import PaymentHead from '../components/PaymentPageComponents/PaymentHead';
 
 const payment = () => {
    return (
-      <div className="payment-page">
+      <div className="payment-page page">
          <BackBtn to="/orderlocation" />
          <HelpOrdering />
          <div className="container section">

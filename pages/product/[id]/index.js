@@ -3,7 +3,7 @@ import BackBtn from '../../../components/BackBtn';
 
 const product = () => {
    return (
-      <div className="product-page">
+      <div className="product-page page">
          <BackBtn to="/" />
          <ProductWrapper />
       </div>

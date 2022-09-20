@@ -7,7 +7,7 @@ import { HelpOrdering } from '../components/Help';
 
 const confirmorder = () => {
    return (
-      <div className="confirm-order-page">
+      <div className="confirm-order-page page">
          <BackBtn to="/payment" />
          <HelpOrdering />
          <ConfirmOrderHead />

@@ -5,7 +5,7 @@ import BackBtn from '../components/BackBtn';
 
 const search = () => {
    return (
-      <div className="search-page">
+      <div className="search-page page">
          <BackBtn to="/" />
          <SearchForm />
          <SearchProducts />

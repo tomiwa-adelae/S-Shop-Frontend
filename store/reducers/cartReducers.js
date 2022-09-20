@@ -2,9 +2,6 @@ import {
    ADD_TO_CART,
    CLEAR_CART_ITEMS,
    REMOVE_FROM_CART,
-   SAVE_CART_FAIL,
-   SAVE_CART_REQUEST,
-   SAVE_CART_SUCCESS,
 } from '../constants/cartConstants';
 
 export const cartReducer = (
@@ -43,19 +40,6 @@ export const cartReducer = (
             ...state,
             cartItems: [],
          };
-      default:
-         return state;
-   }
-};
-
-export const saveCartReducer = (state = { loading: true }, action) => {
-   switch (action.type) {
-      case SAVE_CART_REQUEST:
-         return { loading: true };
-      case SAVE_CART_SUCCESS:
-         return { loading: false, cartItems: action.payload };
-      case SAVE_CART_FAIL:
-         return { loading: false };
       default:
          return state;
    }

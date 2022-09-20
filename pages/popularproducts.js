@@ -7,7 +7,7 @@ import BackBtn from '../components/BackBtn';
 
 const popularproducts = ({ products }) => {
    return (
-      <div className="popular-products-page">
+      <div className="popular-products-page page">
          <BackBtn to="/" />
          <PopularProductsCarousel products={products} />
          <PopularProductsIntro />

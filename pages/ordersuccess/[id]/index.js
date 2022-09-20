@@ -2,7 +2,7 @@ import OrderSuccessWrapper from '../../../components/OrderSuccessComponents/Orde
 
 const ordersuccess = () => {
    return (
-      <div className="order-success-page">
+      <div className="order-success-page page">
          <OrderSuccessWrapper />
       </div>
    );

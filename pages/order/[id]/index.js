@@ -2,7 +2,7 @@ import OrderDetailsWrapper from '../../../components/OrderDetailsComponents/Orde
 
 const order = () => {
    return (
-      <div className="order-details-page">
+      <div className="order-details-page page">
          <OrderDetailsWrapper />
       </div>
    );

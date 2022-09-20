@@ -4,7 +4,7 @@ import MyOrdersList from '../components/MyOrdersComponents/MyOrdersList';
 
 const myorders = () => {
    return (
-      <div className="my-orders-page">
+      <div className="my-orders-page page">
          <BackBtn to="/profile" />
          <MyOrdersIntro />
          <MyOrdersList />

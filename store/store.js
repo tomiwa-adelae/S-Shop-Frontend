@@ -12,7 +12,7 @@ import {
    getSingleProductReducer,
 } from './reducers/productReducers';
 import errorReducer from './reducers/errorReducers';
-import { cartReducer, saveCartReducer } from './reducers/cartReducers';
+import { cartReducer } from './reducers/cartReducers';
 import {
    changeLoginReducer,
    loginUserReducer,
@@ -40,7 +40,6 @@ const reducer = combineReducers({
    getBrandProducts: getProductsBrandReducer,
    getAllBrandProducts: getAllProductsBrandReducer,
    getCategoryProducts: getProductsCategoryReducer,
-   saveCart: saveCartReducer,
    cart: cartReducer,
    login: loginUserReducer,
    register: registerUserReducer,

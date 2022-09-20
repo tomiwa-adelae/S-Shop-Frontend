@@ -7,7 +7,7 @@ import BackBtn from '../components/BackBtn';
 
 const allproducts = ({ products }) => {
    return (
-      <div className="all-products-page">
+      <div className="all-products-page page">
          <BackBtn to="/" />
          {products.length !== 0 && <AllProductsCarousel products={products} />}
          {products.length !== 0 && <AllProductsIntro />}

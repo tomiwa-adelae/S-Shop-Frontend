@@ -6,7 +6,7 @@ import { server } from '../../../config/server';
 
 const category = ({ products }) => {
    return (
-      <div className="category-page">
+      <div className="category-page page">
          <BackBtn to="/" />
          <CategoryProductCarousel products={products} />
          {products.length !== 0 && <CategoryIntro />}

@@ -5,7 +5,7 @@ import ProfileShowcase from '../components/ProfilePageComponents/ProfileShowcase
 
 const profile = () => {
    return (
-      <div className="profile-page">
+      <div className="profile-page page">
          <BackBtn to="/" />
          <ProfileShowcase />
          <ProfileInfo />
