@@ -21,18 +21,6 @@ const Footer = () => {
                         <Link href="/">
                            <strong className="my-0">Help center</strong>
                         </Link>
-                        <Link href="/">
-                           <strong className="my-0">Help center</strong>
-                        </Link>
-                        <Link href="/">
-                           <strong className="my-0">Help center</strong>
-                        </Link>
-                        <Link href="/">
-                           <strong className="my-0">Help center</strong>
-                        </Link>
-                        <Link href="/">
-                           <strong className="my-0">Help center</strong>
-                        </Link>
                      </div>
                   </div>
                   <div className="box p-1">
@@ -63,28 +51,6 @@ const Footer = () => {
                         <Link href="/">
                            <strong className="my-0">
                               <BsInstagram className="icon" />
-                           </strong>
-                        </Link>
-                     </div>
-                  </div>
-                  <div className="box p-1 footer-payments">
-                     <div className="head">
-                        <h5 className="py-1">Payment Methods</h5>
-                     </div>
-                     <div className="footer-links">
-                        <Link href="/">
-                           <strong className="my-0">
-                              <RiMastercardFill className="icon" />
-                           </strong>
-                        </Link>
-                        <Link href="/">
-                           <strong className="my-0">
-                              <RiVisaFill className="icon" />
-                           </strong>
-                        </Link>
-                        <Link href="/">
-                           <strong className="my-0">
-                              <BsCashStack className="icon" />
                            </strong>
                         </Link>
                      </div>

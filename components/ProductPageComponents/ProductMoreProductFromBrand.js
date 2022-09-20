@@ -40,7 +40,7 @@ const ProductMoreProductFromBrand = ({ product }) => {
                   <Link
                      key={product._id}
                      href="/product/[id]"
-                     as={`/product/6304cef551918e7d2e8d7995`}
+                     as={`/product/${product._id}`}
                   >
                      <div className="box">
                         <div className="img">
