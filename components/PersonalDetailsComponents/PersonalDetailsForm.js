@@ -32,7 +32,7 @@ const PersonalDetailsForm = () => {
       if (!user) {
          router.push('/login?redirect=personaldetails');
       }
-   }, [user, dispatch]);
+   }, [user, dispatch, router]);
 
    const handleSubmit = (e) => {
       e.preventDefault();

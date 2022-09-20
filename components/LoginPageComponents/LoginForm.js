@@ -71,7 +71,7 @@ const LoginForm = () => {
                   </button>
                </div>
                <p className="my-1">
-                  Don't have an account?{' '}
+                  Do not have an account?{' '}
                   <Link href="/register">
                      <span className="text-secondary">
                         Create an account now

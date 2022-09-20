@@ -40,7 +40,7 @@ const ChangeLoginForm = () => {
          setShowPassword2(false);
          setShowPassword3(false);
       }
-   }, [user, success]);
+   }, [user, success, router]);
 
    const handleSubmit = (e) => {
       e.preventDefault();

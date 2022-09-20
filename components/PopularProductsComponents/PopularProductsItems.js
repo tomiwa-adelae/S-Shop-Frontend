@@ -1,14 +1,10 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React from 'react';
 import Rating from '../Rating';
 
 const PopularProductsItems = ({ products }) => {
-   const router = useRouter();
    return (
       <div className="popular-products-items section">
          <div className="container">
-            <BackBtn to='/' />
             <div className="head py-1">
                <h4>All Popular Products</h4>
             </div>

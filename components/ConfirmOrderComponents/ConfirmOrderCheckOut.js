@@ -22,9 +22,8 @@ const ConfirmOrderCheckOut = () => {
       if (success) {
          router.push(`/ordersuccess/${order._id}`);
       }
-   }, [success, router]);
+   }, [success, router, order]);
    const placeorderHandler = () => {
-      // dispatch({ type: CLEAR_ERRORS });
       dispatch(createOrder());
    };
 

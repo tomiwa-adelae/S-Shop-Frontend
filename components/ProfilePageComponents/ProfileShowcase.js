@@ -17,7 +17,7 @@ const ProfileShowcase = () => {
       if (!user) {
          router.push('/login');
       }
-   }, [user, dispatch]);
+   }, [user, dispatch, router]);
 
    return (
       <div className="profile-showcase section">

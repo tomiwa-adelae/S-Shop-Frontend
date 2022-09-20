@@ -42,7 +42,7 @@ const CartProductCarousel = ({ id, size, qty }) => {
       if (id) {
          dispatch(addToCart(id, size, Number(qty)));
       }
-   }, [dispatch]);
+   }, [dispatch, id, size, qty]);
 
    return (
       <>

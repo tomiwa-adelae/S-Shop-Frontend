@@ -14,7 +14,7 @@ const OrderLocationDetails = () => {
       if (!user) {
          router.push('/login?redirect=orderlocation');
       }
-   }, [user]);
+   }, [user, router]);
 
    const saveShippingForSchool = () => {
       dispatch(saveShippingSchool());

@@ -31,7 +31,7 @@ const ConfirmOrderDetails = () => {
       if (!paymentMethod) {
          router.push('/login?redirect=payment');
       }
-   }, [user, location, paymentMethod]);
+   }, [user, location, paymentMethod, router]);
 
    return (
       <div className="confirm-order-details">

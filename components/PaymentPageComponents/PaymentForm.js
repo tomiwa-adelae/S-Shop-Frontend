@@ -24,7 +24,7 @@ const PaymentForm = () => {
       if (!location) {
          router.push('/login?redirect=orderlocation');
       }
-   }, [user, location]);
+   }, [user, location, router]);
 
    const handleSubmit = (e) => {
       e.preventDefault();

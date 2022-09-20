@@ -3,10 +3,12 @@ import PopularProductsCarousel from '../components/PopularProductsComponents/Pop
 import PopularProductsIntro from '../components/PopularProductsComponents/PopularProductsIntro';
 import PopularProductsItems from '../components/PopularProductsComponents/PopularProductsItems';
 import { server } from '../config/server';
+import BackBtn from '../components/BackBtn';
 
 const popularproducts = ({ products }) => {
    return (
       <div className="popular-products-page">
+         <BackBtn to="/" />
          <PopularProductsCarousel products={products} />
          <PopularProductsIntro />
          <PopularProductsItems products={products} />
