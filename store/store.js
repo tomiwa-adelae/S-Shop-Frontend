@@ -1,6 +1,6 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
+// import { composeWithDevTools } from 'redux-devtools-extension';
 import { createWrapper } from 'next-redux-wrapper';
 import {
    createProductReducer,
@@ -15,8 +15,10 @@ import errorReducer from './reducers/errorReducers';
 import { cartReducer } from './reducers/cartReducers';
 import {
    changeLoginReducer,
+   forgotPasswordReducer,
    loginUserReducer,
    registerUserReducer,
+   resetPasswordReducer,
    updateUserProfileReducer,
 } from './reducers/userReducers';
 import {
@@ -53,6 +55,8 @@ const reducer = combineReducers({
    updateUserProfile: updateUserProfileReducer,
    changeLogin: changeLoginReducer,
    createReview: createProductReducer,
+   forgotPassword: forgotPasswordReducer,
+   resetPassword: resetPasswordReducer,
 });
 
 const schoolShippingData =
@@ -81,7 +85,7 @@ const userToken =
       : null;
 
 // initial states here
-const initalState = {
+const initialState = {
    cart: { cartItems: [] },
    login: { user: userData, token: userToken },
    register: { user: userData, token: userToken },
@@ -94,10 +98,17 @@ const initalState = {
 const middleware = [thunk];
 
 // creating store
+// export const store = createStore(
+//    reducer,
+//    initialState,
+//    composeWithDevTools(applyMiddleware(...middleware))
+// );
+
+// For Production
 export const store = createStore(
    reducer,
-   initalState,
-   composeWithDevTools(applyMiddleware(...middleware))
+   initialState,
+   compose(applyMiddleware(...middleware))
 );
 
 // assigning store to next wrapper

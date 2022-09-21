@@ -2,18 +2,24 @@ import {
    CHANGE_USER_LOGIN_FAIL,
    CHANGE_USER_LOGIN_REQUEST,
    CHANGE_USER_LOGIN_SUCCESS,
+   FORGOT_PASSWORD_FAIL,
+   FORGOT_PASSWORD_REQUEST,
+   FORGOT_PASSWORD_SUCCESS,
    LOGIN_USER_FAIL,
    LOGIN_USER_REQUEST,
    LOGIN_USER_SUCCESS,
    REGISTER_USER_FAIL,
    REGISTER_USER_REQUEST,
    REGISTER_USER_SUCCESS,
+   RESET_PASSWORD_FAIL,
+   RESET_PASSWORD_REQUEST,
+   RESET_PASSWORD_SUCCESS,
    UPDATE_USER_FAIL,
    UPDATE_USER_REQUEST,
    UPDATE_USER_SUCCESS,
    USER_LOGOUT,
 } from '../constants/userConstants';
-import { returnErrors } from './errorActions';
+import { clearErrors, returnErrors } from './errorActions';
 import axios from 'axios';
 import { server } from '../../config/server';
 import { CLEAR_ERRORS } from '../constants/errorConstants';
@@ -112,6 +118,55 @@ export const updateLogin = (passwords) => async (dispatch, getState) => {
       dispatch(returnErrors(err.response.data.msg));
       dispatch({ type: CHANGE_USER_LOGIN_FAIL });
    }
+};
+
+// Forgot password
+export const forgotPassword = (email) => (dispatch) => {
+   dispatch({ type: CLEAR_ERRORS });
+   dispatch({ type: FORGOT_PASSWORD_REQUEST });
+
+   const config = {
+      headers: {
+         'Content-type': 'application/json',
+      },
+   };
+
+   axios
+      .post(`${server}/api/password-reset`, email, config)
+      .then((res) => {
+         dispatch({
+            type: FORGOT_PASSWORD_SUCCESS,
+            payload: res.data,
+         });
+      })
+      .catch((err) => {
+         dispatch(returnErrors(err.response.data.msg));
+         dispatch({ type: FORGOT_PASSWORD_FAIL });
+      });
+};
+
+export const resetPassword = (url, passwordObj) => (dispatch) => {
+   dispatch({ type: CLEAR_ERRORS });
+   dispatch({ type: RESET_PASSWORD_REQUEST });
+   const config = {
+      headers: {
+         'Content-type': 'application/json',
+      },
+   };
+
+   axios
+      .post(url, passwordObj, config)
+      .then((res) => {
+         dispatch({
+            type: RESET_PASSWORD_SUCCESS,
+            payload: res.data,
+         });
+         dispatch(clearErrors());
+      })
+      .catch((err) => {
+         dispatch(returnErrors(err.response.data.msg));
+         dispatch({ type: RESET_PASSWORD_FAIL });
+      });
 };
 
 // logout user

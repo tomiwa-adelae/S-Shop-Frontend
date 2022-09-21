@@ -122,7 +122,7 @@ const RegisterForm = () => {
                <p className="my-1">
                   Already have an account?{' '}
                   <Link href="/login">
-                     <span className="text-secondary">Login now</span>
+                     <strong className="text-secondary">Login now</strong>
                   </Link>
                </p>
             </form>
