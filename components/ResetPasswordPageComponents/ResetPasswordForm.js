@@ -81,9 +81,11 @@ const ResetPasswordForm = () => {
                   </button>
                   {success && (
                      <Link href="/login">
-                        <button className="btn btn-secondary mx-1">
-                           Login now with your new password
-                        </button>
+                        <div>
+                           <button className="btn btn-secondary">
+                              Login now with your new password
+                           </button>
+                        </div>
                      </Link>
                   )}
                </div>
