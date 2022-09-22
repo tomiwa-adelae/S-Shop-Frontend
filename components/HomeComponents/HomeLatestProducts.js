@@ -9,11 +9,9 @@ const HomeLatestProducts = ({ loading, latestProducts }) => {
          <div className="container">
             <div className="head py-1">
                <h4>Latest products</h4>
-               {latestProducts?.length >= 10 && (
-                  <Link href="/allproducts">
-                     <button className="btn btn-primary">See all</button>
-                  </Link>
-               )}
+               <Link href="/allproducts">
+                  <button className="btn btn-primary">See all</button>
+               </Link>
             </div>
 
             {loading && <PrimarySpinner />}

@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { forgotPassword } from '../../store/actions/userActions';
 import { ErrorMessageBox, SuccessMessageBox } from '../MessageBox';
+import { FORGOT_PASSWORD_RESET } from '../../store/constants/userConstants';
 import { SmallWhiteSpinner } from '../Spinner';
 
 const ForgotPasswordForm = () => {
@@ -15,6 +16,10 @@ const ForgotPasswordForm = () => {
 
    const errorState = useSelector((state) => state.error);
    const { msg } = errorState;
+
+    useEffect(() => {
+      dispatch({ type: FORGOT_PASSWORD_RESET });
+   }, [dispatch]);
 
    const handleSubmit = (e) => {
       e.preventDefault();
@@ -50,7 +55,7 @@ const ForgotPasswordForm = () => {
                <p className="my-1">
                   Already remember your password?{' '}
                   <Link href="/login">
-                     <span className="text-secondary">Login now</span>
+                     <strong className="text-secondary">Login now</strong>
                   </Link>
                </p>
             </form>

@@ -41,7 +41,7 @@ const HomeProductCarousel = ({ loading, mostRatedProducts }) => {
             </div>
          )}
          <Slider {...settings}>
-            {mostRatedProducts?.slice(0, 10)?.map((product) => (
+            {mostRatedProducts?.slice(0, 20)?.map((product) => (
                <Link
                   key={product._id}
                   href="/product/[id]"

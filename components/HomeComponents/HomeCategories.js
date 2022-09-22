@@ -19,6 +19,18 @@ const HomeCategories = () => {
          name: 'bags',
          image: 'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/88/187259/1.jpg?4497',
       },
+      {
+         name: 'shoes',
+         image: 'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/09/205144/1.jpg?0768',
+      },
+      {
+         name: 'electronics',
+         image: 'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/32/794608/1.jpg?4584',
+      },
+      {
+         name: 'bags',
+         image: 'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/88/187259/1.jpg?4497',
+      },
    ]);
 
    return (

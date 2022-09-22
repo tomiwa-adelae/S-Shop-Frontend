@@ -1,10 +1,8 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React from 'react';
 import Rating from '../Rating';
 
 const AllProductsItems = ({ products }) => {
-   const router = useRouter();
    return (
       <div className="all-products-items section">
          <div className="container">

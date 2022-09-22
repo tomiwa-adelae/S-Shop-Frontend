@@ -17,7 +17,7 @@ const PopularProductsItems = ({ products }) => {
                   >
                      <div className="box">
                         <div className="img">
-                           <img src={product.image} alt={product.name} />
+                           <img src={product.productImage} alt={product.name} />
                         </div>
                         <div className="details p-1">
                            <h5 className="py-0">
