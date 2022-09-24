@@ -5,6 +5,7 @@ import {
    getMostRatedProducts,
    getProducts,
 } from '../../store/actions/productActions';
+import { HelpOrdering } from '../Help';
 import HomeCategories from './HomeCategories';
 import HomeLatestProducts from './HomeLatestProducts';
 import HomePopularProducts from './HomePopularProducts';
@@ -42,6 +43,7 @@ const HomeWrapper = () => {
             latestProducts={products}
          />
          <HomeCategories />
+         <HelpOrdering />
       </div>
    );
 };
