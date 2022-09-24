@@ -17,14 +17,16 @@ const CartItems = ({ id, qty }) => {
    const { user } = userState;
 
    useEffect(() => {
-      if (id) {
-         dispatch(addToCart(id, qty));
-      }
-
       if (success) {
          router.push('/cart');
       }
-   }, [success, user, id, qty, router]);
+   }, [success, router]);
+
+   useEffect(() => {
+      if (id) {
+         dispatch(addToCart(id, qty));
+      }
+   }, [dispatch, id, qty]);
 
    return (
       <>
