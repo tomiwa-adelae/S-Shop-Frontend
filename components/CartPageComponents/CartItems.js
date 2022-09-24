@@ -24,7 +24,7 @@ const CartItems = ({ id, qty }) => {
       if (success) {
          router.push('/cart');
       }
-   }, [dispatch, success, user, id, qty, router]);
+   }, [success, user, id, qty, router]);
 
    return (
       <>
