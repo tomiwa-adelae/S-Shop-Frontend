@@ -13,9 +13,6 @@ const CartItems = ({ id, qty }) => {
    const cartState = useSelector((state) => state.cart);
    const { cartItems, success } = cartState;
 
-   const userState = useSelector((state) => state.login);
-   const { user } = userState;
-
    useEffect(() => {
       if (success) {
          router.push('/cart');
@@ -29,7 +26,7 @@ const CartItems = ({ id, qty }) => {
    }, [dispatch, id, qty]);
 
    return (
-      <>
+      <div>
          {cartItems.length === 0 && (
             <div className="container">
                <SuccessMessageBox msg="Your cart is empty! Go shopping!" />
@@ -52,7 +49,7 @@ const CartItems = ({ id, qty }) => {
                </div>
             </div>
          )}
-      </>
+      </div>
    );
 };
 
