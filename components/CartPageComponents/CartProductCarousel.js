@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'react-slick';
@@ -32,13 +33,16 @@ var settings = {
    prevArrow: <SamplePrevArrow />,
 };
 
-const CartProductCarousel = ({ id, size, qty }) => {
+const CartProductCarousel = () => {
    const dispatch = useDispatch();
+   const router = useRouter();
 
    const cartState = useSelector((state) => state.cart);
    const { cartItems } = cartState;
 
    useEffect(() => {
+      const { id, size, qty } = router.query;
+
       if (id) {
          dispatch(addToCart(id, size, Number(qty)));
       }

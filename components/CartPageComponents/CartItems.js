@@ -6,7 +6,7 @@ import CartCheckOut from './CartCheckOut';
 import Item from './Item';
 import { SuccessMessageBox } from '../MessageBox';
 
-const CartItems = ({ id, qty }) => {
+const CartItems = () => {
    const dispatch = useDispatch();
    const router = useRouter();
 
@@ -20,6 +20,8 @@ const CartItems = ({ id, qty }) => {
    }, [success, router]);
 
    useEffect(() => {
+      const { id, size, qty } = router.query;
+
       if (id) {
          dispatch(addToCart(id, qty));
       }
