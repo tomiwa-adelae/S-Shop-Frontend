@@ -46,10 +46,10 @@ const CartProductCarousel = () => {
       if (id) {
          dispatch(addToCart(id, size, Number(qty)));
       }
-   }, [dispatch, id, size, qty]);
+   }, [dispatch]);
 
    return (
-      <>
+      <div>
          {cartItems.length !== 0 && (
             <div className="product-carousel">
                <Slider {...settings}>
@@ -81,7 +81,7 @@ const CartProductCarousel = () => {
                </Slider>
             </div>
          )}
-      </>
+      </div>
    );
 };
 

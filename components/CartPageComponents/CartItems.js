@@ -17,15 +17,13 @@ const CartItems = () => {
       if (success) {
          router.push('/cart');
       }
-   }, [success, router]);
+   }, []);
 
    useEffect(() => {
-      const { id, size, qty } = router.query;
-
-      if (id) {
-         dispatch(addToCart(id, qty));
+      if (router.query.id) {
+         dispatch(addToCart(router.query.id, router.query.qty));
       }
-   }, [dispatch, id, qty]);
+   }, [dispatch, router]);
 
    return (
       <div>
