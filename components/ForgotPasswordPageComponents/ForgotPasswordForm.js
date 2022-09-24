@@ -1,10 +1,11 @@
 import Link from 'next/link';
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { forgotPassword } from '../../store/actions/userActions';
 import { ErrorMessageBox, SuccessMessageBox } from '../MessageBox';
 import { FORGOT_PASSWORD_RESET } from '../../store/constants/userConstants';
 import { SmallWhiteSpinner } from '../Spinner';
+import { CLEAR_ERRORS } from '../../store/constants/errorConstants';
 
 const ForgotPasswordForm = () => {
    const dispatch = useDispatch();
@@ -17,7 +18,8 @@ const ForgotPasswordForm = () => {
    const errorState = useSelector((state) => state.error);
    const { msg } = errorState;
 
-    useEffect(() => {
+   useEffect(() => {
+      dispatch({ type: CLEAR_ERRORS });
       dispatch({ type: FORGOT_PASSWORD_RESET });
    }, [dispatch]);
 
