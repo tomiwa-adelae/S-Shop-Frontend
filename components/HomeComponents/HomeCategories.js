@@ -16,7 +16,7 @@ const HomeCategories = () => {
          image: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/86/690064/1.jpg?7852',
       },
       {
-         name: 'frangrance',
+         name: 'frangrances',
          image: 'https://m.media-amazon.com/images/I/716rEXN4htL._AC_UL320_.jpg',
       },
       {
@@ -24,7 +24,7 @@ const HomeCategories = () => {
          image: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/39/464268/1.jpg?8220',
       },
       {
-         name: 'phone',
+         name: 'phones',
          image: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/37/8976501/1.jpg?6296',
       },
       {
@@ -32,7 +32,7 @@ const HomeCategories = () => {
          image: 'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/09/205144/1.jpg?0768',
       },
       {
-         name: 'skin and hair care',
+         name: 'skins',
          image: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/16/8272741/1.jpg?9703',
       },
       {
@@ -40,7 +40,7 @@ const HomeCategories = () => {
          image: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/85/0290601/1.jpg?9745',
       },
       {
-         name: 'wall paper',
+         name: 'wallpapers',
          image: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/61/216128/1.jpg?3730',
       },
    ]);
