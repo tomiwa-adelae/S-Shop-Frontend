@@ -4,32 +4,44 @@ import { useState } from 'react';
 const HomeCategories = () => {
    const [categories] = useState([
       {
+         name: 'bags',
+         image: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/78/155456/1.jpg?8470',
+      },
+      {
+         name: 'caps',
+         image: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/31/698956/1.jpg?2468',
+      },
+      {
          name: 'clothes',
          image: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/86/690064/1.jpg?7852',
       },
       {
+         name: 'frangrance',
+         image: 'https://m.media-amazon.com/images/I/716rEXN4htL._AC_UL320_.jpg',
+      },
+      {
+         name: 'glasses',
+         image: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/39/464268/1.jpg?8220',
+      },
+      {
+         name: 'phone',
+         image: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/37/8976501/1.jpg?6296',
+      },
+      {
          name: 'shoes',
          image: 'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/09/205144/1.jpg?0768',
       },
       {
-         name: 'electronics',
-         image: 'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/32/794608/1.jpg?4584',
+         name: 'skin and hair care',
+         image: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/16/8272741/1.jpg?9703',
       },
       {
-         name: 'bags',
-         image: 'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/88/187259/1.jpg?4497',
+         name: 'watches',
+         image: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/85/0290601/1.jpg?9745',
       },
       {
-         name: 'shoes',
-         image: 'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/09/205144/1.jpg?0768',
-      },
-      {
-         name: 'electronics',
-         image: 'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/32/794608/1.jpg?4584',
-      },
-      {
-         name: 'bags',
-         image: 'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/88/187259/1.jpg?4497',
+         name: 'wall paper',
+         image: 'https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/61/216128/1.jpg?3730',
       },
    ]);
 
@@ -57,7 +69,7 @@ const HomeCategories = () => {
                   <div className="box">
                      <div className="img">
                         <img
-                           src="https://thumbs.dreamstime.com/b/simple-vector-red-scratch-rubber-stamp-sample-transparent-effect-background-155834864.jpg"
+                           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxM0Jpq3WOACdTv7_DnxI_HnjITcWjGRDdPq81efSPtw&s"
                            alt="All Products"
                         />
                      </div>

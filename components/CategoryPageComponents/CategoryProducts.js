@@ -13,7 +13,7 @@ const CategoryProducts = ({ products }) => {
             </div>
             <div className="products-boxes">
                {products?.length === 0 && (
-                  <SuccessMessageBox msg="Category does not exist!" />
+                  <SuccessMessageBox msg="No product in these category!" />
                )}
                {products?.map((product) => (
                   <Link

@@ -41,6 +41,7 @@ const HomeWrapper = () => {
             loading={loadingLatest}
             latestProducts={products}
          />
+         <HomeCategories />
       </div>
    );
 };
