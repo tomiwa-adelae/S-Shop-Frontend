@@ -23,6 +23,9 @@ import {
    GET_ALL_PRODUCTS_FROM_BRAND_FAIL,
    GET_ALL_PRODUCTS_FROM_BRAND_REQUEST,
    GET_ALL_PRODUCTS_FROM_BRAND_SUCCESS,
+   GET_CATEGORY_PRODUCTS_REQUEST,
+   GET_CATEGORY_PRODUCTS_SUCCESS,
+   GET_CATEGORY_PRODUCTS_FAIL,
 } from '../constants/productConstants';
 import { returnErrors } from './errorActions';
 import { tokenConfig } from './userActions';
@@ -119,6 +122,22 @@ export const getProductsFromCategory = (category, id) => async (dispatch) => {
    } catch (err) {
       dispatch(returnErrors(err.response.data.msg));
       dispatch({ type: GET_PRODUCTS_FROM_CATEGORY_FAIL });
+   }
+};
+
+// Get latest category products
+export const getCategoryProducts = (category) => async (dispatch) => {
+   try {
+      dispatch({ type: GET_CATEGORY_PRODUCTS_REQUEST });
+
+      const { data } = await axios.get(
+         `${server}/api/products/category/products/${category}`
+      );
+
+      dispatch({ type: GET_CATEGORY_PRODUCTS_SUCCESS, payload: data });
+   } catch (err) {
+      dispatch(returnErrors(err.response.data.msg));
+      dispatch({ type: GET_CATEGORY_PRODUCTS_FAIL });
    }
 };
 

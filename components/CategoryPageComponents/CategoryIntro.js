@@ -13,9 +13,11 @@ const CategoryIntro = () => {
                      <span>S-Shop</span>
                   </Link>{' '}
                   &gt;{' '}
-                  <Link href={router.query.category}>
-                     <span>{router.query.category}</span>
-                  </Link>{' '}
+                  {router.query.category && (
+                     <Link href={router.query.category}>
+                        <span>{router.query.category}</span>
+                     </Link>
+                  )}
                </h4>
             </div>
          </div>

@@ -1,10 +1,11 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
-// import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { createWrapper } from 'next-redux-wrapper';
 import {
    createProductReducer,
    getAllProductsBrandReducer,
+   getCategoryProductsReducer,
    getMostRatedProductsReducer,
    getProductsBrandReducer,
    getProductsCategoryReducer,
@@ -42,6 +43,7 @@ const reducer = combineReducers({
    getBrandProducts: getProductsBrandReducer,
    getAllBrandProducts: getAllProductsBrandReducer,
    getCategoryProducts: getProductsCategoryReducer,
+   getAllCategoryProducts: getCategoryProductsReducer,
    cart: cartReducer,
    login: loginUserReducer,
    register: registerUserReducer,
@@ -98,18 +100,18 @@ const initialState = {
 const middleware = [thunk];
 
 // creating store
-// export const store = createStore(
-//    reducer,
-//    initialState,
-//    composeWithDevTools(applyMiddleware(...middleware))
-// );
-
-// For Production
 export const store = createStore(
    reducer,
    initialState,
-   compose(applyMiddleware(...middleware))
+   composeWithDevTools(applyMiddleware(...middleware))
 );
+
+// For Production
+// export const store = createStore(
+//    reducer,
+//    initialState,
+//    compose(applyMiddleware(...middleware))
+// );
 
 // assigning store to next wrapper
 const makeStore = () => store;
