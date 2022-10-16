@@ -1,9 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { ErrorMessageBox } from '../MessageBox';
+import PaymentButton from '../PaymentButton';
 
 const OrderDetailsInfo = ({ order }) => {
+   const errorState = useSelector((state) => state.error);
+   const { msg } = errorState;
+
+   const payCardState = useSelector((state) => state.payCard);
+   const { success } = payCardState;
+
    return (
       <div className="order-details-info section">
          <div className="container">
+            {msg && <ErrorMessageBox msg={msg} />}
             <div className="wrapper">
                <div className="info payment-info py-0 px-1">
                   <div className="head py-0">
@@ -16,9 +26,7 @@ const OrderDetailsInfo = ({ order }) => {
                         {!order.isPaid &&
                            order?.paymentMethod === 'Pay with Cards' && (
                               <div className="my-0">
-                                 <button className="btn btn-secondary">
-                                    Pay now
-                                 </button>
+                                 {!success && <PaymentButton details={order} />}
                               </div>
                            )}
                      </div>

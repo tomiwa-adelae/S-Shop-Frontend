@@ -8,7 +8,7 @@ const PaymentForm = () => {
    const dispatch = useDispatch();
    const router = useRouter();
 
-   const [payment, setPayment] = useState('');
+   const [payment, setPayment] = useState('Pay with Cards');
 
    const schoolShippingState = useSelector((state) => state.schoolShipping);
    const { location } = schoolShippingState;

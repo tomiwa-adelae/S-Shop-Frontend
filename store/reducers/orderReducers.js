@@ -15,6 +15,10 @@ import {
    ORDER_SIMILAR_PRODUCT_REQUEST,
    ORDER_SIMILAR_PRODUCT_RESET,
    ORDER_SIMILAR_PRODUCT_SUCCESS,
+   PAY_WITH_CARD_FAIL,
+   PAY_WITH_CARD_REQUEST,
+   PAY_WITH_CARD_RESET,
+   PAY_WITH_CARD_SUCCESS,
 } from '../constants/orderConstants';
 
 // Get order details
@@ -95,6 +99,25 @@ export const getMyOrdersListReducer = (state = { orders: [] }, action) => {
       case GET_MY_ORDERS_RESET:
          return { loading: false };
       case GET_MY_ORDERS_FAIL:
+         return {};
+      default:
+         return state;
+   }
+};
+
+// Get order details
+export const payCardReducer = (state = {}, action) => {
+   switch (action.type) {
+      case PAY_WITH_CARD_REQUEST:
+         return { loading: true, succes: false };
+      case PAY_WITH_CARD_SUCCESS:
+         return {
+            loading: false,
+            success: true,
+         };
+      case PAY_WITH_CARD_FAIL:
+         return { loading: false, success: false };
+      case PAY_WITH_CARD_RESET:
          return {};
       default:
          return state;

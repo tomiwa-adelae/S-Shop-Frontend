@@ -1,6 +1,11 @@
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
+import { SuccessMessageBox } from '../MessageBox';
+import PaymentButton from '../PaymentButton';
 
 const OrderSuccessDetails = ({ order, orderUser }) => {
+   const payCardState = useSelector((state) => state.payCard);
+   const { success } = payCardState;
    return (
       <div className="order-success-details section">
          <div className="container">
@@ -14,14 +19,20 @@ const OrderSuccessDetails = ({ order, orderUser }) => {
                back to you within the next 24 hours
             </p>
 
-            {order?.paymentMethod === 'Pay with Cards' && (
-               <button className="btn btn-grey my-1">Proceed to payment</button>
+            {!success &&
+               order?.paymentMethod === 'Pay with Cards' &&
+               order?.isPaid !== true && (
+                  <div className="my-1">
+                     <PaymentButton details={order} />
+                  </div>
+               )}
+
+            {success && (
+               <SuccessMessageBox msg="Payment successful! Please proceed!" />
             )}
 
             <Link href="/order/[id]" as={`/order/${order?._id}`}>
-               <button className="my-1 mx-1 btn btn-grey">
-                  View order details
-               </button>
+               <button className="my-0 btn btn-grey">View order details</button>
             </Link>
          </div>
       </div>

@@ -13,6 +13,10 @@ import {
    ORDER_SIMILAR_PRODUCT_FAIL,
    ORDER_SIMILAR_PRODUCT_REQUEST,
    ORDER_SIMILAR_PRODUCT_SUCCESS,
+   PAY_WITH_CARD_FAIL,
+   PAY_WITH_CARD_REQUEST,
+   PAY_WITH_CARD_RESET,
+   PAY_WITH_CARD_SUCCESS,
 } from '../constants/orderConstants';
 import { returnErrors } from './errorActions';
 import { server } from '../../config/server';
@@ -25,6 +29,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
    try {
       dispatch({ type: CLEAR_ERRORS });
       dispatch({ type: ORDER_DETAILS_REQUEST });
+      dispatch({ type: PAY_WITH_CARD_RESET });
 
       const { data } = await axios.get(
          `${server}/api/orders/${id}`,
@@ -111,5 +116,25 @@ export const getMyOrders = () => async (dispatch, getState) => {
    } catch (err) {
       dispatch(returnErrors(err.response.data.msg));
       dispatch({ type: GET_MY_ORDERS_FAIL });
+   }
+};
+
+// Pay with card
+export const cardPayment = (response, id) => async (dispatch, getState) => {
+   try {
+      dispatch({ type: CLEAR_ERRORS });
+      dispatch({ type: PAY_WITH_CARD_REQUEST });
+
+      const { data } = await axios.post(
+         `${server}/api/orders/pay/card/now`,
+         { response, id },
+         tokenConfig(getState)
+      );
+
+      dispatch({ type: PAY_WITH_CARD_SUCCESS, payload: data });
+      dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
+   } catch (err) {
+      dispatch(returnErrors(err.response.data.msg));
+      dispatch({ type: PAY_WITH_CARD_FAIL });
    }
 };
