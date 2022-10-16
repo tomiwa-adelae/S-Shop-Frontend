@@ -8,7 +8,7 @@ const PaymentForm = () => {
    const dispatch = useDispatch();
    const router = useRouter();
 
-   const [payment, setPayment] = useState('Cash on Delivery');
+   const [payment, setPayment] = useState('');
 
    const schoolShippingState = useSelector((state) => state.schoolShipping);
    const { location } = schoolShippingState;
@@ -39,9 +39,21 @@ const PaymentForm = () => {
             <div className="checkbox">
                <input
                   type="radio"
+                  id="Pay with Cards"
+                  value={payment}
+                  name="payment"
+                  defaultChecked
+                  required
+                  autoComplete="off"
+                  onChange={(e) => setPayment(e.target.id)}
+               />
+               <label htmlFor="Pay with Cards">Pay with Cards</label>
+            </div>
+            <div className="checkbox">
+               <input
+                  type="radio"
                   id="Cash on Delivery"
                   value={payment}
-                  defaultChecked
                   name="payment"
                   required
                   autoComplete="off"

@@ -14,8 +14,14 @@ const OrderSuccessDetails = ({ order, orderUser }) => {
                back to you within the next 24 hours
             </p>
 
+            {order?.paymentMethod === 'Pay with Cards' && (
+               <button className="btn btn-grey my-1">Proceed to payment</button>
+            )}
+
             <Link href="/order/[id]" as={`/order/${order?._id}`}>
-               <button className="my-1 btn btn-grey">View order details</button>
+               <button className="my-1 mx-1 btn btn-grey">
+                  View order details
+               </button>
             </Link>
          </div>
       </div>
