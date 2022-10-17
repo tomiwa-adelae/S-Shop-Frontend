@@ -27,7 +27,7 @@ export default function PaymentButton({ details }) {
       },
       customizations: {
          title: 'PAY NOW',
-         description: '',
+         description: 'S-SHOP Payment',
          logo: '',
       },
    };
