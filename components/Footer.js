@@ -18,9 +18,9 @@ const Footer = () => {
                         <h5 className="py-1">Make money on S-Shop</h5>
                      </div>
                      <div className="footer-links">
-                        <Link href="/sellingdashboard">
+                        <a to="https://www.sellsshop.com.ng">
                            <strong className="my-0">Sell on S-Shop</strong>
-                        </Link>
+                        </a>
                      </div>
                   </div>
                   <div className="box p-1 footer-social">
