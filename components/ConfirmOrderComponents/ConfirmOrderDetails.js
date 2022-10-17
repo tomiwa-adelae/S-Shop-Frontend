@@ -40,7 +40,7 @@ const ConfirmOrderDetails = () => {
             <div className="box p-1 my-1">
                <div className="head ">
                   <h5>Personal Details</h5>
-                  <Link href="/profile">
+                  <Link href="/personaldetails">
                      <button className="btn btn-white">Edit</button>
                   </Link>
                </div>
