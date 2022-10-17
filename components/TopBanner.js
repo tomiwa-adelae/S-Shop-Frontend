@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React from 'react';
 
 const TopBanner = () => {
@@ -6,7 +5,7 @@ const TopBanner = () => {
       <div className="top-banner">
          <div className="container">
             <div className="wrapper">
-               <a to="https://www.sellsshop.com.ng">Sell</a>
+               <a href="https://www.sellsshop.com.ng">Sell</a>
             </div>
          </div>
       </div>
