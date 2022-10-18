@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../store/actions/productActions';
-import { ErrorMessageBox } from '../MessageBox';
+import { ErrorMessageBox, SuccessMessageBox } from '../MessageBox';
 import { PrimarySpinner } from '../Spinner';
 import AllProductsCarousel from './AllProductsCarousel';
 import AllProductsIntro from './AllProductsIntro';
@@ -26,14 +26,16 @@ const AllProductsWrapper = () => {
          </div>
          {loading ? (
             <PrimarySpinner />
+         ) : products.length !== 0 ? (
+            <>
+               <AllProductsCarousel products={products} />
+               <AllProductsIntro />
+               <AllProductsItems products={products} />
+            </>
          ) : (
-            products && (
-               <>
-                  <AllProductsCarousel products={products} />
-                  <AllProductsIntro />
-                  <AllProductsItems products={products} />
-               </>
-            )
+            <div className="container">
+               <SuccessMessageBox msg="No products to display!" />
+            </div>
          )}
       </div>
    );
